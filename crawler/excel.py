@@ -6,6 +6,7 @@ import logging
 from concurrent.futures import ThreadPoolExecutor
 
 from openpyxl import Workbook
+from openpyxl.cell.cell import ILLEGAL_CHARACTERS_RE
 from openpyxl.styles import Alignment, Font, PatternFill, Border, Side
 from openpyxl.utils import get_column_letter
 
@@ -67,22 +68,27 @@ def write(products: list[dict], site_names: dict[str, str], path: str, images: b
             "開啟" if p.get("url") else None,
         ]
         for c, v in enumerate(vals, start=1):
+            if isinstance(v, str):
+                v = ILLEGAL_CHARACTERS_RE.sub("", v)[:32000]
             cell = ws.cell(row=r, column=c, value=v)
             cell.border = Border(bottom=thin)
             cell.alignment = Alignment(vertical="center", wrap_text=(c == 4))
             if c in (7, 8):
                 cell.number_format = "#,##0.##"
-        if p.get("image") and p["image"] not in thumbs:
+        if p.get("image") and p["image"] not in thumbs and len(p["image"]) < 2000:
             ws.cell(row=r, column=1).hyperlink = p["image"]
-        if p.get("url"):
+        if p.get("url") and len(p["url"]) < 2000:
             ws.cell(row=r, column=11).hyperlink = p["url"]
             ws.cell(row=r, column=11).font = Font(color="0563C1", underline="single")
         if p.get("promo_price"):
             ws.cell(row=r, column=8).font = Font(bold=True, color="A86A00")
         if p.get("image") in thumbs:
-            img = XLImage(thumbs[p["image"]])
-            ws.add_image(img, f"A{r}")
-            ws.row_dimensions[r].height = THUMB * 0.78
+            try:
+                img = XLImage(thumbs[p["image"]])
+                ws.add_image(img, f"A{r}")
+                ws.row_dimensions[r].height = THUMB * 0.78
+            except Exception:  # noqa: BLE001
+                pass
     ws.freeze_panes = "B2"
     ws.auto_filter.ref = f"A1:{get_column_letter(len(HEAD))}{max(2, len(products) + 1)}"
     wb.save(path)

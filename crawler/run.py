@@ -45,7 +45,10 @@ def main(argv=None) -> int:
     ap.add_argument("--no-images", action="store_true", help="Excel 不放縮圖")
     ap.add_argument("--no-excel", action="store_true", help="不輸出 Excel")
     a = ap.parse_args(argv)
-    logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
+    os.makedirs(DATA_DIR, exist_ok=True)
+    logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s",
+                        handlers=[logging.StreamHandler(),
+                                  logging.FileHandler(os.path.join(DATA_DIR, "run.log"), "w", encoding="utf-8")])
 
     wanted = [s.strip() for s in a.sites.split(",")] if a.sites else list(SITES)
     old_products = _load(PRODUCTS_JSON, [])
@@ -78,7 +81,9 @@ def main(argv=None) -> int:
                     st.update(status="ok", last_success=now, count=len(uniq), message=f"{len(uniq)} 筆，{time.time()-t0:.0f} 秒")
                 else:
                     st.update(status="empty", message="這次沒抓到商品，沿用上次資料" if by_site.get(sid) else "沒抓到商品")
-            except Exception as e:  # noqa: BLE001
+            except BaseException as e:  # noqa: BLE001  連瀏覽器當掉也接住
+                if isinstance(e, KeyboardInterrupt):
+                    raise
                 log.exception("%s 失敗", name)
                 st.update(status="error", message=f"{type(e).__name__}: {str(e)[:160]}" + ("（沿用上次資料）" if by_site.get(sid) else ""))
             log.info("==== %s 結束：%s %s ====", name, st["status"], st["message"])
@@ -94,8 +99,16 @@ def main(argv=None) -> int:
     log.info("共 %d 筆 → %s", len(products), PRODUCTS_JSON)
 
     if not a.no_excel:
-        excel.write(products, {k: v[1] for k, v in SITES.items()}, XLSX, images=not a.no_images)
-        log.info("Excel → %s", XLSX)
+        try:
+            excel.write(products, {k: v[1] for k, v in SITES.items()}, XLSX, images=not a.no_images)
+            log.info("Excel → %s", XLSX)
+        except Exception:  # noqa: BLE001
+            log.exception("Excel 產生失敗（網頁資料已存好，不受影響）")
+            try:
+                excel.write(products, {k: v[1] for k, v in SITES.items()}, XLSX, images=False)
+                log.info("改用不含縮圖的 Excel → %s", XLSX)
+            except Exception:  # noqa: BLE001
+                log.exception("Excel 仍失敗")
     return 0
 
 
