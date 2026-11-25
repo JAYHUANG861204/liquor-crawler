@@ -1,0 +1,56 @@
+2026-11-25 13:28:47,349 INFO ==== 酒條通 609 開始 ====
+2026-11-25 13:30:30,417 INFO ==== 酒條通 609 結束：ok 61 筆，103 秒 ====
+2026-11-25 13:30:30,417 INFO ==== iShopChangi 開始 ====
+2026-11-25 13:32:29,518 INFO ==== iShopChangi 結束：ok 1114 筆，119 秒 ====
+2026-11-25 13:32:29,519 INFO ==== HK Airport Shop 開始 ====
+2026-11-25 13:32:40,783 INFO hk 第 1 頁：0 件（新 0）
+2026-11-25 13:32:40,819 INFO ==== HK Airport Shop 結束：empty 沒抓到商品 ====
+2026-11-25 13:32:40,820 INFO ==== 洋酒城 9city 開始 ====
+2026-11-25 13:32:42,274 WARNING GET 失敗 (1/2) https://www.9city.com.tw/: 403 Client Error: Forbidden for url: https://www.9city.com.tw/
+2026-11-25 13:32:46,008 WARNING GET 失敗 (2/2) https://www.9city.com.tw/: 403 Client Error: Forbidden for url: https://www.9city.com.tw/
+2026-11-25 13:32:50,009 WARNING 9city requests 失敗，改用瀏覽器：403 Client Error: Forbidden for url: https://www.9city.com.tw/
+2026-11-25 13:33:02,860 INFO 9city 找到 0 個商品連結（使用瀏覽器）
+2026-11-25 13:33:02,894 ERROR 洋酒城 9city 失敗
+Traceback (most recent call last):
+  File "/home/runner/work/liquor-crawler/liquor-crawler/crawler/run.py", line 71, in main
+    items = [p.to_dict() for p in mod.crawl(limit=a.limit)]
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/liquor-crawler/liquor-crawler/crawler/sites/ninecity.py", line 99, in crawl
+    raise RuntimeError("首頁與分類頁都找不到商品連結，網站結構可能改了")
+RuntimeError: 首頁與分類頁都找不到商品連結，網站結構可能改了
+2026-11-25 13:33:02,895 INFO ==== 洋酒城 9city 結束：error RuntimeError: 首頁與分類頁都找不到商品連結，網站結構可能改了（沿用上次資料） ====
+2026-11-25 13:33:02,895 INFO ==== 買酒網 MY9 開始 ====
+2026-11-25 13:33:20,163 INFO ==== 買酒網 MY9 結束：ok 2448 筆，17 秒 ====
+2026-11-25 13:33:20,163 INFO ==== 中免日上 CDF 開始 ====
+2026-11-25 13:34:43,587 INFO ==== 中免日上 CDF 結束：empty 沒抓到商品 ====
+2026-11-25 13:34:43,646 INFO 共 3627 筆 → /home/runner/work/liquor-crawler/liquor-crawler/docs/data/products.json
+/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/PIL/Image.py:1134: UserWarning: Palette images with Transparency expressed in bytes should be converted to RGBA images
+  warnings.warn(
+2026-11-25 13:35:19,960 INFO Excel 縮圖 1472 / 1500
+2026-11-25 13:35:23,580 ERROR Excel 產生失敗（網頁資料已存好，不受影響）
+Traceback (most recent call last):
+  File "/home/runner/work/liquor-crawler/liquor-crawler/crawler/run.py", line 109, in main
+    excel.write(products, {k: v[1] for k, v in SITES.items()}, XLSX, images=not a.no_images)
+  File "/home/runner/work/liquor-crawler/liquor-crawler/crawler/excel.py", line 94, in write
+    wb.save(path)
+  File "/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/openpyxl/workbook/workbook.py", line 386, in save
+    save_workbook(self, filename)
+  File "/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/openpyxl/writer/excel.py", line 294, in save_workbook
+    writer.save()
+  File "/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/openpyxl/writer/excel.py", line 275, in save
+    self.write_data()
+  File "/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/openpyxl/writer/excel.py", line 79, in write_data
+    self._write_images()
+  File "/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/openpyxl/writer/excel.py", line 116, in _write_images
+    self._archive.writestr(img.path[1:], img._data())
+                                         ^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/openpyxl/drawing/image.py", line 48, in _data
+    img = _import_image(self.ref)
+          ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/openpyxl/drawing/image.py", line 16, in _import_image
+    img = PILImage.open(img)
+          ^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/PIL/Image.py", line 3660, in open
+    fp.seek(0)
+ValueError: I/O operation on closed file.
+2026-11-25 13:35:26,831 INFO 改用不含縮圖的 Excel → /home/runner/work/liquor-crawler/liquor-crawler/docs/products.xlsx
