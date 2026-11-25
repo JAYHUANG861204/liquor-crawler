@@ -1,0 +1,103 @@
+"""主程式：依序爬每個網站，輸出 JSON（給網頁）和 Excel。
+
+用法：
+    python -m crawler.run                    # 全部網站
+    python -m crawler.run --sites my9,9city  # 只跑指定網站
+    python -m crawler.run --limit 30         # 每站最多 30 筆（測試用）
+    python -m crawler.run --no-images        # Excel 不放縮圖（比較快）
+
+某個網站失敗時，會保留它上一次成功的資料，網頁上會標示「沿用上次資料」。
+"""
+from __future__ import annotations
+
+import argparse
+import json
+import logging
+import os
+import time
+from datetime import datetime, timezone, timedelta
+
+from .sites import SITES
+from . import excel
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+DATA_DIR = os.path.join(ROOT, "docs", "data")
+PRODUCTS_JSON = os.path.join(DATA_DIR, "products.json")
+SITES_JSON = os.path.join(DATA_DIR, "sites.json")
+XLSX = os.path.join(ROOT, "docs", "products.xlsx")
+TW = timezone(timedelta(hours=8))
+
+log = logging.getLogger("crawler")
+
+
+def _load(path, default):
+    try:
+        with open(path, encoding="utf-8") as f:
+            return json.load(f)
+    except Exception:  # noqa: BLE001
+        return default
+
+
+def main(argv=None) -> int:
+    ap = argparse.ArgumentParser(description="酒類商品爬蟲")
+    ap.add_argument("--sites", help="逗號分隔的網站代號：" + ",".join(SITES))
+    ap.add_argument("--limit", type=int, help="每站最多幾筆（測試用）")
+    ap.add_argument("--no-images", action="store_true", help="Excel 不放縮圖")
+    ap.add_argument("--no-excel", action="store_true", help="不輸出 Excel")
+    a = ap.parse_args(argv)
+    logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
+
+    wanted = [s.strip() for s in a.sites.split(",")] if a.sites else list(SITES)
+    old_products = _load(PRODUCTS_JSON, [])
+    old_status = {s["id"]: s for s in _load(SITES_JSON, {}).get("sites", [])}
+    by_site: dict[str, list[dict]] = {}
+    for p in old_products:
+        by_site.setdefault(p["site"], []).append(p)
+
+    now = datetime.now(TW).isoformat(timespec="seconds")
+    status = {}
+    for sid, (mod, name, home, cur, how) in SITES.items():
+        prev = old_status.get(sid, {})
+        st = {"id": sid, "name": name, "home": home, "currency": cur, "how": how,
+              "last_success": prev.get("last_success"), "count": len(by_site.get(sid, [])),
+              "status": prev.get("status", "未執行"), "message": prev.get("message", "")}
+        if sid in wanted:
+            t0 = time.time()
+            log.info("==== %s 開始 ====", name)
+            try:
+                items = [p.to_dict() for p in mod.crawl(limit=a.limit)]
+                # 去除重複網址
+                seen, uniq = set(), []
+                for p in items:
+                    k = p.get("url") or (p["brand"], p["name"])
+                    if k not in seen:
+                        seen.add(k)
+                        uniq.append(p)
+                if uniq:
+                    by_site[sid] = uniq
+                    st.update(status="ok", last_success=now, count=len(uniq), message=f"{len(uniq)} 筆，{time.time()-t0:.0f} 秒")
+                else:
+                    st.update(status="empty", message="這次沒抓到商品，沿用上次資料" if by_site.get(sid) else "沒抓到商品")
+            except Exception as e:  # noqa: BLE001
+                log.exception("%s 失敗", name)
+                st.update(status="error", message=f"{type(e).__name__}: {str(e)[:160]}" + ("（沿用上次資料）" if by_site.get(sid) else ""))
+            log.info("==== %s 結束：%s %s ====", name, st["status"], st["message"])
+        st["count"] = len(by_site.get(sid, []))
+        status[sid] = st
+
+    products = [p for sid in SITES for p in by_site.get(sid, [])]
+    os.makedirs(DATA_DIR, exist_ok=True)
+    with open(PRODUCTS_JSON, "w", encoding="utf-8") as f:
+        json.dump(products, f, ensure_ascii=False, indent=0)
+    with open(SITES_JSON, "w", encoding="utf-8") as f:
+        json.dump({"updated": now, "sites": list(status.values())}, f, ensure_ascii=False, indent=1)
+    log.info("共 %d 筆 → %s", len(products), PRODUCTS_JSON)
+
+    if not a.no_excel:
+        excel.write(products, {k: v[1] for k, v in SITES.items()}, XLSX, images=not a.no_images)
+        log.info("Excel → %s", XLSX)
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

@@ -1,0 +1,71 @@
+{
+ "updated": "2026-11-25T20:30:00+08:00",
+ "sites": [
+  {
+   "id": "609",
+   "name": "酒條通 609",
+   "home": "https://www.609.com.tw/",
+   "currency": "TWD",
+   "how": "瀏覽器抓分類頁",
+   "last_success": null,
+   "count": 9,
+   "status": "demo",
+   "message": "示範資料，等第一次自動執行後會換成完整資料"
+  },
+  {
+   "id": "changi",
+   "name": "iShopChangi",
+   "home": "https://www.ishopchangi.com/",
+   "currency": "SGD",
+   "how": "瀏覽器抓分類頁，按 LOAD MORE",
+   "last_success": null,
+   "count": 17,
+   "status": "demo",
+   "message": "示範資料，等第一次自動執行後會換成完整資料"
+  },
+  {
+   "id": "hk",
+   "name": "HK Airport Shop",
+   "home": "https://hkairportshop.com/",
+   "currency": "HKD",
+   "how": "實驗中：網站有防火牆",
+   "last_success": null,
+   "count": 0,
+   "status": "demo",
+   "message": "示範資料，等第一次自動執行後會換成完整資料"
+  },
+  {
+   "id": "9city",
+   "name": "洋酒城 9city",
+   "home": "https://www.9city.com.tw/",
+   "currency": "TWD",
+   "how": "逐一抓商品頁",
+   "last_success": null,
+   "count": 4,
+   "status": "demo",
+   "message": "示範資料，等第一次自動執行後會換成完整資料"
+  },
+  {
+   "id": "my9",
+   "name": "買酒網 MY9",
+   "home": "https://www.my9.com.tw/",
+   "currency": "TWD",
+   "how": "Shopify JSON",
+   "last_success": null,
+   "count": 8,
+   "status": "demo",
+   "message": "示範資料，等第一次自動執行後會換成完整資料"
+  },
+  {
+   "id": "cdf",
+   "name": "中免日上 CDF",
+   "home": "https://www.cdfsunrise.com/",
+   "currency": "CNY",
+   "how": "實驗中：App 型網站",
+   "last_success": null,
+   "count": 0,
+   "status": "demo",
+   "message": "示範資料，等第一次自動執行後會換成完整資料"
+  }
+ ]
+}
