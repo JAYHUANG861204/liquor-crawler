@@ -44,6 +44,33 @@ def _links(html: str, base: str) -> tuple[set[str], set[str]]:
     return prods, cats
 
 
+class Fetcher:
+    """先用 requests；被擋（403 等）就改用瀏覽器。"""
+    def __init__(self):
+        self.s = session()
+        self.ctx = None
+        self._cm = None
+        self.use_browser = False
+
+    def html(self, url: str) -> str:
+        if not self.use_browser:
+            try:
+                return get(self.s, url, retries=2).text
+            except Exception as e:  # noqa: BLE001
+                log.warning("9city requests 失敗，改用瀏覽器：%s", e)
+                self.use_browser = True
+        if self.ctx is None:
+            from ..browser import browser
+            self._cm = browser()
+            self.ctx = self._cm.__enter__()
+        from ..browser import fetch_html
+        return fetch_html(self.ctx, url)
+
+    def close(self):
+        if self._cm:
+            self._cm.__exit__(None, None, None)
+
+
 def collect_links(s) -> list[str]:
     prods: set[str] = set()
     queue, seen = list(START), set()
@@ -53,7 +80,7 @@ def collect_links(s) -> list[str]:
             continue
         seen.add(url)
         try:
-            html = get(s, url).text
+            html = s.html(url)
         except Exception as e:  # noqa: BLE001
             log.warning("9city 分類頁失敗 %s: %s", url, e)
             continue
@@ -64,20 +91,25 @@ def collect_links(s) -> list[str]:
 
 
 def crawl(limit: int | None = None) -> list[Product]:
-    s = session()
-    links = collect_links(s)
-    log.info("9city 找到 %d 個商品連結", len(links))
-    out, seen = [], set()
-    for url in links[: (limit or MAX_PRODUCTS)]:
-        try:
-            p = parse_product(get(s, url).text, url)
-        except Exception as e:  # noqa: BLE001
-            log.warning("9city 商品頁失敗 %s: %s", url, e)
-            continue
-        if p and p.url not in seen:
-            seen.add(p.url)
-            out.append(p)
-    return out
+    s = Fetcher()
+    try:
+        links = collect_links(s)
+        log.info("9city 找到 %d 個商品連結（使用%s）", len(links), "瀏覽器" if s.use_browser else "requests")
+        if not links:
+            raise RuntimeError("首頁與分類頁都找不到商品連結，網站結構可能改了")
+        out, seen = [], set()
+        for url in links[: (limit or MAX_PRODUCTS)]:
+            try:
+                p = parse_product(s.html(url), url)
+            except Exception as e:  # noqa: BLE001
+                log.warning("9city 商品頁失敗 %s: %s", url, e)
+                continue
+            if p and p.url not in seen:
+                seen.add(p.url)
+                out.append(p)
+        return out
+    finally:
+        s.close()
 
 
 def _meta(soup, prop):

@@ -20,11 +20,11 @@ JS_EXTRACT = r"""
   const priceRe = /(\$|NT|S\$|HK\$|¥|￥|元|價|price)/i;
   const out = new Map();
   for (const a of document.querySelectorAll('a[href]')) {
-    const href = a.href;
+    const href = a.href.split('#')[0];
     if (!re.test(href)) continue;
     let el = a, card = null;
     for (let i = 0; i < 8 && el; i++) {
-      const hrefs = new Set([...el.querySelectorAll('a[href]')].map(x => x.href).filter(h => re.test(h)));
+      const hrefs = new Set([...el.querySelectorAll('a[href]')].map(x => x.href.split('#')[0]).filter(h => re.test(h)));
       if (hrefs.size > 1) break;               // 已經包到別的商品了，停
       const t = el.innerText || '';
       if (/\d/.test(t) && priceRe.test(t) && el.querySelector('img')) card = el;
@@ -33,10 +33,18 @@ JS_EXTRACT = r"""
     if (!card) continue;
     const text = (card.innerText || '').trim();
     if (!text || text.length > 1000) continue;
-    const img = card.querySelector('img');
+    // 卡片上可能有多張圖（禮物盒、愛心等小圖示），挑面積最大、不是 svg 圖示的那張
+    let img = null, best = -1;
+    for (const im of card.querySelectorAll('img')) {
+      const s0 = im.currentSrc || im.src || im.getAttribute('data-src') || im.getAttribute('data-original') || '';
+      if (/\.svg(\?|$)|icon|logo|badge|giftwrap|heart|flag/i.test(s0)) continue;
+      const r = im.getBoundingClientRect();
+      const area = Math.max(r.width * r.height, (im.naturalWidth || 0) * (im.naturalHeight || 0) / 4);
+      if (area > best) { best = area; img = im; }
+    }
     let src = '';
     if (img) src = img.currentSrc || img.src || img.getAttribute('data-src') || img.getAttribute('data-original') || '';
-    if (src.startsWith('data:')) src = img.getAttribute('data-src') || img.getAttribute('data-original') || '';
+    if (img && src.startsWith('data:')) src = img.getAttribute('data-src') || img.getAttribute('data-original') || '';
     const prev = out.get(href);
     if (!prev || text.length > prev.text.length)
       out.set(href, {url: href, text, img: src, title: a.getAttribute('title') || (img && img.alt) || ''});
@@ -95,13 +103,36 @@ def scroll_and_more(page, max_rounds: int = 10) -> None:
         last_h = h
 
 
+# 每個網站留幾張商品卡的原始文字，存到 docs/data/debug_samples.json，方便調整解析規則
+SAMPLES: dict[str, list[dict]] = {}
+
+
 def extract_cards(page, url_pattern: str) -> list[dict]:
-    return page.evaluate(JS_EXTRACT, url_pattern)
+    cards = page.evaluate(JS_EXTRACT, url_pattern)
+    host = re.sub(r"^https?://(www\.)?", "", page.url).split("/")[0]
+    bucket = SAMPLES.setdefault(host, [])
+    for c in cards[: max(0, 5 - len(bucket))]:
+        bucket.append(c)
+    if not cards:
+        SAMPLES.setdefault(host + " (no cards)", []).append(
+            {"url": page.url, "title": page.title(), "text": page.inner_text("body")[:1500]})
+    return cards
+
+
+def fetch_html(ctx, url: str) -> str:
+    """用瀏覽器拿網頁 HTML（給 requests 被擋時用）。"""
+    page = open_page(ctx, url, wait_ms=1500)
+    try:
+        return page.content()
+    finally:
+        page.close()
 
 
 # ---------- 解析卡片文字 ----------
 
-PRICE_RE = re.compile(r"(?:NT\$|S\$|HK\$|US\$|\$|¥|￥|RMB)\s*([\d,]+(?:\.\d+)?)|([\d,]+(?:\.\d+)?)\s*元")
+PRICE_RE = re.compile(
+    r"(?:NT\.?\s*\$?|S\$|HK\$|US\$|\$|¥|￥|RMB|(?:售價|特價|優惠價|會員價|建議售價|原價|價格|定價)\s*[:：]?\s*\$?)\s*([\d,]+(?:\.\d+)?)"
+    r"|([\d,]+(?:\.\d+)?)\s*元")
 STOCK_WORDS = [
     (re.compile(r"out of stock|sold out|notify me|售完|缺貨|已售罄|補貨中", re.I), "缺貨"),
     (re.compile(r"only few left|few left|僅剩|少量|即將售完", re.I), "少量"),
@@ -126,13 +157,19 @@ def stock_in(text: str) -> str | None:
     return None
 
 
+BADGE_RE = re.compile(
+    r"^(gift ?wrap|exclusive|online exclusive|travel exclusive|changi first|changi exclusive|new|new arrival|limited|"
+    r"best ?seller|hot|sale|bundle|deal|pre-?order|members? only|熱賣|新品|限定|獨家|預購)$"
+    r"|buy \d|get \d+ ?%|\d+ ?% off|save |free gift|gwp|\bfor s?\$", re.I)
+
+
 def text_lines(text: str) -> list[str]:
     """卡片文字切行，去掉價格行、庫存行、按鈕字。"""
     junk = re.compile(r"加入購物車|立即購買|add to (cart|bag)|buy now|收藏|wishlist|from$|^\W*$", re.I)
     lines = []
     for ln in (text or "").splitlines():
         ln = ln.strip()
-        if not ln or junk.search(ln):
+        if not ln or junk.search(ln) or BADGE_RE.search(ln):
             continue
         if PRICE_RE.fullmatch(ln.replace("From", "").replace("起", "").strip()):
             continue

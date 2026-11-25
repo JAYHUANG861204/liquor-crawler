@@ -32,30 +32,43 @@ def crawl(limit: int | None = None) -> list[Product]:
 
 def _name_from_slug(url: str) -> str:
     m = re.search(r"/product/(.+?)-mp\d+", url)
-    return m.group(1).replace("-", " ").title() if m else ""
+    return re.sub(r"\s+", " ", m.group(1).replace("-", " ")).strip().title() if m else ""
 
 
 def parse_card(c: dict) -> Product:
     text = c.get("text", "")
-    lines = text_lines(text)
-    title = c.get("title") or ""
-    # 卡片上通常第一行是品牌、第二行是品名
-    if len(lines) >= 2 and len(lines[0]) <= 40:
-        brand_line, name = lines[0], lines[1]
-    else:
-        brand_line, name = "", (lines[0] if lines else title or _name_from_slug(c["url"]))
-    full = f"{brand_line} {name} {title} {_name_from_slug(c['url'])}"
+    lines = text_lines(text)              # 已去掉 Giftwrap / Exclusive / Buy 2 Get… 這類標籤
+    slug_name = _name_from_slug(c["url"])
+    # 品名：卡片上最長的那行（通常是「品牌 + 品名 + 容量 + 濃度」全大寫）
+    name = max(lines, key=len) if lines else slug_name
+    if len(name) < 12 and len(slug_name) > len(name):
+        name = slug_name
+    # 品牌：品名開頭的那個短行，例如 PENFOLDS / PENFOLDS BIN 407…
+    brand_line = next((ln for ln in lines if ln != name and len(ln) <= 30 and name.upper().startswith(ln.upper())), None)
+    if not brand_line and lines and len(lines[0]) <= 30 and lines[0] != name:
+        brand_line = lines[0]
+    full = f"{name} {slug_name.replace(' ', ' ')}"
     lp, pp = split_prices(prices_in(text))
+    brand = brands.normalize(brand_line, name)
     return Product(
         site=SITE,
-        brand=brands.normalize(brand_line or None, name or full),
+        brand=brand.title() if brand.isupper() else brand,
         name=name,
         volume_ml=parse_volume(full),
-        abv=parse_abv(full),
+        abv=parse_abv(name) or _abv_from_slug(c["url"]),
         list_price=lp,
         promo_price=pp,
         currency="SGD",
         stock=stock_in(text),
         image=c.get("img") or None,
-        url=c["url"],
+        url=c["url"].split("#")[0],
     )
+
+
+def _abv_from_slug(url: str):
+    # 網址像 …-700ml-43--mp00888861 → 43%；…-12-5--750ml → 12.5%
+    m = re.search(r"-(\d{1,2})(?:-(\d))?--", url)
+    if not m:
+        return None
+    v = float(m.group(1) + ("." + m.group(2) if m.group(2) else ""))
+    return v if 3 <= v <= 75 else None

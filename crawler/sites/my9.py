@@ -58,7 +58,7 @@ def parse_product(p: dict) -> Product:
         brand=brands.normalize(p.get("vendor"), title),
         name=name,
         volume_ml=parse_volume(opt_text) or parse_volume(title) or parse_volume(body),
-        abv=parse_abv(title) or parse_abv(body),
+        abv=parse_abv(title, strict=True) or parse_abv(body, strict=True),
         list_price=list_price,
         promo_price=promo,
         currency="TWD",

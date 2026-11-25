@@ -106,15 +106,24 @@ def parse_volume(text: str) -> Optional[float]:
     return None
 
 
-def parse_abv(text: str) -> Optional[float]:
-    """從文字找酒精濃度 %。"""
+def parse_abv(text: str, strict: bool = False) -> Optional[float]:
+    """從文字找酒精濃度 %。strict=True 時只認「酒精濃度 / ABV / %vol」這類明確寫法（給長篇商品描述用）。"""
     if not text:
         return None
     m = re.search(r"(?:酒精濃度|酒精度|ABV|alc\.?)\s*[:：]?\s*(\d{1,2}(?:\.\d+)?)\s*%", text, re.I)
     if m:
         return float(m.group(1))
-    m = re.search(r"(?<![\d.])(\d{1,2}(?:\.\d+)?)\s*%\s*(?:vol|abv|alc)?", text, re.I)
+    m = re.search(r"(\d{1,2}(?:\.\d+)?)\s*%\s*(?:vol|abv|alc)", text, re.I)
     if m:
+        return float(m.group(1))
+    if strict:
+        return None
+    # 寬鬆：任何 xx%，但排除折扣、精米步合等
+    for m in re.finditer(r"(?<![\d.])(\d{1,2}(?:\.\d+)?)\s*%", text):
+        before = text[max(0, m.start() - 8):m.start()]
+        after = text[m.end():m.end() + 6]
+        if re.search(r"精米|步合|折|減|save|get|buy|up to", before, re.I) or re.search(r"off|折|回饋|現折", after, re.I):
+            continue
         v = float(m.group(1))
         if 3 <= v <= 75:
             return v
