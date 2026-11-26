@@ -16,7 +16,7 @@
 | `9city` | [洋酒城 9city](https://www.9city.com.tw/) | 逐一抓商品頁 | **自己電腦跑**（網站擋 GitHub） |
 | `changi` | [iShopChangi](https://www.ishopchangi.com/en/category/wine-and-spirits) | 瀏覽器開分類頁、按 LOAD MORE | 需要觀察 |
 | `609` | [酒條通 609](https://www.609.com.tw/) | 瀏覽器開分類頁 | 需要觀察 |
-| `hk` | [HK Airport Shop](https://hkairportshop.com/eshop_en/wines-spirits-liquors.html) | 瀏覽器，遇到滑塊等你手動拖 | **自己電腦跑** |
+| `hk` | [DUTY ZERO 香港](https://www.dutyzero.com.hk/) | 瀏覽器抓分類頁 | 試跑中（被擋就改自己電腦跑） |
 | `cdf` | [中免日上](https://www.cdfsunrise.com/) | 瀏覽器（App 型網站） | **自己電腦跑**（實驗中） |
 
 某個網站失敗時，會保留它上一次成功的資料，網頁上的網站卡片會顯示「抓取失敗」和最後更新時間。
@@ -59,7 +59,7 @@ GitHub 用 UTC 時間，台灣時間要減 8 小時，例如晚上 9 點 → `0 
 
 ## 在自己電腦執行（Windows）
 
-HK 機場、9city、中免會擋 GitHub 的主機，所以要在你自己的電腦上跑。
+9city、中免會擋 GitHub 的主機（DUTY ZERO 香港如果也被擋，同樣在這裡補），所以要在你自己的電腦上跑。
 跑完會**自動上傳到 GitHub**，網頁就會一起更新；GitHub 每天的排程會保留這些資料。
 
 ### 第一次安裝（只要做一次）

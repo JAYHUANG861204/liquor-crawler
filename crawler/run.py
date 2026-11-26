@@ -17,7 +17,7 @@ import os
 import time
 from datetime import datetime, timezone, timedelta
 
-from .sites import SITES, LOCAL_ONLY
+from .sites import SITES, LOCAL_ONLY, LOCAL_DEFAULT
 from . import excel
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -51,10 +51,11 @@ def main(argv=None) -> int:
                                   logging.FileHandler(os.path.join(DATA_DIR, "run.log"), "w", encoding="utf-8")])
 
     in_ci = os.environ.get("GITHUB_ACTIONS") == "true"
+    explicit = a.sites not in (None, "", "all", "local")
     if a.sites in (None, "", "all"):
         wanted = list(SITES)
     elif a.sites == "local":
-        wanted = sorted(LOCAL_ONLY)
+        wanted = sorted(LOCAL_DEFAULT)
     else:
         wanted = [s.strip() for s in a.sites.split(",")]
     old_products = _load(PRODUCTS_JSON, [])
@@ -70,7 +71,7 @@ def main(argv=None) -> int:
         st = {"id": sid, "name": name, "home": home, "currency": cur, "how": how,
               "last_success": prev.get("last_success"), "count": len(by_site.get(sid, [])),
               "status": prev.get("status", "未執行"), "message": prev.get("message", "")}
-        if sid in wanted and in_ci and sid in LOCAL_ONLY:
+        if sid in wanted and in_ci and sid in LOCAL_ONLY and not explicit:
             if not prev.get("last_success"):
                 by_site.pop(sid, None)   # 從沒在自己電腦成功過 → 拿掉示範資料，避免誤會
             st.update(status="local" if by_site.get(sid) else "local-none",
