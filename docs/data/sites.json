@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-25T21:28:47+08:00",
+ "updated": "2026-11-26T09:51:15+08:00",
  "sites": [
   {
    "id": "609",
@@ -25,10 +25,10 @@
   },
   {
    "id": "hk",
-   "name": "HK Airport Shop",
-   "home": "https://hkairportshop.com/",
+   "name": "DUTY ZERO 香港",
+   "home": "https://www.dutyzero.com.hk/",
    "currency": "HKD",
-   "how": "實驗中：網站有防火牆",
+   "how": "瀏覽器抓分類頁（香港機場免稅店網店）",
    "last_success": null,
    "count": 0,
    "status": "empty",
@@ -39,7 +39,7 @@
    "name": "洋酒城 9city",
    "home": "https://www.9city.com.tw/",
    "currency": "TWD",
-   "how": "逐一抓商品頁",
+   "how": "在自己電腦執行（網站擋 GitHub）",
    "last_success": null,
    "count": 4,
    "status": "error",
@@ -61,7 +61,7 @@
    "name": "中免日上 CDF",
    "home": "https://www.cdfsunrise.com/",
    "currency": "CNY",
-   "how": "實驗中：App 型網站",
+   "how": "在自己電腦執行（實驗中，App 型網站）",
    "last_success": null,
    "count": 0,
    "status": "empty",
