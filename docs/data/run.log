@@ -1,24 +1,81 @@
-2026-11-26 06:01:30,261 INFO ==== 酒條通 609 開始 ====
-2026-11-26 06:21:21,264 INFO 609 開了 150 頁，找到 696 件
-2026-11-26 06:21:21,293 INFO ==== 酒條通 609 結束：ok 696 筆，1191 秒 ====
-2026-11-26 06:21:21,293 INFO ==== iShopChangi 開始 ====
-2026-11-26 06:23:16,826 INFO ==== iShopChangi 結束：ok 1113 筆，116 秒 ====
-2026-11-26 06:23:16,826 INFO ==== DUTY ZERO 香港 開始 ====
-2026-11-26 06:23:40,821 INFO hk w.dutyzero.com.hk/showactivity/威士忌-11828：0 件
-2026-11-26 06:23:54,120 INFO hk w.dutyzero.com.hk/showactivity/中國酒-18566：3 件
-2026-11-26 06:24:08,209 INFO hk w.dutyzero.com.hk/showactivity/葡萄酒-22911：82 件
-2026-11-26 06:24:21,752 INFO hk w.dutyzero.com.hk/showactivity/威士忌-18623：0 件
-2026-11-26 06:24:35,140 INFO hk ww.dutyzero.com.hk/showactivity/干邑-23089：0 件
-2026-11-26 06:24:48,131 INFO hk utyzero.com.hk/showactivity/香檳-起泡酒-43795：28 件
-2026-11-26 06:25:01,225 INFO hk tyzero.com.hk/showactivity/氈酒-其他酒類-43797：0 件
-2026-11-26 06:25:13,159 INFO hk .dutyzero.com.hk/showactivity/優惠組合-58225：0 件
-2026-11-26 06:25:25,720 INFO hk dutyzero.com.hk/showactivity/葡萄酒香檳-58233：51 件
-2026-11-26 06:25:38,631 INFO hk .dutyzero.com.hk/showactivity/烈酒狂歡-58230：0 件
-2026-11-26 06:25:50,024 INFO hk .dutyzero.com.hk/showactivity/買一送一-58808：0 件
-2026-11-26 06:25:50,063 INFO hk 開了 11 個分類頁，共 77 件
-2026-11-26 06:25:50,068 INFO ==== DUTY ZERO 香港 結束：ok 77 筆，153 秒 ====
-2026-11-26 06:25:50,068 INFO ==== 買酒網 MY9 開始 ====
-2026-11-26 06:26:10,905 INFO ==== 買酒網 MY9 結束：ok 2448 筆，21 秒 ====
-2026-11-26 06:26:10,940 INFO 共 4334 筆 → /home/runner/work/liquor-crawler/liquor-crawler/docs/data/products.json
-2026-11-26 06:27:52,991 INFO Excel 縮圖 1490 / 1500
-2026-11-26 06:27:55,225 INFO Excel → /home/runner/work/liquor-crawler/liquor-crawler/docs/products.xlsx
+2026-11-26 12:27:47,771 INFO ==== 酒條通 609 開始 ====
+2026-11-26 12:47:32,386 INFO 609 開了 150 頁，找到 696 件
+2026-11-26 12:47:32,440 INFO ==== 酒條通 609 結束：ok 696 筆，1185 秒 ====
+2026-11-26 12:47:32,440 INFO ==== iShopChangi 開始 ====
+2026-11-26 12:49:30,850 INFO ==== iShopChangi 結束：ok 1112 筆，118 秒 ====
+2026-11-26 12:49:30,850 INFO ==== DUTY ZERO 香港 開始 ====
+2026-11-26 12:49:56,580 INFO hk w.dutyzero.com.hk/showactivity/威士忌-11828：0 件
+2026-11-26 12:50:09,899 INFO hk w.dutyzero.com.hk/showactivity/中國酒-18566：3 件
+2026-11-26 12:50:24,781 INFO hk w.dutyzero.com.hk/showactivity/葡萄酒-22911：82 件
+2026-11-26 12:50:38,803 INFO hk w.dutyzero.com.hk/showactivity/威士忌-18623：0 件
+2026-11-26 12:50:51,583 INFO hk ww.dutyzero.com.hk/showactivity/干邑-23089：0 件
+2026-11-26 12:51:04,696 INFO hk utyzero.com.hk/showactivity/香檳-起泡酒-43795：28 件
+2026-11-26 12:51:17,780 INFO hk tyzero.com.hk/showactivity/氈酒-其他酒類-43797：0 件
+2026-11-26 12:51:29,581 INFO hk .dutyzero.com.hk/showactivity/優惠組合-58225：0 件
+2026-11-26 12:51:42,160 INFO hk dutyzero.com.hk/showactivity/葡萄酒香檳-58233：51 件
+2026-11-26 12:51:54,969 INFO hk .dutyzero.com.hk/showactivity/烈酒狂歡-58230：0 件
+2026-11-26 12:52:06,350 INFO hk .dutyzero.com.hk/showactivity/買一送一-58808：0 件
+2026-11-26 12:52:06,390 INFO hk 開了 11 個分類頁，共 77 件
+2026-11-26 12:52:06,399 INFO ==== DUTY ZERO 香港 結束：ok 77 筆，156 秒 ====
+2026-11-26 12:52:06,399 INFO ==== 買酒網 MY9 開始 ====
+2026-11-26 12:52:25,788 INFO ==== 買酒網 MY9 結束：ok 2444 筆，19 秒 ====
+2026-11-26 12:52:25,879 INFO 清理完成：保留 4327 筆，剔除 2 筆（無效品名、促銷公告、非酒類、重複）
+2026-11-26 12:52:25,928 INFO 共 4327 筆 → /home/runner/work/liquor-crawler/liquor-crawler/docs/data/products.json
+2026-11-26 12:52:25,972 INFO 品質檢查 609：696 筆，嚴重問題 無
+2026-11-26 12:52:25,972 INFO 品質檢查 changi：1112 筆，嚴重問題 無
+2026-11-26 12:52:25,972 INFO 品質檢查 hk：77 筆，嚴重問題 無
+2026-11-26 12:52:25,972 INFO 品質檢查 my9：2442 筆，嚴重問題 無
+2026-11-26 12:54:00,615 INFO Excel 縮圖 1485 / 1500
+2026-11-26 12:54:03,732 INFO Excel → /home/runner/work/liquor-crawler/liquor-crawler/docs/products.xlsx
+
+=== 609（696 筆）===
+  [可疑] 品牌未轉成英文: 132 筆（19%）
+         諾蒂絲 | 諾蒂絲琴酒700ml | 700.0 | None | 999.0/None
+         圖卡納 | 南非圖卡納白稍南白葡萄酒750ml | 750.0 | None | 699.0/None
+  [可疑] 沒有容量: 98 筆（14%）
+         建議價 | 建議價 NT$1,124/瓶 | None | None | 1124.0/899.0
+         會員價 | 會員價 NT$799/瓶 | None | None | 999.0/799.0
+  [可疑] 沒有價格: 5 筆（1%）
+         Talisker | 泰斯卡25年單一純麥威士忌700ml | 700.0 | None | None/None
+         Talisker | 泰斯卡斯凱島Skye單一純麥威士忌700ml | 700.0 | None | None/None
+  [可疑] 品牌長度異常: 2 筆（0%）
+         信 | 信SHIN白蘭地梅酒500ml | 500.0 | None | 499.0/399.0
+         信 | 信SHIN威士忌梅酒500ml | 500.0 | None | 499.0/399.0
+  [可疑] 品牌全大寫: 1 筆（0%）
+         JD&S | JD&S大豐收Greign20年單一穀物威士忌700ml | 700.0 | None | 874.0/699.0
+
+=== changi（1112 筆）===
+  [可疑] 沒有容量: 5 筆（0%）
+         Ca Del Bosco Srl | CUVE'E PRESTIGE EXTRA BRUT EDIZIONE 44 | None | None | 50.0/None
+         The Dalmore | The Dalmore Portfolio Series No.1 Bordeaux Wine Cask Fi | None | None | 839.0/None
+
+=== hk（77 筆）===
+  [可疑] 沒有容量: 2 筆（3%）
+         Perrier-Jouët | Perrier Jouet 巴黎之花美麗時光香檳 - 香檳杯禮盒裝 | Perrier Jouet Belle | None | None | 1980.0/None
+         9週年精選香檳、葡萄 | 9週年精選香檳、葡萄酒 | None | None | 2999.0/None
+  [可疑] 品牌未轉成英文: 1 筆（1%）
+         9週年精選香檳、葡萄 | 9週年精選香檳、葡萄酒 | None | None | 2999.0/None
+  [可疑] 沒有商品網址: 1 筆（1%）
+         9週年精選香檳、葡萄 | 9週年精選香檳、葡萄酒 | None | None | 2999.0/None
+
+=== my9（2442 筆）===
+  [可疑] 品牌未轉成英文: 189 筆（8%）
+         天上夢幻 | 天上夢幻 小雪人濁酒 *季節限定 | 720.0 | None | 1080.0/800.0
+         白真弓 | 白真弓 羊年干支 純米吟釀 | 720.0 | None | 1500.0/1280.0
+  [可疑] 沒有價格: 134 筆（5%）
+         Yamazaki | 山崎 西班牙橡木 續蘊桶藏版 / The Yamazaki Single Malt Whisky Refill | 700.0 | None | None/None
+         Hibiki | 響 繁花京韻 2026限定版 / Hibiki Japanese Harmony Chiso Collabor | 700.0 | None | None/None
+  [可疑] 品牌全大寫: 9 筆（0%）
+         CASS | CASS韓系啤酒(24罐) / CASS Fresh Lager Beer | 330.0 | None | 1000.0/936.0
+         OCHO 8 | 8 金 龍舌蘭 / OCHO Reposado Tequila | 500.0 | None | 1290.0/None
+  [可疑] 品牌長度異常: 9 筆（0%）
+         極 | 極 CRAFT 蒔香琴酒 / Coriander Craft Gin | 700.0 | None | 1200.0/1000.0
+         極 | 極 CRAFT 琴酒 / Taiwan Makauy Craft Gin | 700.0 | None | 1200.0/1000.0
+  [可疑] 品牌含數字: 9 筆（0%）
+         James E. Pepper 1776 | 1776 波本威士忌 / James E. Pepper 1776 Straight Bourbon Whis | 750.0 | None | 1780.0/1525.0
+         Codigo 1530 | 高帝高 1530 祖傳梅斯卡爾龍舌蘭 / Codigo 1530 Ancestral Mezcal | 750.0 | None | 7500.0/None
+  [可疑] 沒有容量: 2 筆（0%）
+         Tequila Rose | 龍舌蘭玫瑰草莓奶酒 / Tequila Rose Strawberry Cream | None | None | 650.0/620.0
+         Fruko Schulz | 火焰艾碧斯 / Fruko Schulz Absinth Red | None | None | 1100.0/1030.0
+
+嚴重問題合計：0 筆
