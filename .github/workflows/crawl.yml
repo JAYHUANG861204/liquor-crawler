@@ -61,12 +61,5 @@ jobs:
         run: |
           git config user.name "liquor-crawler-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          tail -n 400 crawl-output.log > docs/data/run.log 2>/dev/null || true
-          git add docs/data docs/products.xlsx 2>/dev/null || git add docs/data
-          if git diff --cached --quiet; then
-            echo "資料沒有變動"
-          else
-            git commit -m "更新商品資料 $(TZ=Asia/Taipei date '+%Y-%m-%d %H:%M')"
-            git pull --rebase -q || true
-            git push
-          fi
+          # 以 GitHub 最新版為底，只換掉這次跑完的網站（不會蓋掉在自己電腦上傳的 9city 等資料）
+          python -m crawler.publish "更新商品資料 $(TZ=Asia/Taipei date '+%Y-%m-%d %H:%M')"

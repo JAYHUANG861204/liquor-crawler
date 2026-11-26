@@ -91,6 +91,7 @@ def main(argv=None) -> int:
                       message="只在自己電腦執行（run_windows.bat），GitHub 排程不跑這站" +
                               (f"；資料是 {prev.get('last_success')} 在自己電腦抓的" if prev.get("last_success") else "，還沒在自己電腦跑過"))
         elif sid in wanted:
+            st["last_run"] = now          # 這次有嘗試跑（不論成功失敗），上傳時會更新它的狀態
             t0 = time.time()
             log.info("==== %s 開始 ====", name)
             try:
