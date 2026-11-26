@@ -257,6 +257,9 @@ def text_lines(text: str) -> list[str]:
 def pick_name(title: str, lines: list[str]) -> str:
     """品名：連結的 title / 圖片 alt 夠長就用它，不然用卡片上最長的一行。"""
     title = (title or "").strip()
+    # 圖片替代文字常是 img-product、image、商品圖 這種沒意義的字，不能當品名
+    if re.fullmatch(r"(img|image|pic|photo|picture|product|thumb|商品圖|圖片|商品)[-_ ]?[\w-]*", title, re.I):
+        title = ""
     longest = max(lines, key=len) if lines else ""
     return title if len(title) >= 6 and len(title) >= len(longest) // 2 else (longest or title)
 
