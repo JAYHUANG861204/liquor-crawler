@@ -19,7 +19,7 @@ ZH_EN = {
     "布坎南": "Buchanan's", "百齡罈": "Ballantine's", "三隻猴子": "Monkey Shoulder",
     "噶瑪蘭": "Kavalan", "金車": "Kavalan", "響": "Hibiki", "山崎": "Yamazaki", "白州": "Hakushu",
     "余市": "Nikka", "宮城峽": "Nikka", "一甲": "Nikka", "竹鶴": "Nikka", "明石": "Akashi",
-    "三得利": "Suntory", "知多": "Suntory",
+    "三得利": "Suntory",
     "傑克丹尼": "Jack Daniel's", "野火雞": "Wild Turkey", "美格": "Maker's Mark",
     "金賓": "Jim Beam", "尊美醇": "Jameson", "亡命之兔": "Dead Rabbit",
     "軒尼詩": "Hennessy", "馬爹利": "Martell", "人頭馬": "Rémy Martin", "拿破崙": "Courvoisier",
@@ -65,6 +65,8 @@ ZH_EN = {
     "巴黎之花": "Perrier-Jouët", "黑桃A": "Armand de Brignac", "庫克": "Krug", "雲霧之灣": "Cloudy Bay",
     "孟買藍寶石": "Bombay Sapphire", "猴子47": "Monkey 47", "水井坊": "Shui Jing Fang", "洋河": "Yang He",
     "塔牌": "Tapai", "馬爹利": "Martell",
+    # 日本梅酒 / 果實酒
+    "國盛": "Kunizakari", "蝶矢": "Choya", "中野BC": "Nakano BC", "大七": "Daishichi", "梅乃宿": "Umenoyado",
 }
 _ZH_SORTED = sorted(ZH_EN, key=len, reverse=True)
 
@@ -89,7 +91,7 @@ EN_MULTI = [
 ]
 _EN_MULTI_L = sorted(EN_MULTI, key=len, reverse=True)
 CJK = re.compile(r"[\u3400-\u9fff]")
-_DESCRIPTOR = re.compile(r"莊園|系列|限定|限量|珍藏|典藏|原酒|單桶|雙桶|酒莊|蒸餾所|酒廠|紅牌|白牌|黑牌|調和|單一|純麥|麥芽|年|週年|版")
+_DESCRIPTOR = re.compile(r"極品|極上|特選|莊園|系列|限定|限量|珍藏|典藏|原酒|單桶|雙桶|酒莊|蒸餾所|酒廠|紅牌|白牌|黑牌|調和|單一|純麥|麥芽|年|週年|版")
 
 
 def _english_brand(text: str) -> str:
@@ -101,6 +103,10 @@ def _english_brand(text: str) -> str:
     for b in _EN_MULTI_L:
         if low.startswith(b.lower()):
             return b
+    # 品名像「AS WE GET IT高地雪莉桶…」：英文片語後面直接接中文，整段（4 個字內、不含數字）就是品牌
+    m = re.match(r"^([A-Za-zÀ-ÿ'’&.\- ]{2,40}?)\s*[\u3400-\u9fff]", text.strip())
+    if m and not re.search(r"\d", m.group(1)) and 1 <= len(m.group(1).split()) <= 4:
+        return m.group(1).strip()
     words = re.sub(r"\d+$", "", en).split()
     if not words:
         return ""
@@ -112,19 +118,20 @@ def _english_brand(text: str) -> str:
 def _chinese_head(name: str) -> str:
     """全中文品名：取酒類名稱、數字、英文之前的那段，再去掉「系列、限定」這類描述字，最多 6 個字。"""
     head = re.split(r"[A-Za-z\d\s（(／/\-]|琴酒|威士忌|白蘭地|干邑|葡萄酒|紅酒|白酒|粉紅酒|香檳|氣泡酒|清酒|伏特加|"
-                    r"蘭姆酒|龍舌蘭|利口酒|啤酒|梅酒|高粱|甜酒|雪莉酒|波特酒|"
+                    r"蘭姆酒|龍舌蘭|利口酒|啤酒|梅酒|柚子酒|果實酒|水果酒|奶酒|高粱|甜酒|雪莉酒|波特酒|"
                     r"白稍南|白蘇維濃|長相思|夏多內|霞多麗|卡本內|梅洛|黑皮諾|希哈|麗絲玲|格那希|田帕尼優|山吉歐維榭|"
-                    r"內比歐露|馬爾貝克|金粉黛|灰皮諾|副牌|正牌|阿蒙提雅多|菲諾|歐洛羅索|佩德羅", name or "")[0]
+                    r"內比歐露|馬爾貝克|金粉黛|灰皮諾|副牌|正牌|阿蒙提雅多|菲諾|歐洛羅索|佩德羅|"
+                    r"芒果|柑橘|紫蘇|紅茶|綠茶|玫瑰|茉莉花|柚子|檸檬|草莓|桃子|水蜜桃|蜂蜜|黑糖|抹茶|荔枝|青梅|白桃|蘋果|葡萄柚", name or "")[0]
     head = re.sub(r"^(南非|法國|西班牙|義大利|意大利|智利|澳洲|美國|紐西蘭|德國|日本|蘇格蘭|愛爾蘭|阿根廷|葡萄牙|台灣)", "", head)
     m = _DESCRIPTOR.search(head)
     if m and m.start() >= 2:
         head = head[:m.start()]
-    return head[:6]
+    return head if len(head) <= 8 else head[:8]
 
 
 def _english_part(text: str) -> str:
     """取出中英混寫裡的英文部分，例如 'Kongsgaard 康士嘉酒莊' → 'Kongsgaard'。"""
-    parts = re.findall(r"[A-Za-zÀ-ÖØ-öø-ÿ][A-Za-zÀ-ÖØ-öø-ÿ0-9'’&.\- ]*[A-Za-zÀ-ÖØ-öø-ÿ0-9.'’]", text or "")
+    parts = re.findall(r"(?:\d+(?:st|nd|rd|th)\s|[A-Za-zÀ-ÖØ-öø-ÿ])[A-Za-zÀ-ÖØ-öø-ÿ0-9'’&.\- ]*[A-Za-zÀ-ÖØ-öø-ÿ0-9.'’]", text or "")
     unit = re.compile(r"^(\d+\s*)?(ml|cl|l|lt|ltr|abv|vol|yo|yrs?|years?|x)$", re.I)
     parts = [p.strip() for p in parts if len(p.strip()) >= 2 and not unit.match(p.strip())]
     return parts[0] if parts else ""
@@ -147,8 +154,16 @@ for _b in list(ZH_EN.values()) + EN_MULTI + EXTRA_CANON:
     CANON.setdefault(_ckey(_b), _b)
 
 
+ALIAS = {"ocho8": "Ocho"}
+
+
 def _canon(b: str) -> str:
-    return CANON.get(_ckey(b), b) if b else b
+    if not b:
+        return b
+    if _ckey(b) in ALIAS:
+        return ALIAS[_ckey(b)]
+    b = re.sub(r"^(Ch\.|Chateau|Château|CHATEAU|CHÂTEAU)\s+", "Château ", b)   # Ch. / Chateau → Château
+    return CANON.get(_ckey(b), b)
 
 
 def _fix_case(b: str) -> str:

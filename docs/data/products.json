@@ -183,9 +183,9 @@
 },
 {
 "site": "609",
-"brand": "建議價",
-"name": "建議價 NT$1,124/瓶",
-"volume_ml": null,
+"brand": "天空之月",
+"name": "天空之月梅酒1800",
+"volume_ml": 1800.0,
 "abv": null,
 "list_price": 1124.0,
 "promo_price": 899.0,
@@ -209,8 +209,8 @@
 },
 {
 "site": "609",
-"brand": "會員價",
-"name": "會員價 NT$799/瓶",
+"brand": "梅酒王",
+"name": "梅酒王",
 "volume_ml": null,
 "abv": null,
 "list_price": 999.0,
@@ -222,9 +222,9 @@
 },
 {
 "site": "609",
-"brand": "會員價",
-"name": "會員價 NT$488/瓶",
-"volume_ml": null,
+"brand": "藏元",
+"name": "藏元梅酒500",
+"volume_ml": 500.0,
 "abv": null,
 "list_price": 610.0,
 "promo_price": 488.0,
@@ -235,9 +235,9 @@
 },
 {
 "site": "609",
-"brand": "會員價",
-"name": "會員價 NT$1,350/瓶",
-"volume_ml": null,
+"brand": "藏元",
+"name": "藏元梅酒1800",
+"volume_ml": 1800.0,
 "abv": null,
 "list_price": 1688.0,
 "promo_price": 1350.0,
@@ -248,7 +248,7 @@
 },
 {
 "site": "609",
-"brand": "和歌山龍神柚",
+"brand": "和歌山龍神",
 "name": "和歌山龍神柚子酒720ml",
 "volume_ml": 720.0,
 "abv": null,
@@ -261,7 +261,7 @@
 },
 {
 "site": "609",
-"brand": "和歌山由良檸",
+"brand": "和歌山由良",
 "name": "和歌山由良檸檬酒720ml",
 "volume_ml": 720.0,
 "abv": null,
@@ -274,7 +274,7 @@
 },
 {
 "site": "609",
-"brand": "和歌山龍神柚",
+"brand": "和歌山龍神",
 "name": "和歌山龍神柚子酒1800ml",
 "volume_ml": 1800.0,
 "abv": null,
@@ -313,9 +313,9 @@
 },
 {
 "site": "609",
-"brand": "會員價",
-"name": "會員價 NT$1,299/瓶",
-"volume_ml": null,
+"brand": "Umenoyado",
+"name": "梅乃宿柚子酒1800ml新",
+"volume_ml": 1800.0,
 "abv": null,
 "list_price": 1624.0,
 "promo_price": 1299.0,
@@ -326,9 +326,9 @@
 },
 {
 "site": "609",
-"brand": "會員價",
-"name": "會員價 NT$499/瓶",
-"volume_ml": null,
+"brand": "Umenoyado",
+"name": "梅乃宿柚子酒720ml新",
+"volume_ml": 720.0,
 "abv": null,
 "list_price": 624.0,
 "promo_price": 499.0,
@@ -339,8 +339,8 @@
 },
 {
 "site": "609",
-"brand": "會員價",
-"name": "會員價 NT$498/瓶",
+"brand": "Choya",
+"name": "蝶矢極熟梅酒",
 "volume_ml": null,
 "abv": null,
 "list_price": 623.0,
@@ -352,7 +352,7 @@
 },
 {
 "site": "609",
-"brand": "大七酒造極上",
+"brand": "Daishichi",
 "name": "大七酒造極上品梅酒720ml",
 "volume_ml": 720.0,
 "abv": null,
@@ -365,7 +365,7 @@
 },
 {
 "site": "609",
-"brand": "和歌山芒果",
+"brand": "和歌山",
 "name": "和歌山芒果梅酒720ml",
 "volume_ml": 720.0,
 "abv": null,
@@ -378,7 +378,7 @@
 },
 {
 "site": "609",
-"brand": "月山月柚粕取",
+"brand": "月山月柚粕取燒酎",
 "name": "月山月柚粕取燒酎柚子酒1800ml",
 "volume_ml": 1800.0,
 "abv": null,
@@ -391,7 +391,7 @@
 },
 {
 "site": "609",
-"brand": "本坊酒造鹿兒",
+"brand": "本坊酒造鹿兒島上",
 "name": "本坊酒造鹿兒島上等知預覽茶梅酒720ml",
 "volume_ml": 720.0,
 "abv": null,
@@ -404,8 +404,8 @@
 },
 {
 "site": "609",
-"brand": "會員價",
-"name": "會員價 NT$1,399/瓶",
+"brand": "富士山",
+"name": "富士山威士忌梅酒",
 "volume_ml": null,
 "abv": null,
 "list_price": 1749.0,
@@ -417,8 +417,8 @@
 },
 {
 "site": "609",
-"brand": "會員價",
-"name": "會員價 NT$488/瓶",
+"brand": "秋亞至極",
+"name": "秋亞至極梅酒",
 "volume_ml": null,
 "abv": null,
 "list_price": 610.0,
@@ -430,7 +430,7 @@
 },
 {
 "site": "609",
-"brand": "大山夢工房柑",
+"brand": "大山夢工房",
 "name": "大山夢工房柑橘梅酒720ml",
 "volume_ml": 720.0,
 "abv": null,
@@ -456,8 +456,8 @@
 },
 {
 "site": "609",
-"brand": "會員價",
-"name": "會員價 NT$1,399/瓶",
+"brand": "Daishichi",
+"name": "大七生(酉元)梅酒",
 "volume_ml": null,
 "abv": null,
 "list_price": 1749.0,
@@ -482,7 +482,7 @@
 },
 {
 "site": "609",
-"brand": "大山夢工房梅",
+"brand": "大山夢工房梅花爛",
 "name": "大山夢工房梅花爛漫高級梅酒500ml",
 "volume_ml": 500.0,
 "abv": null,
@@ -495,7 +495,7 @@
 },
 {
 "site": "609",
-"brand": "大山夢工房鶯",
+"brand": "大山夢工房鶯宿梅",
 "name": "大山夢工房鶯宿梅三年熟成原酒梅酒720ml",
 "volume_ml": 720.0,
 "abv": null,
@@ -508,8 +508,8 @@
 },
 {
 "site": "609",
-"brand": "會員價",
-"name": "會員價 NT$599/瓶",
+"brand": "武藏國",
+"name": "武藏國柚子酒",
 "volume_ml": null,
 "abv": null,
 "list_price": 749.0,
@@ -521,9 +521,9 @@
 },
 {
 "site": "609",
-"brand": "建議價",
-"name": "建議價 NT$1,249/瓶",
-"volume_ml": null,
+"brand": "武藏國",
+"name": "武藏國柚子酒1800ml",
+"volume_ml": 1800.0,
 "abv": null,
 "list_price": 1249.0,
 "promo_price": 999.0,
@@ -547,7 +547,7 @@
 },
 {
 "site": "609",
-"brand": "鍛高譚紫蘇",
+"brand": "鍛高譚",
 "name": "鍛高譚紫蘇梅酒720ml",
 "volume_ml": 720.0,
 "abv": null,
@@ -560,7 +560,7 @@
 },
 {
 "site": "609",
-"brand": "富翁極品京",
+"brand": "富翁",
 "name": "富翁極品京梅酒720ml",
 "volume_ml": 720.0,
 "abv": null,
@@ -573,8 +573,8 @@
 },
 {
 "site": "609",
-"brand": "建議價",
-"name": "建議價 NT$1,124/瓶",
+"brand": "富翁八橋",
+"name": "富翁八橋梅酒",
 "volume_ml": null,
 "abv": null,
 "list_price": 1124.0,
@@ -599,7 +599,7 @@
 },
 {
 "site": "609",
-"brand": "國盛茉莉花",
+"brand": "Kunizakari",
 "name": "國盛茉莉花梅酒720ml",
 "volume_ml": 720.0,
 "abv": null,
@@ -612,8 +612,8 @@
 },
 {
 "site": "609",
-"brand": "會員價",
-"name": "會員價 NT$599/瓶",
+"brand": "Kunizakari",
+"name": "國盛玫瑰梅酒",
 "volume_ml": null,
 "abv": null,
 "list_price": 749.0,
@@ -638,8 +638,8 @@
 },
 {
 "site": "609",
-"brand": "會員價",
-"name": "會員價 NT$449/瓶",
+"brand": "龍井",
+"name": "龍井梅酒",
 "volume_ml": null,
 "abv": null,
 "list_price": 561.0,
@@ -651,7 +651,7 @@
 },
 {
 "site": "609",
-"brand": "奈良町紅茶",
+"brand": "奈良町",
 "name": "奈良町紅茶梅酒720ml",
 "volume_ml": 720.0,
 "abv": null,
@@ -690,8 +690,8 @@
 },
 {
 "site": "609",
-"brand": "會員價",
-"name": "會員價 NT$1,099/瓶",
+"brand": "千年之眠",
+"name": "千年之眠梅酒",
 "volume_ml": null,
 "abv": null,
 "list_price": 1374.0,
@@ -703,8 +703,8 @@
 },
 {
 "site": "609",
-"brand": "會員價",
-"name": "會員價 NT$699/瓶",
+"brand": "狹山",
+"name": "狹山紅茶梅酒",
 "volume_ml": null,
 "abv": null,
 "list_price": 874.0,
@@ -768,8 +768,8 @@
 },
 {
 "site": "609",
-"brand": "建議價",
-"name": "建議價 NT$1,124/瓶",
+"brand": "Kunizakari",
+"name": "國盛知多梅酒",
 "volume_ml": null,
 "abv": null,
 "list_price": 1124.0,
@@ -781,7 +781,7 @@
 },
 {
 "site": "609",
-"brand": "熊野山里備長",
+"brand": "熊野山里備長炭熟",
 "name": "熊野山里備長炭熟成梅酒720ml",
 "volume_ml": 720.0,
 "abv": null,
@@ -4525,7 +4525,7 @@
 },
 {
 "site": "609",
-"brand": "裸鑽初次雪莉",
+"brand": "裸鑽初次雪莉桶",
 "name": "裸鑽初次雪莉桶調和威士忌700ml",
 "volume_ml": 700.0,
 "abv": null,
@@ -6085,7 +6085,7 @@
 },
 {
 "site": "609",
-"brand": "詩貝畢卡索聯",
+"brand": "詩貝畢卡索聯名",
 "name": "詩貝畢卡索聯名系列-夢2011年單一純麥威士忌",
 "volume_ml": null,
 "abv": null,
@@ -6605,7 +6605,7 @@
 },
 {
 "site": "609",
-"brand": "蘇摩克雪莉炸",
+"brand": "蘇摩克雪莉炸彈",
 "name": "蘇摩克雪莉炸彈單一純麥威士忌700ml",
 "volume_ml": 700.0,
 "abv": null,
@@ -6618,7 +6618,7 @@
 },
 {
 "site": "609",
-"brand": "蘇摩克黃金蘭",
+"brand": "蘇摩克黃金蘭姆",
 "name": "蘇摩克黃金蘭姆單一麥芽威士忌700ml",
 "volume_ml": 700.0,
 "abv": null,
@@ -7034,7 +7034,7 @@
 },
 {
 "site": "609",
-"brand": "John",
+"brand": "John Haig",
 "name": "John Haig金牌調和威士忌1000ml",
 "volume_ml": 1000.0,
 "abv": null,
@@ -7047,7 +7047,7 @@
 },
 {
 "site": "609",
-"brand": "Mash",
+"brand": "Mash Cut",
 "name": "Mash Cut馬許卡調和純麥威士忌700ml",
 "volume_ml": 700.0,
 "abv": null,
@@ -7060,7 +7060,7 @@
 },
 {
 "site": "609",
-"brand": "Pure",
+"brand": "Pure Scot Signature",
 "name": "Pure Scot Signature蘇格蘭調和威士忌",
 "volume_ml": null,
 "abv": null,
@@ -7073,7 +7073,7 @@
 },
 {
 "site": "609",
-"brand": "六海島批次強",
+"brand": "六海島批次強度",
 "name": "六海島批次強度調和麥芽威士忌700ml",
 "volume_ml": 700.0,
 "abv": null,
@@ -7086,7 +7086,7 @@
 },
 {
 "site": "609",
-"brand": "六海島經典航",
+"brand": "六海島經典航海",
 "name": "六海島經典航海調和麥芽威士忌1000ml",
 "volume_ml": 1000.0,
 "abv": null,
@@ -7151,7 +7151,7 @@
 },
 {
 "site": "609",
-"brand": "伊奇特選強度",
+"brand": "伊奇",
 "name": "伊奇特選強度原酒威士忌700ml",
 "volume_ml": 700.0,
 "abv": null,
@@ -7515,7 +7515,7 @@
 },
 {
 "site": "609",
-"brand": "勞德老爺極品",
+"brand": "勞德老爺",
 "name": "勞德老爺極品調和威士忌1000ml",
 "volume_ml": 1000.0,
 "abv": null,
@@ -7541,7 +7541,7 @@
 },
 {
 "site": "609",
-"brand": "AS",
+"brand": "As We Get It",
 "name": "AS WE GET IT高地雪莉桶單一純麥威士忌700ml",
 "volume_ml": 700.0,
 "abv": null,
@@ -8022,8 +8022,8 @@
 },
 {
 "site": "609",
-"brand": "會員價",
-"name": "會員價 NT$16,500/瓶",
+"brand": "Hibiki",
+"name": "響21年新",
 "volume_ml": null,
 "abv": null,
 "list_price": 20625.0,
@@ -8269,7 +8269,7 @@
 },
 {
 "site": "609",
-"brand": "Suntory",
+"brand": "知多無",
 "name": "知多無年份單一穀物威士忌700ml",
 "volume_ml": 700.0,
 "abv": null,
@@ -8321,7 +8321,7 @@
 },
 {
 "site": "609",
-"brand": "Nikka",
+"brand": "NIKKA From The Barrel",
 "name": "NIKKA From The Barrel威士忌500ml",
 "volume_ml": 500.0,
 "abv": null,
@@ -8334,7 +8334,7 @@
 },
 {
 "site": "609",
-"brand": "Nikka",
+"brand": "Nikka Coffey",
 "name": "Nikka Coffey純麥威士忌700ml",
 "volume_ml": 700.0,
 "abv": null,
@@ -8347,7 +8347,7 @@
 },
 {
 "site": "609",
-"brand": "Nikka",
+"brand": "Nikka Coffey",
 "name": "Nikka Coffey穀物威士忌700ml",
 "volume_ml": 700.0,
 "abv": null,
@@ -8360,7 +8360,7 @@
 },
 {
 "site": "609",
-"brand": "Nikka",
+"brand": "Nikka Super Rare Old",
 "name": "Nikka Super Rare Old調和威士忌700m",
 "volume_ml": null,
 "abv": null,
@@ -8373,7 +8373,7 @@
 },
 {
 "site": "609",
-"brand": "Black",
+"brand": "Black Nikka Deep Blend",
 "name": "Black Nikka Deep Blend調和威士忌",
 "volume_ml": null,
 "abv": null,
@@ -8386,7 +8386,7 @@
 },
 {
 "site": "609",
-"brand": "Nikka",
+"brand": "Nikka Black Special",
 "name": "Nikka Black Special調和威士忌700ml",
 "volume_ml": 700.0,
 "abv": null,
@@ -8399,7 +8399,7 @@
 },
 {
 "site": "609",
-"brand": "Nikka",
+"brand": "Nikka session",
 "name": "Nikka session奏樂調和純麥威士忌700ml",
 "volume_ml": 700.0,
 "abv": null,
@@ -8412,7 +8412,7 @@
 },
 {
 "site": "609",
-"brand": "Black",
+"brand": "Black Nikka Rich Blend",
 "name": "Black Nikka Rich Blend調和威士忌",
 "volume_ml": null,
 "abv": null,
@@ -8464,8 +8464,8 @@
 },
 {
 "site": "609",
-"brand": "會員價",
-"name": "會員價 NT$1,499/瓶",
+"brand": "Nikka",
+"name": "新竹鶴",
 "volume_ml": null,
 "abv": null,
 "list_price": 1874.0,
@@ -12221,7 +12221,7 @@
 },
 {
 "site": "changi",
-"brand": "Chateau D'ESCLANS",
+"brand": "Château D'ESCLANS",
 "name": "CHATEAU D'ESCLANS WHISPERING ANGEL TPEX 750ML",
 "volume_ml": 750.0,
 "abv": null,
@@ -12741,7 +12741,7 @@
 },
 {
 "site": "changi",
-"brand": "Chateau Mouton Rothschild",
+"brand": "Château Mouton Rothschild",
 "name": "CHÂTEAU MOUTON ROTHSCHILD 2005 750ML",
 "volume_ml": 750.0,
 "abv": null,
@@ -16407,7 +16407,7 @@
 },
 {
 "site": "changi",
-"brand": "Chateau D'ESCLANS",
+"brand": "Château D'ESCLANS",
 "name": "CHATEAU ESCLANS ROCK ANGEL 750ML",
 "volume_ml": 750.0,
 "abv": null,
@@ -22894,7 +22894,7 @@
 },
 {
 "site": "changi",
-"brand": "Chateau Lafite Rothschild",
+"brand": "Château Lafite Rothschild",
 "name": "CHÂTEAU LAFITE ROTHSCHILD 1998 750ML",
 "volume_ml": 750.0,
 "abv": null,
@@ -22907,7 +22907,7 @@
 },
 {
 "site": "changi",
-"brand": "Chateau Lafite Rothschild",
+"brand": "Château Lafite Rothschild",
 "name": "CHÂTEAU LAFITE ROTHSCHILD 2008 750ml 12.5%",
 "volume_ml": 750.0,
 "abv": 12.5,
@@ -22920,7 +22920,7 @@
 },
 {
 "site": "changi",
-"brand": "Chateau Lafite Rothschild",
+"brand": "Château Lafite Rothschild",
 "name": "CHÂTEAU LAFITE ROTHSCHILD 2011 750ML",
 "volume_ml": 750.0,
 "abv": null,
@@ -23843,7 +23843,7 @@
 },
 {
 "site": "hk",
-"brand": "Chateau Branaire Ducru",
+"brand": "Château Branaire Ducru",
 "name": "Château Branaire Ducru 班尼杜克酒莊紅葡萄酒2020 750毫升丨Château Branaire Ducru Red Wine 2020 750ml",
 "volume_ml": 750.0,
 "abv": null,
@@ -24324,7 +24324,7 @@
 },
 {
 "site": "hk",
-"brand": "Chateau Lascombes",
+"brand": "Château Lascombes",
 "name": "Chateau Lascombes 力士金酒莊紅葡萄酒 2015 750毫升丨Chateau Lascombes Red Wine 2015 750ml",
 "volume_ml": 750.0,
 "abv": null,
@@ -24415,7 +24415,7 @@
 },
 {
 "site": "hk",
-"brand": "Chateau Branaire Ducru",
+"brand": "Château Branaire Ducru",
 "name": "Château Branaire Ducru 班尼杜克酒莊紅葡萄酒 2018 750毫升丨Château Branaire Ducru Château Branaire Ducru Red Wine 2018 750ml",
 "volume_ml": 750.0,
 "abv": null,
@@ -24454,7 +24454,7 @@
 },
 {
 "site": "hk",
-"brand": "Chateau Gloria",
+"brand": "Château Gloria",
 "name": "Château Gloria 歌麗雅酒莊紅葡萄酒 750毫升丨Chateau Gloria Red Wine 750ml",
 "volume_ml": 750.0,
 "abv": null,
@@ -24480,7 +24480,7 @@
 },
 {
 "site": "hk",
-"brand": "Chateau Lascombes",
+"brand": "Château Lascombes",
 "name": "Chateau Lascombes 力士金酒莊紅葡萄酒 750毫升 | Chateau Lascombes Red Wine 750ml",
 "volume_ml": 750.0,
 "abv": null,
@@ -24490,19 +24490,6 @@
 "stock": null,
 "image": "https://pic.cdfmembers.com/cd/shenqiProduct/68957dff1c39e040e61b6366.jpg/webp400",
 "url": "https://www.dutyzero.com.hk/item/p15899054"
-},
-{
-"site": "hk",
-"brand": "9週年精選香檳、葡萄",
-"name": "9週年精選香檳、葡萄酒",
-"volume_ml": null,
-"abv": null,
-"list_price": 2999.0,
-"promo_price": null,
-"currency": "HKD",
-"stock": null,
-"image": "https://pic.cdfmembers.com/cd/shenqimgmt/6ae9552ae559a506cf270e15.jpg/webp800",
-"url": null
 },
 {
 "site": "my9",
@@ -25514,7 +25501,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Lascombes",
+"brand": "Château Lascombes",
 "name": "法國 二級酒莊 拉斯康堡紅酒 2023 / Ch. Lascombes 2023",
 "volume_ml": 750.0,
 "abv": null,
@@ -25693,7 +25680,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Ducru Beaucaillou",
+"brand": "Château Ducru Beaucaillou",
 "name": "法國 二級酒莊 杜庫柏卡堡「布卡女士」 紅酒 2019 / Ch. Ducru Beaucaillou 2019",
 "volume_ml": 750.0,
 "abv": null,
@@ -25739,7 +25726,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Calon Ségur",
+"brand": "Château Calon Ségur",
 "name": "法國 三級酒莊 卡隆賽居堡 三軍紅酒 2023 / Le C de Calon Segur 2023",
 "volume_ml": 750.0,
 "abv": null,
@@ -25763,7 +25750,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Calon Ségur",
+"brand": "Château Calon Ségur",
 "name": "法國 三級酒莊 卡隆賽居堡「侯爵」二軍紅酒 2018 / Le Marquis de Calon Ségur 2018",
 "volume_ml": 750.0,
 "abv": null,
@@ -25912,7 +25899,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Guiraud",
+"brand": "Château Guiraud",
 "name": "法國 貴侯堡 G不甜白酒 2023 / \"G\" De Ch. Guiraud 2023",
 "volume_ml": 750.0,
 "abv": null,
@@ -25936,7 +25923,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Guiraud",
+"brand": "Château Guiraud",
 "name": "法國 貴侯堡 一軍貴腐甜白酒 2020 / Ch. Guiraud 2020",
 "volume_ml": 750.0,
 "abv": null,
@@ -25960,7 +25947,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Rieussec",
+"brand": "Château Rieussec",
 "name": "法國 胡賽克堡 一軍貴腐甜白酒 2018 (375ml) / Ch. Rieussec 2018 (375ml)",
 "volume_ml": 375.0,
 "abv": null,
@@ -25984,7 +25971,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Rieussec",
+"brand": "Château Rieussec",
 "name": "法國 胡賽克堡 一軍貴腐甜白酒 2017 (375ml) / Ch. Rieussec 2017 (375ml)",
 "volume_ml": 375.0,
 "abv": null,
@@ -26008,7 +25995,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Rieussec",
+"brand": "Château Rieussec",
 "name": "法國 胡賽克堡 R不甜白酒 2021 / \"R\" De Rieussec 2021",
 "volume_ml": 750.0,
 "abv": null,
@@ -26032,7 +26019,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Coutet",
+"brand": "Château Coutet",
 "name": "法國 庫特堡 一軍貴腐甜白酒 2022 / Ch. Coutet 2022",
 "volume_ml": 750.0,
 "abv": null,
@@ -26056,7 +26043,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Coutet",
+"brand": "Château Coutet",
 "name": "法國 庫特堡 二軍不甜白酒 2016 / Opalie de Cheateau Coutet 2016",
 "volume_ml": 750.0,
 "abv": null,
@@ -26080,7 +26067,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Coutet",
+"brand": "Château Coutet",
 "name": "法國 庫特堡 一軍貴腐甜白酒 2023 / Ch. Coutet 2023",
 "volume_ml": 750.0,
 "abv": null,
@@ -26171,25 +26158,6 @@
 "Whisky-Other 威士忌-其它:Preorder 預購",
 "Whisky-Region 威士忌-產區:Speyside 斯貝賽",
 "Whisky-Type 威士忌-分類:Blended 調和威士忌"
-]
-}
-},
-{
-"site": "my9",
-"brand": "Asahi",
-"name": "ASAHI 威金森碳酸水 250ml (30罐) / Wilkinson Tansan",
-"volume_ml": 500.0,
-"abv": null,
-"list_price": 555.0,
-"promo_price": null,
-"currency": "TWD",
-"stock": "有貨",
-"image": "https://cdn.shopify.com/s/files/1/0028/9669/1264/files/D00102_914240e4-6298-4d31-88f4-5068c0e8a5d9.png?v=1788512070",
-"url": "https://www.my9.com.tw/products/asahi-威金森碳酸水-250ml-30罐-wilkinson-tansan",
-"extra": {
-"type": "無酒精",
-"tags": [
-"Non-alcohol-type 無酒精-分類:Soft-drink 碳酸汽水"
 ]
 }
 },
@@ -27582,7 +27550,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Ducru Beaucaillou",
+"brand": "Château Ducru Beaucaillou",
 "name": "法國 二級酒莊 杜庫柏卡堡紅酒 1982 / Ch. Ducru Beaucaillou 1982",
 "volume_ml": 750.0,
 "abv": null,
@@ -27607,7 +27575,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Ducru Beaucaillou",
+"brand": "Château Ducru Beaucaillou",
 "name": "法國 二級酒莊 杜庫柏卡堡紅酒 1981 / Ch. Ducru Beaucaillou 1981",
 "volume_ml": 750.0,
 "abv": null,
@@ -27632,7 +27600,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Ducru Beaucaillou",
+"brand": "Château Ducru Beaucaillou",
 "name": "法國 二級酒莊 杜庫柏卡堡紅酒 2009 / Ch. Ducru Beaucaillou 2009",
 "volume_ml": 750.0,
 "abv": null,
@@ -27772,7 +27740,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Ausone",
+"brand": "Château Ausone",
 "name": "法國 一級特A酒莊 歐頌堡「小聖堂」二軍紅酒 2023 / Chapelle D'Ausone 2023",
 "volume_ml": 750.0,
 "abv": null,
@@ -27796,7 +27764,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Ausone",
+"brand": "Château Ausone",
 "name": "法國 一級特A酒莊 歐頌堡紅酒 2023 / Ch. Ausone 2023",
 "volume_ml": 750.0,
 "abv": null,
@@ -27842,7 +27810,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Latour",
+"brand": "Château Latour",
 "name": "法國 一級酒莊 拉圖堡紅酒 2012 / Ch. Latour 2012",
 "volume_ml": 750.0,
 "abv": null,
@@ -27866,7 +27834,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Latour",
+"brand": "Château Latour",
 "name": "法國 一級酒莊 拉圖堡「堡壘」二軍紅酒 2019 / Les Forts de Latour 2019",
 "volume_ml": 750.0,
 "abv": null,
@@ -27890,7 +27858,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Lafite Rothschild",
+"brand": "Château Lafite Rothschild",
 "name": "法國 一級酒莊 拉菲堡紅酒 2023 / Ch. Lafite Rothschild 2023",
 "volume_ml": 750.0,
 "abv": null,
@@ -27914,7 +27882,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Lafite Rothschild",
+"brand": "Château Lafite Rothschild",
 "name": "法國 一級酒莊 拉菲堡「珍寶」二軍紅酒 2023 / Carruades De Lafite 2023",
 "volume_ml": 750.0,
 "abv": null,
@@ -27938,7 +27906,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Lafite Rothschild",
+"brand": "Château Lafite Rothschild",
 "name": "法國 一級酒莊 拉菲堡「珍寶」二軍紅酒 2020 / Carruades De Lafite 2020",
 "volume_ml": 750.0,
 "abv": null,
@@ -27962,7 +27930,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. La Mission Haut-Brion",
+"brand": "Château La Mission Haut-Brion",
 "name": "法國 教堂歐布里雍堡一軍紅酒 2023 / Ch. La Mission Haut-Brion 2023",
 "volume_ml": 750.0,
 "abv": null,
@@ -27986,7 +27954,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. La Mission Haut-Brion",
+"brand": "Château La Mission Haut-Brion",
 "name": "法國 教堂歐布里雍堡二軍紅酒 2023 / La Chapelle De La Massion Haut-Brion 2023",
 "volume_ml": 750.0,
 "abv": null,
@@ -28279,7 +28247,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Chasse-Spleen",
+"brand": "Château Chasse-Spleen",
 "name": "法國 解憂堡紅酒 2018 / Ch. Chasse Spleen 2018",
 "volume_ml": 750.0,
 "abv": null,
@@ -28303,7 +28271,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. de Camensac",
+"brand": "Château de Camensac",
 "name": "法國 五級酒莊 卡門薩克堡紅酒 2018 / Ch. de Camensac 2018",
 "volume_ml": 750.0,
 "abv": null,
@@ -28328,7 +28296,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Calon Ségur",
+"brand": "Château Calon Ségur",
 "name": "法國 三級酒莊 卡隆賽居堡 三軍紅酒 2020 / Le C de Calon Segur 2020",
 "volume_ml": 750.0,
 "abv": null,
@@ -28888,7 +28856,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Clerc Milon",
+"brand": "Château Clerc Milon",
 "name": "法國 五級酒莊 克萊米爾莊園 雙人跳舞二軍紅酒 2016 / Pastourelle De Clerc Milon 2016",
 "volume_ml": 750.0,
 "abv": null,
@@ -29916,7 +29884,7 @@
 },
 {
 "site": "my9",
-"brand": "OCHO 8",
+"brand": "Ocho",
 "name": "8 金 龍舌蘭 / OCHO Reposado Tequila",
 "volume_ml": 500.0,
 "abv": null,
@@ -29936,7 +29904,7 @@
 },
 {
 "site": "my9",
-"brand": "OCHO 8",
+"brand": "Ocho",
 "name": "8 銀 龍舌蘭 / OCHO Plata Tequila",
 "volume_ml": 500.0,
 "abv": null,
@@ -30073,7 +30041,7 @@
 },
 {
 "site": "my9",
-"brand": "Chateau Le Puy",
+"brand": "Château Le Puy",
 "name": "樂譜酒莊 樂譜公爵紅酒 2022 / Chateau Le Puy Duc Des Nauves 2022",
 "volume_ml": 750.0,
 "abv": null,
@@ -30253,7 +30221,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Angelus",
+"brand": "Château Angelus",
 "name": "法國 金鐘堡二軍紅酒 2015 / Le Carillon D'Angelus 2015",
 "volume_ml": 750.0,
 "abv": null,
@@ -30277,7 +30245,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Angelus",
+"brand": "Château Angelus",
 "name": "法國 金鐘堡二軍紅酒 2016 / Le Carillon D'Angelus 2016",
 "volume_ml": 750.0,
 "abv": null,
@@ -30301,7 +30269,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Angelus",
+"brand": "Château Angelus",
 "name": "法國 金鐘堡紅酒 2016 / Ch. Angelus 2016",
 "volume_ml": 750.0,
 "abv": null,
@@ -30325,7 +30293,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Margaux",
+"brand": "Château Margaux",
 "name": "法國 一級酒莊 瑪歌堡紅酒 2012 / Ch.Margaux 2012",
 "volume_ml": 750.0,
 "abv": null,
@@ -30349,7 +30317,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Lafite Rothschild",
+"brand": "Château Lafite Rothschild",
 "name": "法國 一級酒莊 拉菲堡紅酒 2009 / Ch. Lafite Rothschild 2009",
 "volume_ml": 750.0,
 "abv": null,
@@ -30373,7 +30341,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Latour",
+"brand": "Château Latour",
 "name": "法國 一級酒莊 拉圖堡紅酒 2014 / Ch. Latour 2014",
 "volume_ml": 750.0,
 "abv": null,
@@ -30803,26 +30771,6 @@
 },
 {
 "site": "my9",
-"brand": "Acqua Panna",
-"name": "普娜 天然礦泉水 250ml(24瓶) / Acqua Panna Water",
-"volume_ml": 250.0,
-"abv": null,
-"list_price": 1080.0,
-"promo_price": 1000.0,
-"currency": "TWD",
-"stock": "有貨",
-"image": "https://cdn.shopify.com/s/files/1/0028/9669/1264/products/D01301_3ae817cd-1257-442d-859e-0b30d945c1a9.png?v=1580476606",
-"url": "https://www.my9.com.tw/products/d01301",
-"extra": {
-"type": "無酒精",
-"tags": [
-"Non-alcohol-Country 無酒精-國家:Italy 義大利",
-"Non-alcohol-Type 無酒精-分類:Mineral-Water 礦泉水"
-]
-}
-},
-{
-"site": "my9",
 "brand": "Maison Leroy",
 "name": "樂花園酒莊 廣域級紅酒 2015 / Maison Leroy Bourgogne Rouge 2015",
 "volume_ml": 750.0,
@@ -31085,27 +31033,6 @@
 "tags": [
 "Whisky-Country 威士忌-國家:USA 美國",
 "Whisky-Type 威士忌-分類:Rye Whiskey 裸麥威士忌"
-]
-}
-},
-{
-"site": "my9",
-"brand": "Raisin",
-"name": "法國黑皮諾無酒精風味飲 / Raisin 0% Alcohol Pinot Noir",
-"volume_ml": 750.0,
-"abv": null,
-"list_price": 800.0,
-"promo_price": 599.0,
-"currency": "TWD",
-"stock": "缺貨",
-"image": "https://cdn.shopify.com/s/files/1/0028/9669/1264/files/I01810.png?v=1776846891",
-"url": "https://www.my9.com.tw/products/法國黑皮諾無酒精風味飲-raisin-0-alcholo-pinot-noir",
-"extra": {
-"type": "無酒精",
-"tags": [
-"NEW IN 新品",
-"Non-alcohol-Country 無酒精-國家:France 法國",
-"Non-alcohol-Type 無酒精-分類:無酒精葡萄酒"
 ]
 }
 },
@@ -32180,46 +32107,6 @@
 "Whisky-Other 威士忌-其它:Limited 限量",
 "Whisky-Other 威士忌-其它:Set 套組",
 "Whisky-Type 威士忌-分類:Blended 調和威士忌"
-]
-}
-},
-{
-"site": "my9",
-"brand": "Delivine",
-"name": "德易喝 犀牛 精選無酒精紅葡萄酒 / DELIVINE Select Cuvee Non-Alcoholic Red Wine",
-"volume_ml": 750.0,
-"abv": null,
-"list_price": 600.0,
-"promo_price": 380.0,
-"currency": "TWD",
-"stock": "有貨",
-"image": "https://cdn.shopify.com/s/files/1/0028/9669/1264/files/I51001.png?v=1768921592",
-"url": "https://www.my9.com.tw/products/德易喝-犀牛-精選無酒精紅葡萄酒-delivine-select-cuvee-non-alcoholic-red-wine",
-"extra": {
-"type": "無酒精",
-"tags": [
-"Non-alcohol-Country 無酒精-國家:德國",
-"Non-alcohol-Type 無酒精-分類:無酒精葡萄酒"
-]
-}
-},
-{
-"site": "my9",
-"brand": "Delivine",
-"name": "德易喝 犀牛 雷司令無酒精白葡萄酒 / DELIVINE Riesling Non-Alcoholic White Wine",
-"volume_ml": 750.0,
-"abv": null,
-"list_price": 600.0,
-"promo_price": 380.0,
-"currency": "TWD",
-"stock": "有貨",
-"image": "https://cdn.shopify.com/s/files/1/0028/9669/1264/files/J51001.png?v=1768921606",
-"url": "https://www.my9.com.tw/products/德易喝-犀牛-雷司令無酒精白葡萄酒-delivine-riesling-non-alcoholic-white-wine",
-"extra": {
-"type": "無酒精",
-"tags": [
-"Non-alcohol-Country 無酒精-國家:德國",
-"Non-alcohol-Type 無酒精-分類:無酒精葡萄酒"
 ]
 }
 },
@@ -33457,7 +33344,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Angelus",
+"brand": "Château Angelus",
 "name": "法國 金鐘堡紅酒 2022 / Ch. Angelus 2022",
 "volume_ml": 750.0,
 "abv": null,
@@ -33481,7 +33368,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. La Mission Haut-Brion",
+"brand": "Château La Mission Haut-Brion",
 "name": "法國 教堂歐布里雍堡二軍紅酒 2010 / La Chapelle De La Massion Haut-Brion 2010",
 "volume_ml": 750.0,
 "abv": null,
@@ -33505,7 +33392,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. La Mission Haut-Brion",
+"brand": "Château La Mission Haut-Brion",
 "name": "法國 教堂歐布里雍堡二軍紅酒 2017 / La Chapelle De La Massion Haut-Brion 2017",
 "volume_ml": 750.0,
 "abv": null,
@@ -33529,7 +33416,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Montrose",
+"brand": "Château Montrose",
 "name": "法國 二級酒莊 玫瑰山堡「女士」二軍紅酒 2021 / La Dame De Montrose 2021",
 "volume_ml": 750.0,
 "abv": null,
@@ -33553,7 +33440,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Lafite Rothschild",
+"brand": "Château Lafite Rothschild",
 "name": "法國 一級酒莊 拉菲堡紅酒 2014 / Ch. Lafite Rothschild 2014",
 "volume_ml": 750.0,
 "abv": null,
@@ -33577,7 +33464,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Lafite Rothschild",
+"brand": "Château Lafite Rothschild",
 "name": "法國 一級酒莊 拉菲堡紅酒 2012 / Ch. Lafite Rothschild 2012",
 "volume_ml": 750.0,
 "abv": null,
@@ -33601,7 +33488,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Lafite Rothschild",
+"brand": "Château Lafite Rothschild",
 "name": "法國 一級酒莊 拉菲堡紅酒 2019 / Ch. Lafite Rothschild 2019",
 "volume_ml": 750.0,
 "abv": null,
@@ -33625,7 +33512,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Lafite Rothschild",
+"brand": "Château Lafite Rothschild",
 "name": "法國 一級酒莊 拉菲堡紅酒 2011 / Ch. Lafite Rothschild 2011",
 "volume_ml": 750.0,
 "abv": null,
@@ -33649,7 +33536,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Canon",
+"brand": "Château Canon",
 "name": "法國 一級特B酒莊 卡農堡紅酒 2017 / Ch. Canon 2017",
 "volume_ml": 750.0,
 "abv": null,
@@ -33673,7 +33560,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Belgrave",
+"brand": "Château Belgrave",
 "name": "法國 貝葛拉夫堡紅酒 2022 / Ch. Belgrave 2022",
 "volume_ml": 750.0,
 "abv": null,
@@ -33697,7 +33584,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Cantenac Brown",
+"brand": "Château Cantenac Brown",
 "name": "法國 三級酒莊 康田布朗堡二軍紅酒 2020 / Brio de Cantenac Brown 2020",
 "volume_ml": 750.0,
 "abv": null,
@@ -33721,7 +33608,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Margaux",
+"brand": "Château Margaux",
 "name": "法國 一級酒莊 瑪歌堡紅酒 2020 / Ch.Margaux 2020",
 "volume_ml": 750.0,
 "abv": null,
@@ -33745,7 +33632,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Phelan Segur",
+"brand": "Château Phelan Segur",
 "name": "法國 菲隆塞居堡紅酒 2021 / Ch. Phelan Segur 2021",
 "volume_ml": 750.0,
 "abv": null,
@@ -33769,7 +33656,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Mouton Rothschild",
+"brand": "Château Mouton Rothschild",
 "name": "法國 一級酒莊 木桐堡紅酒 2021 / Ch. Mouton Rothschild 2021",
 "volume_ml": 750.0,
 "abv": null,
@@ -33902,7 +33789,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Calon Ségur",
+"brand": "Château Calon Ségur",
 "name": "法國 三級酒莊 卡隆賽居堡紅酒 2010 / Ch. Calon Ségur 2010",
 "volume_ml": 750.0,
 "abv": null,
@@ -33926,7 +33813,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Lagrange",
+"brand": "Château Lagrange",
 "name": "法國 三級酒莊 拉格堡紅酒 2021 / Ch. Lagrange 2021",
 "volume_ml": 700.0,
 "abv": null,
@@ -34049,7 +33936,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Brane Cantenac",
+"brand": "Château Brane Cantenac",
 "name": "法國 侯松加西堡二軍紅酒 2018 / Les Ailes de Rauzan-Gassies 2018",
 "volume_ml": 750.0,
 "abv": null,
@@ -34476,7 +34363,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Angelus",
+"brand": "Château Angelus",
 "name": "法國 金鐘堡二軍紅酒 2021 / Le Carillon D'Angelus 2021",
 "volume_ml": 750.0,
 "abv": null,
@@ -34500,7 +34387,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Angelus",
+"brand": "Château Angelus",
 "name": "法國 金鐘堡二軍紅酒 2020 / Le Carillon D'Angelus 2020",
 "volume_ml": 750.0,
 "abv": null,
@@ -34524,7 +34411,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Angelus",
+"brand": "Château Angelus",
 "name": "法國 金鐘堡紅酒 2012 / Ch. Angelus 2012",
 "volume_ml": 750.0,
 "abv": null,
@@ -34548,7 +34435,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Angelus",
+"brand": "Château Angelus",
 "name": "法國 金鐘堡紅酒 2015 / Ch. Angelus 2015",
 "volume_ml": 750.0,
 "abv": null,
@@ -34572,7 +34459,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Angelus",
+"brand": "Château Angelus",
 "name": "法國 金鐘堡紅酒 2010 / Ch. Angelus 2010",
 "volume_ml": 750.0,
 "abv": null,
@@ -34866,7 +34753,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. D'Issan",
+"brand": "Château D'Issan",
 "name": "法國 三級酒莊 迪仙莊園紅酒 2021 / Ch.D'Issan 2021",
 "volume_ml": 750.0,
 "abv": null,
@@ -35094,7 +34981,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Lafon-Rochet",
+"brand": "Château Lafon-Rochet",
 "name": "法國 四級酒莊 芳榭堡「禮拜堂」二軍紅酒 2022 / La Chapelle Lafon Rochet 2022",
 "volume_ml": 750.0,
 "abv": null,
@@ -36259,7 +36146,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Clerc Milon",
+"brand": "Château Clerc Milon",
 "name": "法國 五級酒莊 克萊米爾莊園 雙人跳舞一軍紅酒 2020 / Ch. Clerc Milon 2020",
 "volume_ml": 750.0,
 "abv": null,
@@ -36283,7 +36170,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Latour",
+"brand": "Château Latour",
 "name": "法國 一級酒莊 拉圖堡紅酒 2016 / Ch. Latour 2016",
 "volume_ml": 750.0,
 "abv": null,
@@ -36738,7 +36625,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Latour",
+"brand": "Château Latour",
 "name": "法國 一級酒莊 拉圖堡紅酒 2009 / Ch. Latour 2009",
 "volume_ml": 750.0,
 "abv": null,
@@ -37671,7 +37558,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Carbonnieux",
+"brand": "Château Carbonnieux",
 "name": "法國 卡本尼爾堡 二軍白酒 2021 / La Croix de Carbonnieux Blanc 2021",
 "volume_ml": 750.0,
 "abv": null,
@@ -39608,7 +39495,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Vray Croix de Gray",
+"brand": "Château Vray Croix de Gray",
 "name": "法國 弗雷蓋十字堡一軍紅酒 2021 / Ch. Vray Croix de Gay 2021",
 "volume_ml": 750.0,
 "abv": null,
@@ -39632,7 +39519,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Margaux",
+"brand": "Château Margaux",
 "name": "法國 一級酒莊 瑪歌堡紅酒 2021 / Ch.Margaux 2021",
 "volume_ml": 750.0,
 "abv": null,
@@ -39656,7 +39543,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Lafite Rothschild",
+"brand": "Château Lafite Rothschild",
 "name": "法國 一級酒莊 拉菲堡紅酒 2018 / Ch. Lafite Rothschild 2018",
 "volume_ml": 750.0,
 "abv": null,
@@ -39815,7 +39702,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Coutet",
+"brand": "Château Coutet",
 "name": "法國 庫特堡 二軍不甜白酒 2022 / Opalie de Cheateau Coutet 2022",
 "volume_ml": 750.0,
 "abv": null,
@@ -39839,7 +39726,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Coutet",
+"brand": "Château Coutet",
 "name": "法國 庫特堡 夫人特選貴腐甜白酒 2009 / Cuvée Madame de Chateau Coutet 2009",
 "volume_ml": 750.0,
 "abv": null,
@@ -39863,7 +39750,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Coutet",
+"brand": "Château Coutet",
 "name": "法國 庫特堡 二軍貴腐甜白酒 2012 / La Chartreuse de Coutet 2012",
 "volume_ml": 750.0,
 "abv": null,
@@ -39887,7 +39774,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Haut-Brion",
+"brand": "Château Haut-Brion",
 "name": "法國 一級酒莊 歐布里昂堡 二軍白酒 2020 / La Clarte De Haut-Brion Blanc 2020",
 "volume_ml": 750.0,
 "abv": null,
@@ -39911,7 +39798,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Haut-Brion",
+"brand": "Château Haut-Brion",
 "name": "法國 一級酒莊 歐布里昂堡紅酒 2015 / Ch. Haut-Brion 2015",
 "volume_ml": 750.0,
 "abv": null,
@@ -39935,7 +39822,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. La Mission Haut-Brion",
+"brand": "Château La Mission Haut-Brion",
 "name": "法國 教堂歐布里雍堡二軍紅酒 2021 / La Chapelle De La Massion Haut-Brion 2021",
 "volume_ml": 750.0,
 "abv": null,
@@ -40322,7 +40209,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Suduiraut",
+"brand": "Château Suduiraut",
 "name": "法國 蘇迪侯堡 貴腐甜白酒 2017 / Ch. Suduiraut 2017",
 "volume_ml": 375.0,
 "abv": null,
@@ -40345,7 +40232,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Pape Clément",
+"brand": "Château Pape Clément",
 "name": "法國 克萊美莊園白酒 2018 / Ch. Pape Clément Blanc 2018",
 "volume_ml": 750.0,
 "abv": null,
@@ -40369,7 +40256,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Pape Clément",
+"brand": "Château Pape Clément",
 "name": "法國 克萊美莊園白酒 2020 / Ch. Pape Clément Blanc 2020",
 "volume_ml": 750.0,
 "abv": null,
@@ -40393,7 +40280,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Latour",
+"brand": "Château Latour",
 "name": "法國 一級酒莊 拉圖堡紅酒 2015 / Ch. Latour 2015",
 "volume_ml": 750.0,
 "abv": null,
@@ -40460,7 +40347,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Smith Haut Lafitte",
+"brand": "Château Smith Haut Lafitte",
 "name": "法國 史密斯歐拉飛堡(皇徽莊園) 紅酒 2018 / Ch. Smith Haut Lafitte Rouge 2018",
 "volume_ml": 750.0,
 "abv": null,
@@ -41840,7 +41727,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Haut-Brion",
+"brand": "Château Haut-Brion",
 "name": "法國 一級酒莊 歐布里昂堡「克萊倫斯」二軍紅酒 2018 / Le Clarence De Haut-Brion 2018",
 "volume_ml": 750.0,
 "abv": null,
@@ -41864,7 +41751,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Haut-Brion",
+"brand": "Château Haut-Brion",
 "name": "法國 一級酒莊 歐布里昂堡紅酒 2016 / Ch. Haut-Brion 2016",
 "volume_ml": 750.0,
 "abv": null,
@@ -42041,7 +41928,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Ausone",
+"brand": "Château Ausone",
 "name": "法國 一級特A酒莊 歐頌堡紅酒 2006 / Ch. Ausone 2006",
 "volume_ml": 750.0,
 "abv": null,
@@ -42824,7 +42711,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. de Pommard",
+"brand": "Château de Pommard",
 "name": "玻瑪酒莊 布根地大區級白酒 2022 / Ch. de Pommard Bourgogne Chardonnay 2022",
 "volume_ml": 750.0,
 "abv": null,
@@ -42846,7 +42733,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. de Pommard",
+"brand": "Château de Pommard",
 "name": "玻瑪酒莊 布根地大區級紅酒 2023 / Ch. de Pommard Bourgogne Pinot Noir 2023",
 "volume_ml": 750.0,
 "abv": null,
@@ -43434,7 +43321,7 @@
 },
 {
 "site": "my9",
-"brand": "Chateau De Pez",
+"brand": "Château De Pez",
 "name": "法國 佩滋堡紅酒 2022 / Chateau De Pez 2022",
 "volume_ml": 750.0,
 "abv": null,
@@ -43849,7 +43736,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Haut-Brion",
+"brand": "Château Haut-Brion",
 "name": "法國 一級酒莊 歐布里昂堡白酒 2018 / Ch. Haut-Brion Blanc 2018",
 "volume_ml": 750.0,
 "abv": null,
@@ -44387,7 +44274,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. d'Yquem",
+"brand": "Château d'Yquem",
 "name": "法國 伊更堡 貴腐甜白酒 2007 / Château d'Yquem 2007",
 "volume_ml": 750.0,
 "abv": null,
@@ -44457,7 +44344,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Mouton Rothschild",
+"brand": "Château Mouton Rothschild",
 "name": "法國 一級酒莊 木桐堡 金羊限量版紅酒 2000 / Ch. Mouton Rothschild 2000",
 "volume_ml": 750.0,
 "abv": null,
@@ -45134,7 +45021,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Mouton Rothschild",
+"brand": "Château Mouton Rothschild",
 "name": "法國 一級酒莊 木桐堡紅酒 2006 / Ch. Mouton Rothschild 2006",
 "volume_ml": 750.0,
 "abv": null,
@@ -45179,7 +45066,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Montrose",
+"brand": "Château Montrose",
 "name": "法國 二級酒莊 玫瑰山堡紅酒 2003 / Ch. Montrose St. Estephe 2003",
 "volume_ml": 750.0,
 "abv": null,
@@ -45313,7 +45200,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Margaux",
+"brand": "Château Margaux",
 "name": "法國 一級酒莊 瑪歌堡「紅亭」二軍紅酒 2015 / Pavillon Rouge du Chateau Margaux 2015",
 "volume_ml": 750.0,
 "abv": null,
@@ -45406,7 +45293,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Lafite Rothschild",
+"brand": "Château Lafite Rothschild",
 "name": "法國 一級酒莊 拉菲堡紅酒 2020 / Ch. Lafite Rothschild 2020",
 "volume_ml": 750.0,
 "abv": null,
@@ -47656,7 +47543,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Belair-Monange",
+"brand": "Château Belair-Monange",
 "name": "法國 寶雅城堡一軍紅酒 2020 / Château Belair-Monange 2020",
 "volume_ml": 750.0,
 "abv": null,
@@ -47794,7 +47681,7 @@
 },
 {
 "site": "my9",
-"brand": "大七",
+"brand": "Daishichi",
 "name": "大七酒造 極上品生酛梅酒",
 "volume_ml": 720.0,
 "abv": null,
@@ -49295,7 +49182,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. d'Yquem",
+"brand": "Château d'Yquem",
 "name": "法國 伊更堡 貴腐甜白酒 2006 / Château d'Yquem 2006",
 "volume_ml": 750.0,
 "abv": null,
@@ -49319,7 +49206,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. d'Yquem",
+"brand": "Château d'Yquem",
 "name": "法國 伊更堡 貴腐甜白酒 2005 / Château d'Yquem 2005",
 "volume_ml": 750.0,
 "abv": null,
@@ -49365,7 +49252,7 @@
 },
 {
 "site": "my9",
-"brand": "Chateau De Pez",
+"brand": "Château De Pez",
 "name": "法國 佩滋堡二軍紅酒 20/21 / Chateau De Pez 2nd 20/21",
 "volume_ml": 750.0,
 "abv": null,
@@ -49546,7 +49433,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Latour",
+"brand": "Château Latour",
 "name": "法國 一級酒莊 拉圖堡紅酒 2010 / Ch. Latour 2010",
 "volume_ml": 750.0,
 "abv": null,
@@ -49611,26 +49498,6 @@
 "Wine-Subregion 葡萄酒-區域:Maipo-Valley 邁波河谷",
 "Wine-Type 葡萄酒-分類:Red 紅酒",
 "Wine-Variety 葡萄酒-葡萄品種:Red-Blend 混釀紅酒"
-]
-}
-},
-{
-"site": "my9",
-"brand": "Chang",
-"name": "泰象 氣泡水 325ml (24瓶) / Chang Soda Water",
-"volume_ml": 325.0,
-"abv": null,
-"list_price": 650.0,
-"promo_price": 600.0,
-"currency": "TWD",
-"stock": "有貨",
-"image": "https://cdn.shopify.com/s/files/1/0028/9669/1264/files/D00201.png?v=1692857434",
-"url": "https://www.my9.com.tw/products/泰象氣泡水-24瓶-chang-soda-water",
-"extra": {
-"type": "無酒精",
-"tags": [
-"Non-alcohol-Country 無酒精-國家:泰國",
-"Non-alcohol-Type 無酒精-分類:Soda-Water 蘇打水"
 ]
 }
 },
@@ -51155,7 +51022,7 @@
 },
 {
 "site": "my9",
-"brand": "大七",
+"brand": "Daishichi",
 "name": "大七 生酛梅酒",
 "volume_ml": 720.0,
 "abv": null,
@@ -51693,7 +51560,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Pichon Longueville Baron",
+"brand": "Pauillac",
 "name": "法國 二級酒莊 碧尚男爵堡 三軍紅酒 21/22 / Pauillac de Pichon Baron 21/22",
 "volume_ml": 750.0,
 "abv": null,
@@ -53697,7 +53564,7 @@
 },
 {
 "site": "my9",
-"brand": "Chateau Grand Moulin",
+"brand": "Château Grand Moulin",
 "name": "磨坊莊園 偵探家 格納希紅酒 21/23 / Chateau Grand Moulin Detective Grenache 21/23",
 "volume_ml": 750.0,
 "abv": null,
@@ -54911,7 +54778,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Odilon",
+"brand": "Château Odilon",
 "name": "法國拉菲家族原廠紅酒禮盒 / Domaines Barons De Rothschild (Lafite) Set",
 "volume_ml": 750.0,
 "abv": null,
@@ -55218,7 +55085,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Paradis Casseui",
+"brand": "Château Paradis Casseui",
 "name": "法國拉菲 凱薩天堂堡 波爾多精釀紅酒 19/20 / Ch. Paradis Casseui by Domaines Barons De Rothschild (Lafite) 19/20",
 "volume_ml": 750.0,
 "abv": null,
@@ -55241,7 +55108,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Odilon",
+"brand": "Château Odilon",
 "name": "法國 遨迪諾古堡 上梅多克紅酒 2018 / Ch. Odilon by Domaines Barons De Rothschild (Lafite) 2018",
 "volume_ml": 750.0,
 "abv": null,
@@ -56429,7 +56296,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Palmer",
+"brand": "Château Palmer",
 "name": "法國 三級酒莊 帕瑪堡紅酒 2017 / Ch. Palmer 2017",
 "volume_ml": 750.0,
 "abv": null,
@@ -56453,7 +56320,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Rieussec",
+"brand": "Château Rieussec",
 "name": "法國 胡賽克堡 二軍貴腐甜白酒 2020 / Carmes De Rieussec 2020",
 "volume_ml": 750.0,
 "abv": null,
@@ -56477,7 +56344,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Haut Batailley",
+"brand": "Château Haut Batailley",
 "name": "法國 五級酒莊 歐巴塔葉堡紅酒 2021 / Ch. Haut Batailley 2021",
 "volume_ml": 750.0,
 "abv": null,
@@ -56501,7 +56368,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Haut-Brion",
+"brand": "Château Haut-Brion",
 "name": "法國 一級酒莊 歐布里昂堡紅酒 2018 / Ch. Haut-Brion 2018",
 "volume_ml": 750.0,
 "abv": null,
@@ -56525,7 +56392,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. de Camensac",
+"brand": "Château de Camensac",
 "name": "法國 五級酒莊 卡門薩克堡紅酒 2016 / Ch. de Camensac 2016",
 "volume_ml": 750.0,
 "abv": null,
@@ -58309,7 +58176,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. d'Yquem",
+"brand": "Château d'Yquem",
 "name": "法國 伊更堡 貴腐甜白酒 2001 / Château d'Yquem 2001",
 "volume_ml": 750.0,
 "abv": null,
@@ -58333,7 +58200,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. d'Yquem",
+"brand": "Château d'Yquem",
 "name": "法國 伊更堡 貴腐甜白酒 2003 / Château d'Yquem 2003",
 "volume_ml": 750.0,
 "abv": null,
@@ -60395,7 +60262,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Lynch Bages",
+"brand": "Château Lynch Bages",
 "name": "法國 五級酒莊 林奇巴居堡三軍紅酒 2019 / Pauillac De Lynch Bages 2019",
 "volume_ml": 750.0,
 "abv": null,
@@ -62551,27 +62418,6 @@
 },
 {
 "site": "my9",
-"brand": "Fever Tree",
-"name": "芬味樹 頂級薑汁汽水 200ml (24罐) / Fever Tree Premium Ginger Ale",
-"volume_ml": 200.0,
-"abv": null,
-"list_price": 2616.0,
-"promo_price": 1700.0,
-"currency": "TWD",
-"stock": "有貨",
-"image": "https://cdn.shopify.com/s/files/1/0028/9669/1264/products/E01205.png?v=1624560731",
-"url": "https://www.my9.com.tw/products/e01210",
-"extra": {
-"type": "無酒精",
-"tags": [
-"Non-alcohol-Country 無酒精-國家:England 英國",
-"Non-alcohol-Other 無酒精-其它:兩箱免運",
-"Non-alcohol-Type 無酒精-分類:Ginger-Ale 薑汁汽水"
-]
-}
-},
-{
-"site": "my9",
 "brand": "Penfolds",
 "name": "奔富 庫濃格 夏多內白酒 24/25 / Penfolds Koonunga Hill Chardonnay 24/25",
 "volume_ml": 750.0,
@@ -63805,7 +63651,7 @@
 },
 {
 "site": "my9",
-"brand": "BC",
+"brand": "Nakano BC",
 "name": "中野BC 綠茶梅酒",
 "volume_ml": 720.0,
 "abv": null,
@@ -63826,7 +63672,7 @@
 },
 {
 "site": "my9",
-"brand": "BC",
+"brand": "Nakano BC",
 "name": "中野BC 紀州蜂蜜梅酒",
 "volume_ml": 720.0,
 "abv": null,
@@ -63937,7 +63783,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Ausone",
+"brand": "Château Ausone",
 "name": "法國 一級特A酒莊 歐頌堡紅酒 2003 / Ch. Ausone 2003",
 "volume_ml": 750.0,
 "abv": null,
@@ -65217,7 +65063,7 @@
 },
 {
 "site": "my9",
-"brand": "大七",
+"brand": "Daishichi",
 "name": "大七 妙花蘭曲 純米大吟釀 OMEGA",
 "volume_ml": 720.0,
 "abv": null,
@@ -67215,7 +67061,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Leoville Barton",
+"brand": "Château Leoville Barton",
 "name": "法國 二級酒莊 巴頓莊園紅酒 2019 / Ch. Leoville Barton 2019",
 "volume_ml": 750.0,
 "abv": null,
@@ -67568,7 +67414,7 @@
 },
 {
 "site": "my9",
-"brand": "Chateau Le Puy",
+"brand": "Château Le Puy",
 "name": "樂譜酒莊 艾米利紅酒 2021 / Chateau Le Puy Emilien 2021",
 "volume_ml": 750.0,
 "abv": null,
@@ -67849,7 +67695,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Margaux",
+"brand": "Château Margaux",
 "name": "法國 一級酒莊 瑪歌堡紅酒 2015 / Ch.Margaux 2015",
 "volume_ml": 750.0,
 "abv": null,
@@ -67873,7 +67719,7 @@
 },
 {
 "site": "my9",
-"brand": "Ch. Haut-Brion",
+"brand": "Château Haut-Brion",
 "name": "法國 一級酒莊 歐布里昂堡紅酒 2010 / Ch. Haut-Brion 2010",
 "volume_ml": 750.0,
 "abv": null,
@@ -68195,26 +68041,6 @@
 },
 {
 "site": "my9",
-"brand": "Evian",
-"name": "愛維養 天然礦泉水 750ml (12瓶) / Evian Mineral Water",
-"volume_ml": 750.0,
-"abv": null,
-"list_price": 1140.0,
-"promo_price": null,
-"currency": "TWD",
-"stock": "有貨",
-"image": "https://cdn.shopify.com/s/files/1/0028/9669/1264/products/D01403_71c0af6a-428a-4662-8cab-9fd10d7c9c5d.png?v=1624566723",
-"url": "https://www.my9.com.tw/products/愛維養天然礦泉水-750ml玻璃瓶12瓶-evian-mineral-water",
-"extra": {
-"type": "無酒精",
-"tags": [
-"Non-alcohol-Country 無酒精-國家:France 法國",
-"Non-alcohol-Type 無酒精-分類:Mineral-Water 礦泉水"
-]
-}
-},
-{
-"site": "my9",
 "brand": "Moët & Chandon",
 "name": "酩悅香檳 / Moet & Chandon Brut Imperial",
 "volume_ml": 750.0,
@@ -68350,66 +68176,6 @@
 "tags": [
 "Beer-Country 啤酒-國家:Japan 日本",
 "Beer-Type 啤酒-分類:Wheat beer 小麥啤酒"
-]
-}
-},
-{
-"site": "my9",
-"brand": "Perrier",
-"name": "沛綠雅 氣泡礦泉水 250ml (35罐) / Perrier Mineral Water",
-"volume_ml": 250.0,
-"abv": null,
-"list_price": 990.0,
-"promo_price": null,
-"currency": "TWD",
-"stock": "有貨",
-"image": "https://cdn.shopify.com/s/files/1/0028/9669/1264/products/D00501_5015e225-f8ec-4c18-8681-f7c0e919e453.png?v=1580474891",
-"url": "https://www.my9.com.tw/products/沛綠雅氣泡礦泉水-250ml35瓶-perrier-mineral-water",
-"extra": {
-"type": "無酒精",
-"tags": [
-"Non-alcohol 無酒精-分類:Sparkling-Mineral-Water 氣泡礦泉水",
-"Non-alcohol-Country 無酒精-國家:France 法國"
-]
-}
-},
-{
-"site": "my9",
-"brand": "Acqua Panna",
-"name": "普娜 天然礦泉水 750ml (12瓶) / Acqua Panna Water",
-"volume_ml": 750.0,
-"abv": null,
-"list_price": 920.0,
-"promo_price": 840.0,
-"currency": "TWD",
-"stock": "有貨",
-"image": "https://cdn.shopify.com/s/files/1/0028/9669/1264/products/D01304_06ce324c-bf54-42d2-8170-5158d57937b9.png?v=1624567132",
-"url": "https://www.my9.com.tw/products/普娜天然礦泉水-750ml12瓶-acqua-panna-water",
-"extra": {
-"type": "無酒精",
-"tags": [
-"Non-alcohol-Country 無酒精-國家:Italy 義大利",
-"Non-alcohol-Type 無酒精-分類:Mineral-Water 礦泉水"
-]
-}
-},
-{
-"site": "my9",
-"brand": "Acqua Panna",
-"name": "普娜 天然礦泉水 500ml (24瓶) / Acqua Panna Water",
-"volume_ml": 500.0,
-"abv": null,
-"list_price": 1500.0,
-"promo_price": 1420.0,
-"currency": "TWD",
-"stock": "有貨",
-"image": "https://cdn.shopify.com/s/files/1/0028/9669/1264/products/D01302_92757590-cd92-4f62-ba27-2f98ba1660a5.png?v=1580480296",
-"url": "https://www.my9.com.tw/products/普娜天然礦泉水-500ml24瓶-acqua-panna-water",
-"extra": {
-"type": "無酒精",
-"tags": [
-"Non-alcohol-Country 無酒精-國家:Italy 義大利",
-"Non-alcohol-Type 無酒精-分類:Mineral-Water 礦泉水"
 ]
 }
 },
@@ -75151,327 +74917,6 @@
 "Whisky-Country 威士忌-國家:Scotland 蘇格蘭",
 "Whisky-Other 威士忌-其它:Mini 迷你酒",
 "Whisky-Type 威士忌-分類:Blended 調和威士忌"
-]
-}
-},
-{
-"site": "my9",
-"brand": "Schweppes",
-"name": "舒味思蘇打汽水 330ml (24罐) / Schweppes Soda Water",
-"volume_ml": 330.0,
-"abv": null,
-"list_price": 500.0,
-"promo_price": null,
-"currency": "TWD",
-"stock": "有貨",
-"image": "https://cdn.shopify.com/s/files/1/0028/9669/1264/files/E01303_3841482c-08ee-4a4b-9f6d-dbeb88050e42.png?v=1785890176",
-"url": "https://www.my9.com.tw/products/e01303",
-"extra": {
-"type": "無酒精",
-"tags": [
-"Non-alcohol-Country 無酒精-國家:England 英國",
-"Non-alcohol-Type 無酒精-分類:Soda-Water 蘇打水"
-]
-}
-},
-{
-"site": "my9",
-"brand": "Schweppes",
-"name": "舒味思通寧汽水 330ml (24罐) / Schweppes Tonic Water",
-"volume_ml": 330.0,
-"abv": null,
-"list_price": 500.0,
-"promo_price": null,
-"currency": "TWD",
-"stock": "有貨",
-"image": "https://cdn.shopify.com/s/files/1/0028/9669/1264/files/E01301.png?v=1785890180",
-"url": "https://www.my9.com.tw/products/e01301",
-"extra": {
-"type": "無酒精",
-"tags": [
-"Non-alcohol-Country 無酒精-國家:England 英國",
-"Non-alcohol-Type 無酒精-分類:Tonic-Water 通寧水"
-]
-}
-},
-{
-"site": "my9",
-"brand": "Fever Tree",
-"name": "芬味樹 頂級蘇打水 200ml (24罐) / Fever Tree Premium Soda Water",
-"volume_ml": 200.0,
-"abv": null,
-"list_price": 109.0,
-"promo_price": 80.0,
-"currency": "TWD",
-"stock": "有貨",
-"image": "https://cdn.shopify.com/s/files/1/0028/9669/1264/products/E01207_64a482e4-cfc5-4415-bdcc-640822c20f87.png?v=1580478600",
-"url": "https://www.my9.com.tw/products/e01207",
-"extra": {
-"type": "無酒精",
-"tags": [
-"Non-alcohol-Country 無酒精-國家:England 英國",
-"Non-alcohol-Other 無酒精-其它:兩箱免運",
-"Non-alcohol-Type 無酒精-分類:Soda-Water 蘇打水"
-]
-}
-},
-{
-"site": "my9",
-"brand": "Schweppes",
-"name": "舒味思薑汁汽水 330ml (24罐) / Schweppes Ginger Ale",
-"volume_ml": 330.0,
-"abv": null,
-"list_price": 500.0,
-"promo_price": null,
-"currency": "TWD",
-"stock": "有貨",
-"image": "https://cdn.shopify.com/s/files/1/0028/9669/1264/files/E01302.png?v=1785890184",
-"url": "https://www.my9.com.tw/products/e01302",
-"extra": {
-"type": "無酒精",
-"tags": [
-"Non-alcohol-Country 無酒精-國家:England 英國",
-"Non-alcohol-Type 無酒精-分類:Ginger-Ale 薑汁汽水"
-]
-}
-},
-{
-"site": "my9",
-"brand": "San Pellegrino",
-"name": "聖沛黎洛 天然氣泡礦泉水 1L (12瓶) / San Pellegrino Sparkling Water",
-"volume_ml": 1000.0,
-"abv": null,
-"list_price": 980.0,
-"promo_price": 900.0,
-"currency": "TWD",
-"stock": "有貨",
-"image": "https://cdn.shopify.com/s/files/1/0028/9669/1264/products/D01508.png?v=1577876701",
-"url": "https://www.my9.com.tw/products/d01508",
-"extra": {
-"type": "無酒精",
-"tags": [
-"Non-alcohol 無酒精-分類:Sparkling-Mineral-Water 氣泡礦泉水",
-"Non-alcohol-Country 無酒精-國家:Italy 義大利"
-]
-}
-},
-{
-"site": "my9",
-"brand": "San Pellegrino",
-"name": "聖沛黎洛 天然氣泡礦泉水 500ml (24瓶) / San Pellegrino Sparkling Water",
-"volume_ml": 500.0,
-"abv": null,
-"list_price": 1500.0,
-"promo_price": 1420.0,
-"currency": "TWD",
-"stock": "有貨",
-"image": "https://cdn.shopify.com/s/files/1/0028/9669/1264/products/D01506.png?v=1577884980",
-"url": "https://www.my9.com.tw/products/d01506",
-"extra": {
-"type": "無酒精",
-"tags": [
-"Non-alcohol 無酒精-分類:Sparkling-Mineral-Water 氣泡礦泉水",
-"Non-alcohol-Country 無酒精-國家:Italy 義大利"
-]
-}
-},
-{
-"site": "my9",
-"brand": "San Pellegrino",
-"name": "聖沛黎洛 天然氣泡礦泉水 250ml (24瓶) / San Pellegrino Sparkling Water",
-"volume_ml": 250.0,
-"abv": null,
-"list_price": 1080.0,
-"promo_price": 1000.0,
-"currency": "TWD",
-"stock": "有貨",
-"image": "https://cdn.shopify.com/s/files/1/0028/9669/1264/products/D01505_e0e5a380-1502-49e7-86cc-7f602522ec9f.png?v=1580478719",
-"url": "https://www.my9.com.tw/products/d01505",
-"extra": {
-"type": "無酒精",
-"tags": [
-"Non-alcohol 無酒精-分類:Sparkling-Mineral-Water 氣泡礦泉水",
-"Non-alcohol-Country 無酒精-國家:Italy 義大利"
-]
-}
-},
-{
-"site": "my9",
-"brand": "San Pellegrino",
-"name": "聖沛黎洛 天然氣泡礦泉水 750ml (12瓶) / San Pellegrino Sparkling Water",
-"volume_ml": 750.0,
-"abv": null,
-"list_price": 920.0,
-"promo_price": 840.0,
-"currency": "TWD",
-"stock": "有貨",
-"image": "https://cdn.shopify.com/s/files/1/0028/9669/1264/products/D01507.png?v=1577880063",
-"url": "https://www.my9.com.tw/products/d01507",
-"extra": {
-"type": "無酒精",
-"tags": [
-"Non-alcohol 無酒精-分類:Sparkling-Mineral-Water 氣泡礦泉水",
-"Non-alcohol-Country 無酒精-國家:Italy 義大利"
-]
-}
-},
-{
-"site": "my9",
-"brand": "Evian",
-"name": "愛維養 天然礦泉水 1L (12瓶) / Evian Mineral Water",
-"volume_ml": 1000.0,
-"abv": null,
-"list_price": 810.0,
-"promo_price": null,
-"currency": "TWD",
-"stock": "有貨",
-"image": "https://cdn.shopify.com/s/files/1/0028/9669/1264/products/D01404_06b0063e-e65d-4057-bf2c-57c5ed944aad.png?v=1624556597",
-"url": "https://www.my9.com.tw/products/d01401-2",
-"extra": {
-"type": "無酒精",
-"tags": [
-"Non-alcohol-Country 無酒精-國家:France 法國",
-"Non-alcohol-Type 無酒精-分類:Mineral-Water 礦泉水"
-]
-}
-},
-{
-"site": "my9",
-"brand": "Evian",
-"name": "愛維養 天然礦泉水 330ml (24瓶) / Evian Mineral Water",
-"volume_ml": 330.0,
-"abv": null,
-"list_price": 890.0,
-"promo_price": null,
-"currency": "TWD",
-"stock": "有貨",
-"image": "https://cdn.shopify.com/s/files/1/0028/9669/1264/products/D01401.png?v=1624557986",
-"url": "https://www.my9.com.tw/products/d01401",
-"extra": {
-"type": "無酒精",
-"tags": [
-"Non-alcohol-Country 無酒精-國家:France 法國",
-"Non-alcohol-Type 無酒精-分類:Mineral-Water 礦泉水"
-]
-}
-},
-{
-"site": "my9",
-"brand": "Evian",
-"name": "愛維養 天然礦泉水 500ml (24瓶) / Evian Mineral Water",
-"volume_ml": 500.0,
-"abv": null,
-"list_price": 1075.0,
-"promo_price": null,
-"currency": "TWD",
-"stock": "有貨",
-"image": "https://cdn.shopify.com/s/files/1/0028/9669/1264/products/D01402_5e4b01f0-a39d-4428-8706-dcc244dc0050.png?v=1624561749",
-"url": "https://www.my9.com.tw/products/d01401-1",
-"extra": {
-"type": "無酒精",
-"tags": [
-"Non-alcohol-Country 無酒精-國家:France 法國",
-"Non-alcohol-Type 無酒精-分類:Mineral-Water 礦泉水"
-]
-}
-},
-{
-"site": "my9",
-"brand": "Fiji",
-"name": "斐濟 礦泉水 500ml (24瓶) / Fiji Water",
-"volume_ml": 500.0,
-"abv": null,
-"list_price": 1220.0,
-"promo_price": 1030.0,
-"currency": "TWD",
-"stock": "有貨",
-"image": "https://cdn.shopify.com/s/files/1/0028/9669/1264/files/D01202.png?v=1699256011",
-"url": "https://www.my9.com.tw/products/d01201-1",
-"extra": {
-"type": "無酒精",
-"tags": [
-"Non-alcohol-Country 無酒精-國家:斐濟",
-"Non-alcohol-Type 無酒精-分類:Mineral-Water 礦泉水"
-]
-}
-},
-{
-"site": "my9",
-"brand": "Acqua Panna",
-"name": "普娜 天然礦泉水 1L (12瓶) / Acqua Panna Water",
-"volume_ml": 1000.0,
-"abv": null,
-"list_price": 980.0,
-"promo_price": 900.0,
-"currency": "TWD",
-"stock": "有貨",
-"image": "https://cdn.shopify.com/s/files/1/0028/9669/1264/products/D01303_59c56b32-43ce-4987-b5e9-72b545d86cde.png?v=1580475193",
-"url": "https://www.my9.com.tw/products/d01303",
-"extra": {
-"type": "無酒精",
-"tags": [
-"Non-alcohol-Country 無酒精-國家:Italy 義大利",
-"Non-alcohol-Type 無酒精-分類:Mineral-Water 礦泉水"
-]
-}
-},
-{
-"site": "my9",
-"brand": "Fiji",
-"name": "斐濟 礦泉水 330ml (24瓶) / Fiji Water",
-"volume_ml": 330.0,
-"abv": null,
-"list_price": 980.0,
-"promo_price": 880.0,
-"currency": "TWD",
-"stock": "有貨",
-"image": "https://cdn.shopify.com/s/files/1/0028/9669/1264/products/D01201.png?v=1583983695",
-"url": "https://www.my9.com.tw/products/d01201",
-"extra": {
-"type": "無酒精",
-"tags": [
-"Non-alcohol-Country 無酒精-國家:斐濟",
-"Non-alcohol-Type 無酒精-分類:Mineral-Water 礦泉水"
-]
-}
-},
-{
-"site": "my9",
-"brand": "Perrier",
-"name": "沛綠雅 氣泡礦泉水 330ml (24瓶) / Perrier Mineral Water",
-"volume_ml": 330.0,
-"abv": null,
-"list_price": 1020.0,
-"promo_price": null,
-"currency": "TWD",
-"stock": "有貨",
-"image": "https://cdn.shopify.com/s/files/1/0028/9669/1264/products/D00502.png?v=1580477440",
-"url": "https://www.my9.com.tw/products/d00502",
-"extra": {
-"type": "無酒精",
-"tags": [
-"Non-alcohol 無酒精-分類:Sparkling-Mineral-Water 氣泡礦泉水",
-"Non-alcohol-Country 無酒精-國家:France 法國"
-]
-}
-},
-{
-"site": "my9",
-"brand": "Calpis",
-"name": "可爾必思 (1.5L) / Calpis (1.5L)",
-"volume_ml": 1500.0,
-"abv": null,
-"list_price": 280.0,
-"promo_price": 250.0,
-"currency": "TWD",
-"stock": "有貨",
-"image": "https://cdn.shopify.com/s/files/1/0028/9669/1264/products/B00202_8d513a10-eb99-44a7-a28c-342f7f42d151.png?v=1580480060",
-"url": "https://www.my9.com.tw/products/b00202",
-"extra": {
-"type": "無酒精",
-"tags": [
-"Non-alcohol-Country 無酒精-國家:Taiwan 台灣",
-"Non-alcohol-Type 無酒精-分類:無酒精飲品"
 ]
 }
 },

@@ -44,8 +44,10 @@ def problems(p: dict) -> list[tuple[str, str]]:
         if b.isupper() and len(b) > 3:
             out.append(("warn", "品牌全大寫"))
     # 品名
-    if not n or GENERIC_NAME.match(n):
+    if not n or GENERIC_NAME.match(n) or re.match(r"^(建議價|建議售價|會員價|售價|特價|優惠價|價格|NT\$|S\$|HK\$)\s*[:：]?\s*(NT\$|\$)?\s*[\d,]", n):
         out.append(("error", "品名無效"))
+    elif re.search(r"(NT|S|HK)\$\s*[\d,]+\s*/\s*瓶", n):
+        out.append(("error", "品名含價格"))
     elif len(n) < 4:
         out.append(("warn", "品名太短"))
     elif b and n.strip().lower() == b.lower():
@@ -86,6 +88,8 @@ def problems(p: dict) -> list[tuple[str, str]]:
         out.append(("error", "圖片網址錯誤"))
     if not p.get("url"):
         out.append(("warn", "沒有商品網址"))
+        if not v:
+            out.append(("error", "沒網址也沒容量（可能是橫幅）"))
     # 庫存
     s = p.get("stock")
     if s and s not in ("有貨", "缺貨", "少量", "熱賣中", "可訂購"):

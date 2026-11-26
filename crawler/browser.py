@@ -256,6 +256,8 @@ def text_lines(text: str) -> list[str]:
             continue
         if stock_in(ln) and len(ln) < 25:
             continue
+        if PRICE_RE.search(ln) and len(re.sub(r"[\d,.$/\s]|NT|S\$|HK|元|瓶|價|售|特|會員|建議|優惠|定|原|起|from", "", ln, flags=re.I)) <= 2:
+            continue   # 「建議價 NT$1,124/瓶」這種只有價格的行
         if re.fullmatch(r"[-\d%\s.,]+(off)?", ln, re.I):
             continue
         lines.append(ln)
