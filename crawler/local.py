@@ -14,9 +14,22 @@ from . import run
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
+def _identity() -> list[str]:
+    """這台電腦還沒設定 git 的名字 / email 時，用預設值，避免 commit 失敗。"""
+    def has(key):
+        r = subprocess.run(["git", "config", key], cwd=ROOT, capture_output=True, text=True)
+        return r.returncode == 0 and r.stdout.strip()
+    extra = []
+    if not has("user.name"):
+        extra += ["-c", "user.name=liquor-crawler-local"]
+    if not has("user.email"):
+        extra += ["-c", "user.email=liquor-crawler-local@users.noreply.github.com"]
+    return extra
+
+
 def git(*args, check=True) -> int:
     print("> git", " ".join(args))
-    r = subprocess.run(["git", *args], cwd=ROOT)
+    r = subprocess.run(["git", *_identity(), *args], cwd=ROOT)
     if check and r.returncode != 0:
         raise RuntimeError(f"git {' '.join(args)} 失敗")
     return r.returncode
