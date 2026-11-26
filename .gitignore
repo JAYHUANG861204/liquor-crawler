@@ -6,3 +6,5 @@ venv/
 *.log
 !docs/data/run.log
 crawl-output.log
+
+.browser-profile/

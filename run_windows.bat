@@ -1,18 +1,27 @@
 @echo off
 chcp 65001 >nul
-cd /d %~dp0
-echo === 酒類爬蟲 ===
-if not exist .venv (
-  echo 第一次執行，安裝套件中（需要幾分鐘）...
-  python -m venv .venv || (echo 找不到 Python，請先安裝 https://www.python.org/downloads/ 並勾選 Add to PATH & pause & exit /b 1)
-  call .venv\Scripts\activate
-  pip install -r requirements.txt
-  python -m playwright install chromium
-) else (
-  call .venv\Scripts\activate
-)
-python -m crawler.run %*
+cd /d "%~dp0"
+set PYTHONUTF8=1
+
+where python >nul 2>nul
+if errorlevel 1 goto nopython
+
+if exist .venv\Scripts\python.exe goto ready
+echo First run: installing packages, please wait a few minutes...
+python -m venv .venv
+.venv\Scripts\python -m pip install -q --upgrade pip
+.venv\Scripts\python -m pip install -q -r requirements.txt
+.venv\Scripts\python -m playwright install chromium
+
+:ready
+.venv\Scripts\python -m pip install -q -r requirements.txt
+.venv\Scripts\python -m crawler.local %*
 echo.
-echo 完成！結果在 docs\products.xlsx
-start "" docs\products.xlsx
 pause
+exit /b 0
+
+:nopython
+echo Python not found. Install from https://www.python.org/downloads/
+echo and check "Add python.exe to PATH" during install.
+pause
+exit /b 1

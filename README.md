@@ -13,11 +13,11 @@
 | 代號 | 網站 | 抓法 | 狀態 |
 |---|---|---|---|
 | `my9` | [買酒網 MY9](https://www.my9.com.tw/) | Shopify 公開 JSON | 穩定 |
-| `9city` | [洋酒城 9city](https://www.9city.com.tw/) | 逐一抓商品頁 | 穩定 |
+| `9city` | [洋酒城 9city](https://www.9city.com.tw/) | 逐一抓商品頁 | **自己電腦跑**（網站擋 GitHub） |
 | `changi` | [iShopChangi](https://www.ishopchangi.com/en/category/wine-and-spirits) | 瀏覽器開分類頁、按 LOAD MORE | 需要觀察 |
 | `609` | [酒條通 609](https://www.609.com.tw/) | 瀏覽器開分類頁 | 需要觀察 |
-| `hk` | [HK Airport Shop](https://hkairportshop.com/eshop_en/wines-spirits-liquors.html) | 瀏覽器（網站有防火牆） | 實驗中 |
-| `cdf` | [中免日上](https://www.cdfsunrise.com/) | 瀏覽器（App 型網站） | 實驗中 |
+| `hk` | [HK Airport Shop](https://hkairportshop.com/eshop_en/wines-spirits-liquors.html) | 瀏覽器，遇到滑塊等你手動拖 | **自己電腦跑** |
+| `cdf` | [中免日上](https://www.cdfsunrise.com/) | 瀏覽器（App 型網站） | **自己電腦跑**（實驗中） |
 
 某個網站失敗時，會保留它上一次成功的資料，網頁上的網站卡片會顯示「抓取失敗」和最後更新時間。
 
@@ -59,20 +59,37 @@ GitHub 用 UTC 時間，台灣時間要減 8 小時，例如晚上 9 點 → `0 
 
 ## 在自己電腦執行（Windows）
 
-適合 GitHub 上被擋的網站（HK 機場、中免），或想立刻拿到 Excel。
+HK 機場、9city、中免會擋 GitHub 的主機，所以要在你自己的電腦上跑。
+跑完會**自動上傳到 GitHub**，網頁就會一起更新；GitHub 每天的排程會保留這些資料。
 
-1. 安裝 [Python 3.12](https://www.python.org/downloads/)，安裝時勾選 **Add python.exe to PATH**
-2. 在這個 repo 頁面按綠色 **Code → Download ZIP**，解壓縮
-3. 按兩下 `run_windows.bat`（第一次會自動安裝套件，要等幾分鐘）
-4. 跑完會自動打開 `docs\products.xlsx`
+### 第一次安裝（只要做一次）
 
-只跑某些網站：在資料夾開命令列，輸入
+1. 安裝 [Python 3.12](https://www.python.org/downloads/)，安裝畫面**一定要勾 Add python.exe to PATH**
+2. 安裝 [Git for Windows](https://git-scm.com/download/win)，一路按 Next 用預設值即可
+3. 安裝 [Google Chrome](https://www.google.com/chrome/)（有的話跳過）
+4. 開「命令提示字元」，輸入下面這行，把專案下載到 `C:\liquor-crawler`：
+   ```
+   git clone https://github.com/JAYHUANG861204/liquor-crawler.git C:\liquor-crawler
+   ```
+
+### 每次執行
+
+1. 打開 `C:\liquor-crawler`，按兩下 **`run_windows.bat`**
+   （第一次會安裝套件，要等幾分鐘）
+2. 會跳出 Chrome 視窗自動翻頁。**如果出現「請按住滑塊，拖動到最右邊」**，
+   就用滑鼠把滑塊拖到底，程式會自己繼續（最多等 5 分鐘）
+3. 跑完會自動上傳。第一次上傳會跳出 GitHub 登入視窗，登入一次之後就記住了
+4. 最後會自動打開 Excel；1～3 分鐘後網頁也會更新
+
+### 其他用法（在 `C:\liquor-crawler` 開命令提示字元）
 
 ```
-run_windows.bat --sites hk,cdf
+run_windows.bat --sites hk          只跑 HK 機場
+run_windows.bat --sites all         六個網站全部在自己電腦跑
+run_windows.bat --limit 20          每站最多 20 筆（測試用）
 ```
 
-其他參數：`--limit 30`（每站最多 30 筆）、`--no-images`（Excel 不放縮圖，比較快）。
+用 Download ZIP 下載的資料夾也能跑，但只會產生 Excel，不會上傳到網頁。
 
 ---
 

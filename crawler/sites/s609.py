@@ -22,20 +22,35 @@ def urls() -> list[str]:
     return [BASE + "/"] + [f"{BASE}/Country/{quote(c)}" for c in CATEGORIES] + [f"{BASE}/ProductList/{quote('果實酒')}"]
 
 
+# 分類頁上的品牌/國別連結（例如 /ProductList/麥卡倫），逐一打開才看得到商品
+LIST_RE = r"609\.com\.tw/(ProductList|Country|Area|Brand|Product/List|Search)[/?]"
+MAX_PAGES = 150
+
+JS_LINKS = """(pat) => [...new Set([...document.querySelectorAll('a[href]')]
+  .map(a => a.href.split('#')[0]).filter(h => new RegExp(pat).test(h)))]"""
+
+
 def crawl(limit: int | None = None) -> list[Product]:
     cards: dict[str, dict] = {}
+    queue, seen = urls(), set()
     with browser() as ctx:
-        for u in urls():
+        while queue and len(seen) < MAX_PAGES:
+            u = queue.pop(0)
+            if u in seen:
+                continue
+            seen.add(u)
             try:
-                page = open_page(ctx, u)
-                scroll_and_more(page, max_rounds=8)
+                page = open_page(ctx, u, wait_ms=1500)
+                scroll_and_more(page, max_rounds=6)
                 for c in extract_cards(page, PRODUCT_RE):
                     cards.setdefault(c["url"], c)
+                queue += [x for x in page.evaluate(JS_LINKS, LIST_RE) if x not in seen and x not in queue]
                 page.close()
             except Exception as e:  # noqa: BLE001
                 log.warning("609 頁面失敗 %s: %s", u, e)
             if limit and len(cards) >= limit:
                 break
+    log.info("609 開了 %d 頁，找到 %d 件", len(seen), len(cards))
     out = [parse_card(c) for c in cards.values()]
     out = [p for p in out if p.name]
     return out[:limit] if limit else out

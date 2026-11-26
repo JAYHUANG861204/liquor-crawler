@@ -111,8 +111,8 @@ window.__imgFail=img=>{const c=img.dataset.c;img.replaceWith(Object.assign(docum
 const fillSites=()=>{
   $('fSite').innerHTML='<option value="">全部網站</option>'+Object.values(SITES).map(s=>`<option value="${esc(s.id)}">${esc(s.name)}</option>`).join('');
   $('sites').innerHTML=Object.values(SITES).map(s=>{
-    const ok=(s.status==='ok'||s.status==='demo')&&s.count>0;
-    const lbl=s.status==='demo'?'示範資料':s.status==='ok'?'正常':s.status==='empty'?'這次沒抓到':s.status==='error'?'抓取失敗':'未執行';
+    const ok=(s.status==='ok'||s.status==='demo'||s.status==='local')&&s.count>0;
+    const lbl=s.status==='demo'?'示範資料':s.status==='ok'?'正常':s.status==='local'?'自己電腦更新':s.status==='local-none'?'待自己電腦執行':s.status==='empty'?'這次沒抓到':s.status==='error'?'抓取失敗':'未執行';
     return `<button class="chip" data-k="${esc(s.id)}" aria-pressed="false"><b>${esc(s.name)}</b><span class="st ${ok?'ok':'warn'}">● ${esc(lbl)}・${s.count} 筆</span><span class="t">更新：${esc(fmtTime(s.last_success))}</span></button>`}).join('');
   $('notes').innerHTML=Object.values(SITES).map(s=>`<li><b>${esc(s.name)}</b>（${esc(s.how)}）：${esc(s.message||'—')}</li>`).join('');
   document.querySelectorAll('.chip').forEach(c=>c.addEventListener('click',()=>{st.site=st.site===c.dataset.k?'':c.dataset.k;show=PAGE;fillBrands();render()}));

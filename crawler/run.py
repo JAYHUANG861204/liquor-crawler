@@ -17,7 +17,7 @@ import os
 import time
 from datetime import datetime, timezone, timedelta
 
-from .sites import SITES
+from .sites import SITES, LOCAL_ONLY
 from . import excel
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -40,7 +40,7 @@ def _load(path, default):
 
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description="酒類商品爬蟲")
-    ap.add_argument("--sites", help="逗號分隔的網站代號：" + ",".join(SITES))
+    ap.add_argument("--sites", help="逗號分隔的網站代號：" + ",".join(SITES) + "；all = 全部；local = 只跑要在自己電腦跑的網站")
     ap.add_argument("--limit", type=int, help="每站最多幾筆（測試用）")
     ap.add_argument("--no-images", action="store_true", help="Excel 不放縮圖")
     ap.add_argument("--no-excel", action="store_true", help="不輸出 Excel")
@@ -50,7 +50,13 @@ def main(argv=None) -> int:
                         handlers=[logging.StreamHandler(),
                                   logging.FileHandler(os.path.join(DATA_DIR, "run.log"), "w", encoding="utf-8")])
 
-    wanted = [s.strip() for s in a.sites.split(",")] if a.sites else list(SITES)
+    in_ci = os.environ.get("GITHUB_ACTIONS") == "true"
+    if a.sites in (None, "", "all"):
+        wanted = list(SITES)
+    elif a.sites == "local":
+        wanted = sorted(LOCAL_ONLY)
+    else:
+        wanted = [s.strip() for s in a.sites.split(",")]
     old_products = _load(PRODUCTS_JSON, [])
     old_status = {s["id"]: s for s in _load(SITES_JSON, {}).get("sites", [])}
     by_site: dict[str, list[dict]] = {}
@@ -64,7 +70,13 @@ def main(argv=None) -> int:
         st = {"id": sid, "name": name, "home": home, "currency": cur, "how": how,
               "last_success": prev.get("last_success"), "count": len(by_site.get(sid, [])),
               "status": prev.get("status", "未執行"), "message": prev.get("message", "")}
-        if sid in wanted:
+        if sid in wanted and in_ci and sid in LOCAL_ONLY:
+            if not prev.get("last_success"):
+                by_site.pop(sid, None)   # 從沒在自己電腦成功過 → 拿掉示範資料，避免誤會
+            st.update(status="local" if by_site.get(sid) else "local-none",
+                      message="只在自己電腦執行（run_windows.bat），GitHub 排程不跑這站" +
+                              (f"；資料是 {prev.get('last_success')} 在自己電腦抓的" if prev.get("last_success") else "，還沒在自己電腦跑過"))
+        elif sid in wanted:
             t0 = time.time()
             log.info("==== %s 開始 ====", name)
             try:

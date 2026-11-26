@@ -7,7 +7,9 @@
 from __future__ import annotations
 
 import logging
+import os
 import re
+import time
 from contextlib import contextmanager
 
 from .common import UA, to_num
@@ -56,17 +58,81 @@ JS_EXTRACT = r"""
 MORE_TEXTS = ["LOAD MORE", "Load More", "Load more", "載入更多", "查看更多", "更多商品", "顯示更多"]
 
 
+IN_CI = os.environ.get("GITHUB_ACTIONS") == "true"
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+PROFILE_DIR = os.path.join(ROOT, ".browser-profile")
+
+
+def headless_default() -> bool:
+    """GitHub 上沒有螢幕，一定用無頭模式；自己電腦上預設開出看得到的視窗（遇到驗證可以手動處理）。"""
+    if IN_CI:
+        return True
+    return os.environ.get("HEADLESS", "0") == "1"
+
+
 @contextmanager
-def browser(headless: bool = True):
+def browser(headless: bool | None = None):
     from playwright.sync_api import sync_playwright
+    if headless is None:
+        headless = headless_default()
+    args = ["--disable-blink-features=AutomationControlled"]
     with sync_playwright() as p:
-        b = p.chromium.launch(headless=headless, args=["--disable-blink-features=AutomationControlled"])
-        ctx = b.new_context(user_agent=UA, locale="zh-TW", viewport={"width": 1366, "height": 900})
+        if IN_CI:
+            b = p.chromium.launch(headless=True, args=args)
+            ctx = b.new_context(user_agent=UA, locale="zh-TW", viewport={"width": 1366, "height": 900})
+            closer = b.close
+        else:
+            # 自己電腦：優先用已安裝的 Google Chrome，並保留登入/驗證過的 cookie（存在 .browser-profile）
+            kw = dict(user_data_dir=PROFILE_DIR, headless=headless, args=args, locale="zh-TW",
+                      viewport={"width": 1366, "height": 900})
+            try:
+                ctx = p.chromium.launch_persistent_context(channel="chrome", **kw)
+            except Exception:  # noqa: BLE001  沒裝 Chrome 就用內建的 Chromium
+                ctx = p.chromium.launch_persistent_context(user_agent=UA, **kw)
+            closer = ctx.close
         ctx.add_init_script("Object.defineProperty(navigator,'webdriver',{get:()=>undefined})")
         try:
             yield ctx
         finally:
-            b.close()
+            closer()
+
+
+CAPTCHA_RE = re.compile(r"验证您是真人|驗證您是真人|滑动验证|滑動驗證|拖动到最右边|拖動到最右邊|verify you are human|"
+                        r"are you a robot|captcha|人機驗證|安全驗證|security check", re.I)
+
+
+def is_captcha(page) -> bool:
+    try:
+        return bool(CAPTCHA_RE.search(page.title() + " " + page.inner_text("body")[:2000]))
+    except Exception:  # noqa: BLE001
+        return False
+
+
+def wait_for_human(page, timeout_s: int = 300) -> bool:
+    """遇到真人驗證：自己電腦上就停下來等使用者在視窗裡完成；GitHub 上直接放棄。"""
+    if not is_captcha(page):
+        return True
+    if IN_CI or headless_default():
+        log.warning("遇到真人驗證頁（%s），無頭模式無法處理", page.url)
+        return False
+    print("\n" + "=" * 60)
+    print("  網站要求真人驗證！請到跳出來的瀏覽器視窗，")
+    print("  完成驗證（例如把滑塊拖到最右邊），程式會自動繼續。")
+    print(f"  最多等 {timeout_s // 60} 分鐘。")
+    print("=" * 60 + "\n")
+    try:
+        page.bring_to_front()
+    except Exception:  # noqa: BLE001
+        pass
+    end = time.time() + timeout_s
+    while time.time() < end:
+        page.wait_for_timeout(2000)
+        if not is_captcha(page):
+            log.info("驗證完成，繼續抓取")
+            page.wait_for_timeout(2500)
+            return True
+    log.warning("等待驗證逾時")
+    return False
 
 
 def open_page(ctx, url: str, wait_ms: int = 2500):
@@ -77,6 +143,11 @@ def open_page(ctx, url: str, wait_ms: int = 2500):
     except Exception:  # noqa: BLE001
         pass
     page.wait_for_timeout(wait_ms)
+    if is_captcha(page) and wait_for_human(page):
+        try:
+            page.wait_for_load_state("networkidle", timeout=15000)
+        except Exception:  # noqa: BLE001
+            pass
     return page
 
 
@@ -131,7 +202,7 @@ def fetch_html(ctx, url: str) -> str:
 # ---------- 解析卡片文字 ----------
 
 PRICE_RE = re.compile(
-    r"(?:NT\.?\s*\$?|S\$|HK\$|US\$|\$|¥|￥|RMB|(?:售價|特價|優惠價|會員價|建議售價|原價|價格|定價)\s*[:：]?\s*\$?)\s*([\d,]+(?:\.\d+)?)"
+    r"(?:NT\.?\s*\$?|S\$|HK\$|US\$|\$|¥|￥|RMB|(?:售價|特價|優惠價|會員價|建議售價|原價|價格|定價)\s*[:：]?\s*\$?)\s*[:：]?\s*([\d,]+(?:\.\d+)?)"
     r"|([\d,]+(?:\.\d+)?)\s*元")
 STOCK_WORDS = [
     (re.compile(r"out of stock|sold out|notify me|售完|缺貨|已售罄|補貨中", re.I), "缺貨"),
