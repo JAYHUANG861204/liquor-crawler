@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-26T20:57:44+08:00",
+ "updated": "2026-11-26T21:48:36+08:00",
  "sites": [
   {
    "id": "609",
@@ -40,10 +40,11 @@
    "home": "https://www.9city.com.tw/",
    "currency": "TWD",
    "how": "在自己電腦執行（網站擋 GitHub）",
-   "last_success": null,
-   "count": 0,
-   "status": "local-none",
-   "message": "只在自己電腦執行（run_windows.bat），GitHub 排程不跑這站，還沒在自己電腦跑過"
+   "last_success": "2026-11-26T21:45:47+08:00",
+   "count": 24,
+   "status": "ok",
+   "message": "24 筆，139 秒",
+   "last_run": "2026-11-26T21:45:47+08:00"
   },
   {
    "id": "my9",
