@@ -1,31 +1,17 @@
-2026-11-26 01:51:15,162 INFO 共 3627 筆 → /home/runner/work/liquor-crawler/liquor-crawler/docs/data/products.json
-/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/PIL/Image.py:1134: UserWarning: Palette images with Transparency expressed in bytes should be converted to RGBA images
-  warnings.warn(
-2026-11-26 01:52:46,608 INFO Excel 縮圖 1472 / 1500
-2026-11-26 01:52:49,000 ERROR Excel 產生失敗（網頁資料已存好，不受影響）
-Traceback (most recent call last):
-  File "/home/runner/work/liquor-crawler/liquor-crawler/crawler/run.py", line 122, in main
-    excel.write(products, {k: v[1] for k, v in SITES.items()}, XLSX, images=not a.no_images)
-  File "/home/runner/work/liquor-crawler/liquor-crawler/crawler/excel.py", line 94, in write
-    wb.save(path)
-  File "/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/openpyxl/workbook/workbook.py", line 386, in save
-    save_workbook(self, filename)
-  File "/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/openpyxl/writer/excel.py", line 294, in save_workbook
-    writer.save()
-  File "/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/openpyxl/writer/excel.py", line 275, in save
-    self.write_data()
-  File "/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/openpyxl/writer/excel.py", line 79, in write_data
-    self._write_images()
-  File "/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/openpyxl/writer/excel.py", line 116, in _write_images
-    self._archive.writestr(img.path[1:], img._data())
-                                         ^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/openpyxl/drawing/image.py", line 48, in _data
-    img = _import_image(self.ref)
-          ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/openpyxl/drawing/image.py", line 16, in _import_image
-    img = PILImage.open(img)
-          ^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/PIL/Image.py", line 3660, in open
-    fp.seek(0)
-ValueError: I/O operation on closed file.
-2026-11-26 01:52:51,180 INFO 改用不含縮圖的 Excel → /home/runner/work/liquor-crawler/liquor-crawler/docs/products.xlsx
+2026-11-26 02:06:21,674 INFO ==== DUTY ZERO 香港 開始 ====
+2026-11-26 02:06:42,051 INFO hk w.dutyzero.com.hk/showactivity/威士忌-11828：0 件
+2026-11-26 02:06:50,298 INFO hk w.dutyzero.com.hk/showactivity/中國酒-18566：0 件
+2026-11-26 02:07:02,028 INFO hk w.dutyzero.com.hk/showactivity/葡萄酒-22911：42 件
+2026-11-26 02:07:10,534 INFO hk w.dutyzero.com.hk/showactivity/威士忌-18623：0 件
+2026-11-26 02:07:19,792 INFO hk ww.dutyzero.com.hk/showactivity/干邑-23089：0 件
+2026-11-26 02:07:30,485 INFO hk utyzero.com.hk/showactivity/香檳-起泡酒-43795：15 件
+2026-11-26 02:07:39,408 INFO hk tyzero.com.hk/showactivity/氈酒-其他酒類-43797：0 件
+2026-11-26 02:07:47,316 INFO hk .dutyzero.com.hk/showactivity/優惠組合-58225：0 件
+2026-11-26 02:07:56,256 INFO hk dutyzero.com.hk/showactivity/葡萄酒香檳-58233：25 件
+2026-11-26 02:08:04,935 INFO hk .dutyzero.com.hk/showactivity/烈酒狂歡-58230：0 件
+2026-11-26 02:08:13,415 INFO hk .dutyzero.com.hk/showactivity/買一送一-58808：0 件
+2026-11-26 02:08:13,456 INFO hk 開了 11 個分類頁，共 76 件
+2026-11-26 02:08:13,466 INFO ==== DUTY ZERO 香港 結束：ok 76 筆，112 秒 ====
+2026-11-26 02:08:13,508 INFO 共 3703 筆 → /home/runner/work/liquor-crawler/liquor-crawler/docs/data/products.json
+2026-11-26 02:09:21,161 INFO Excel 縮圖 1472 / 1500
+2026-11-26 02:09:23,926 INFO Excel → /home/runner/work/liquor-crawler/liquor-crawler/docs/products.xlsx
