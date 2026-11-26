@@ -131,9 +131,10 @@ def _chinese_head(name: str) -> str:
 
 def _english_part(text: str) -> str:
     """取出中英混寫裡的英文部分，例如 'Kongsgaard 康士嘉酒莊' → 'Kongsgaard'。"""
-    parts = re.findall(r"(?:\d+(?:st|nd|rd|th)\s|[A-Za-zÀ-ÖØ-öø-ÿ])[A-Za-zÀ-ÖØ-öø-ÿ0-9'’&.\- ]*[A-Za-zÀ-ÖØ-öø-ÿ0-9.'’]", text or "")
+    parts = re.findall(r"(?:\d+(?:st|nd|rd|th)\s|[A-Za-zÀ-ÖØ-öø-ÿ])[A-Za-zÀ-ÖØ-öø-ÿ0-9'’&.\- ]*[A-Za-zÀ-ÖØ-öø-ÿ0-9.'’]", text or "", re.I)
     unit = re.compile(r"^(\d+\s*)?(ml|cl|l|lt|ltr|abv|vol|yo|yrs?|years?|x)$", re.I)
-    parts = [p.strip() for p in parts if len(p.strip()) >= 2 and not unit.match(p.strip())]
+    parts = [re.sub(r"^(ml|cl|ltr|lt|l)\b\s*", "", p.strip(), flags=re.I) for p in parts]
+    parts = [p for p in parts if len(p) >= 2 and not unit.match(p)]
     return parts[0] if parts else ""
 
 
@@ -169,8 +170,8 @@ def _canon(b: str) -> str:
 def _fix_case(b: str) -> str:
     """全大寫的品牌改成首字大寫（WARWICK → Warwick），4 個字以內的縮寫保留（JD&S、CASS）。"""
     if b.isupper() and len(re.sub(r"[^A-Z]", "", b)) > 4:
-        return " ".join(w.capitalize() if w.isalpha() else w for w in b.split())
-    return b
+        b = " ".join(w.capitalize() if w.isalpha() else w for w in b.split())
+    return re.sub(r"\b(\d+)(ST|ND|RD|TH)\b", lambda m: m.group(1) + m.group(2).lower(), b)
 
 
 def _normalize(brand: str | None, name: str = "") -> str:
@@ -195,7 +196,11 @@ def _normalize(brand: str | None, name: str = "") -> str:
     head = _chinese_head(name)
     if head:
         return head
-    return _fix_case(_english_brand(name)) or name[:10]
+    en = _english_brand(name)
+    if en:
+        return _fix_case(en)
+    # 品名開頭就是酒類名稱（例如「梅酒王720ml」）：去掉容量和數字後的整段
+    return re.split(r"\d|\s|（|\(", name)[0][:8] or name[:8]
 
 
 def normalize(brand: str | None, name: str = "") -> str:

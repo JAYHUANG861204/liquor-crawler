@@ -22,6 +22,19 @@ def test_brands():
     assert brands.normalize(None, "格蘭傑 Glenmorangie 13年 雪莉桶") == "Glenmorangie"
     assert brands.normalize(None, "布坎南DELUXE-12年調和威士忌1000ml") == "Buchanan's"
     assert brands.normalize("NIKKA 一甲") == "Nikka"
+    # 之前出過錯的案例，避免再犯
+    cases = {
+        (None, "諾蒂絲琴酒700ml"): "諾蒂絲", (None, "南非圖卡納白稍南白葡萄酒750ml"): "圖卡納",
+        (None, "布納哈本1998年蘋果白蘭地桶"): "Bunnahabhain", (None, "古董玩家Antiquary12年調和威士忌700ml"): "Antiquary",
+        (None, "吉拉15年雪莉RESERVE單一純麥威士忌700ml"): "Jura", (None, "Nikka Frontier90週年紀念調和威士忌500"): "Nikka",
+        (None, "AS WE GET IT高地雪莉桶單一純麥威士忌700ml"): "As We Get It", (None, "梅酒王720ml"): "梅酒王",
+        (None, "國盛知多梅酒"): "Kunizakari", (None, "大山夢工房柑橘梅酒720ml"): "大山夢工房",
+        ("23RD STREET DISTILLERY", ""): "23rd Street Distillery", ("WARWICK", ""): "Warwick", ("JD&S", ""): "JD&S",
+        ("The Glen Grant", ""): "Glen Grant", ("Ch. Lafite Rothschild", ""): "Château Lafite Rothschild",
+        ("中野BC", "中野BC 綠茶梅酒"): "Nakano BC", ("1792", ""): "1792", (None, "野格 迷你酒 / Jägermeister Mini Size"): "Jägermeister",
+    }
+    for (b, n), want in cases.items():
+        assert brands.normalize(b, n) == want, (b, n, brands.normalize(b, n), want)
 
 def test_my9():
     p = my9.parse_product({"title": "康士嘉酒莊 國王的農場 || Kongsgaard King's Farm 2024", "vendor": "Kongsgaard 康士嘉酒莊",
