@@ -72,6 +72,22 @@ details li{margin:6px 0;font-size:15px}
 .btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
 .more{display:flex;justify-content:center;padding:16px}
 .chip .t{display:block;font-size:11px;color:var(--mute)}
+.lb{position:fixed;inset:0;z-index:50;display:flex;align-items:center;justify-content:center;padding:16px;background:#000a;backdrop-filter:blur(2px)}
+.lb[hidden]{display:none}
+.lb-box{position:relative;background:var(--sheet);color:var(--ink);border-radius:14px;max-width:min(560px,100%);width:100%;max-height:calc(100vh - 32px);overflow:auto;box-shadow:0 20px 60px #0008;padding:20px}
+.lb-img{display:flex;align-items:center;justify-content:center;background:#fff;border-radius:10px;min-height:260px}
+.lb-img img{max-width:100%;max-height:60vh;object-fit:contain;display:block}
+.lb-x{position:absolute;top:8px;right:8px;width:44px;height:44px;border:0;border-radius:50%;background:var(--band);color:#fff;font-size:24px;line-height:1;cursor:pointer;z-index:2}
+.lb-x:hover{background:var(--band2)}
+.lb-nav{position:absolute;top:150px;width:44px;height:44px;border:0;border-radius:50%;background:#0006;color:#fff;font-size:22px;cursor:pointer}
+.lb-nav[hidden]{display:none}
+.lb-prev{left:8px}.lb-next{right:8px}
+.lb-info{margin-top:14px}
+.lb-info b{display:block;font-size:13px;color:var(--mute);font-weight:500}
+.lb-info h3{margin:2px 0 8px;font-size:18px;line-height:1.35}
+.lb-info .row{display:flex;flex-wrap:wrap;gap:6px 16px;align-items:baseline;font-size:15px}
+.lb-info .btn{margin-top:12px}
+.img button{border:0;background:none;padding:0;cursor:zoom-in;display:block}
 @media(max-width:600px){table{font-size:13px}.stack thead{display:none}.stack tr{display:grid;padding-block:10px;border-bottom:1px solid var(--line)}.stack td{display:flow-root;border:0;padding:3px 12px;padding-inline-start:8em;text-align:start}.stack td::before{content:attr(data-l);float:inline-start;width:7.5em;margin-inline-start:-8em;white-space:normal;color:var(--mute)}.stack td:empty{display:none}.stack td.n{text-align:start}}
 @media(prefers-reduced-motion:no-preference){tbody tr{animation:in .25s ease both}@keyframes in{from{opacity:0;transform:translateY(4px)}}}
 </style>
@@ -101,6 +117,15 @@ details li{margin:6px 0;font-size:15px}
     <ul id="notes"></ul>
   </details>
 </main>
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="商品圖片">
+  <div class="lb-box">
+    <div class="lb-img" id="lbImg"></div>
+    <button class="lb-nav lb-prev" id="lbPrev" aria-label="上一個">&#8249;</button>
+    <button class="lb-nav lb-next" id="lbNext" aria-label="下一個">&#8250;</button>
+    <button class="lb-x" id="lbX" aria-label="關閉">&times;</button>
+    <div class="lb-info" id="lbInfo"></div>
+  </div>
+</div>
 <script>
 {
 const CUR={TWD:'NT$',SGD:'S$',HKD:'HK$',CNY:'¥',USD:'US$'};
@@ -111,7 +136,7 @@ const LABEL={brand:'品牌',name:'品名',volume_ml:'容量',abv:'酒精濃度',
 const sortVal=(r,k)=>{
   if(k==='list_price'||k==='promo_price'){const v=r[k];return v==null||!v?null:v*(TWD[r.currency]||1)}
   const v=r[k];return v===''||v===undefined?null:v};
-let D=[],SITES={},show=PAGE,sortK=null,sortDir=1,st={site:'',brand:''};
+let D=[],VIEW=[],SITES={},show=PAGE,sortK=null,sortDir=1,st={site:'',brand:''};
 try{Object.assign(st,JSON.parse(localStorage.getItem('lq')||'{}'))}catch(e){}
 const $=id=>document.getElementById(id);
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -147,9 +172,10 @@ const render=()=>{
   $('sortNote').textContent=sortK?`依「${LABEL[sortK]}」${sortDir>0?'由小到大':'由大到小'}排序・再點一次反轉，點第三次取消`:'點欄位標題可排序（價格依台幣約略換算）';
   const site=SITES[st.site];
   $('cnt').textContent=`${rows.length} 件商品`+(site?`・${site.name}`:'')+(st.brand?`・${st.brand}`:'');
-  $('rows').innerHTML=rows.length?rows.slice(0,show).map(r=>{
+  VIEW=rows;
+  $('rows').innerHTML=rows.length?rows.slice(0,show).map((r,i)=>{
     const img=safeUrl(r.image),url=safeUrl(r.url);
-    const im=img?`<a href="${esc(img)}" target="_blank" rel="noopener"><img src="${esc(img)}" alt="" loading="lazy" referrerpolicy="no-referrer" data-c="${col(r)}" onerror="__imgFail(this)"></a>`:`<span>${bottle(col(r))}</span>`;
+    const im=img?`<button type="button" data-i="${i}" title="放大圖片"><img src="${esc(img)}" alt="" loading="lazy" referrerpolicy="no-referrer" data-c="${col(r)}" onerror="__imgFail(this)"></button>`:`<span>${bottle(col(r))}</span>`;
     const nm=url?`<a href="${esc(url)}" target="_blank" rel="noopener">${esc(r.name)}</a>`:esc(r.name);
     const hasP=r.promo_price!=null&&r.list_price!=null&&r.promo_price<r.list_price;
     const sc=r.stock?(/缺貨|少量|Few/i.test(r.stock)?'warn':'ok'):'';
@@ -177,6 +203,32 @@ document.querySelectorAll('th[data-k]').forEach(th=>{
   th.addEventListener('click',go);th.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();go()}});
 });
 if(st.sortK&&LABEL[st.sortK]){sortK=st.sortK;sortDir=st.sortDir===-1?-1:1}
+// ---- 圖片放大視窗 ----
+const lbShow=i=>{
+  const withImg=VIEW.map((r,j)=>safeUrl(r.image)?j:-1).filter(j=>j>=0);
+  if(!withImg.length)return;
+  if(!withImg.includes(i))i=withImg[0];
+  const r=VIEW[i],url=safeUrl(r.url);
+  $('lbImg').innerHTML=`<img src="${esc(safeUrl(r.image))}" alt="${esc(r.name)}" referrerpolicy="no-referrer">`;
+  const hasP=r.promo_price!=null&&r.list_price!=null&&r.promo_price<r.list_price;
+  $('lbInfo').innerHTML=`<b>${esc(r.brand)}・${esc(SITES[r.site]?.name||r.site)}</b><h3>${esc(r.name)}</h3>
+    <div class="row">${r.volume_ml?`<span>${esc(r.volume_ml)} ml</span>`:''}${r.abv!=null?`<span>${esc(r.abv)}%</span>`:''}
+    <span class="${hasP?'strike':''}">${money(r.list_price,r.currency)}</span>${r.promo_price!=null?`<span class="promo">${money(r.promo_price,r.currency)}</span>`:''}
+    ${r.stock?`<span class="stock">${esc(r.stock)}</span>`:''}</div>
+    ${url?`<a class="btn" href="${esc(url)}" target="_blank" rel="noopener">到原網站看商品</a>`:''}`;
+  const pos=withImg.indexOf(i);
+  $('lbPrev').hidden=pos<=0;$('lbNext').hidden=pos>=withImg.length-1;
+  $('lbPrev').onclick=()=>lbShow(withImg[pos-1]);$('lbNext').onclick=()=>lbShow(withImg[pos+1]);
+  if($('lb').hidden){$('lb').hidden=false;document.body.style.overflow='hidden';$('lbX').focus()}
+};
+const lbClose=()=>{$('lb').hidden=true;document.body.style.overflow=''};
+$('rows').addEventListener('click',e=>{const b=e.target.closest('button[data-i]');if(b)lbShow(+b.dataset.i)});
+$('lbX').addEventListener('click',lbClose);
+$('lb').addEventListener('click',e=>{if(e.target===$('lb'))lbClose()});
+document.addEventListener('keydown',e=>{if($('lb').hidden)return;
+  if(e.key==='Escape')lbClose();
+  else if(e.key==='ArrowLeft'&&!$('lbPrev').hidden)$('lbPrev').click();
+  else if(e.key==='ArrowRight'&&!$('lbNext').hidden)$('lbNext').click()});
 Promise.all([fetch('data/products.json',{cache:'no-store'}).then(r=>r.json()),fetch('data/sites.json',{cache:'no-store'}).then(r=>r.json())])
 .then(([p,s])=>{D=p;SITES=Object.fromEntries(s.sites.map(x=>[x.id,x]));$('sub').textContent=`6 個酒類電商，共 ${p.length} 件商品。最後更新：${fmtTime(s.updated)}`;
   if(st.site&&!SITES[st.site])st.site='';fillSites();fillBrands();render()})

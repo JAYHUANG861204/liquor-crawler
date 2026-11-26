@@ -48,7 +48,8 @@ EN_FIX = {
 def _english_part(text: str) -> str:
     """取出中英混寫裡的英文部分，例如 'Kongsgaard 康士嘉酒莊' → 'Kongsgaard'。"""
     parts = re.findall(r"[A-Za-zÀ-ÖØ-öø-ÿ][A-Za-zÀ-ÖØ-öø-ÿ0-9'’&.\- ]*[A-Za-zÀ-ÖØ-öø-ÿ0-9.'’]", text or "")
-    parts = [p.strip() for p in parts if len(p.strip()) >= 2]
+    unit = re.compile(r"^(\d+\s*)?(ml|cl|l|lt|ltr|abv|vol|yo|yrs?|years?|x)$", re.I)
+    parts = [p.strip() for p in parts if len(p.strip()) >= 2 and not unit.match(p.strip())]
     return parts[0] if parts else ""
 
 
@@ -69,4 +70,6 @@ def normalize(brand: str | None, name: str = "") -> str:
     if en:
         # 品名的英文部分只取前兩個字當品牌
         return EN_FIX.get(en.upper(), " ".join(en.split()[:2]))
-    return (name or "").split(" ")[0][:12]
+    # 全中文品名：取酒類名稱或數字之前的那段，例如「諾蒂絲琴酒700ml」→「諾蒂絲」
+    head = re.split(r"\d|琴酒|威士忌|白蘭地|干邑|葡萄酒|紅酒|白酒|粉紅酒|香檳|氣泡酒|清酒|伏特加|蘭姆酒|龍舌蘭|利口酒|啤酒|梅酒|高粱|\s", name or "")[0]
+    return head[:10] or (name or "")[:10]
