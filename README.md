@@ -53,6 +53,8 @@ GitHub 用 UTC 時間，台灣時間要減 8 小時，例如晚上 9 點 → `0 
 
 **看執行紀錄 / 錯誤**：Actions → 點某次執行 → 點 `crawl` → 展開「執行爬蟲」。
 
+**檢查資料品質**：`python -m crawler.audit`，列出各網站不合理的品牌、價格、容量等。每次排程跑完也會自動檢查，結果在 `docs/data/run.log` 最後面。
+
 **品牌名稱沒有變英文**：在 `crawler/brands.py` 的 `ZH_EN` 加一行對照，例如 `"格蘭傑": "Glenmorangie",`。
 
 ---

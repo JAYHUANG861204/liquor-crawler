@@ -53,7 +53,24 @@ def test_609_card():
     p = s609.parse_card({"url": "https://www.609.com.tw/Product/111999", "text": "布坎南DELUXE-12年調和威士忌1000ml\nNT$ 899", "img": "", "title": ""})
     assert (p.brand, p.volume_ml, p.list_price) == ("Buchanan's", 1000, 899)
 
-if __name__ == "__main__":
+def test_clean():
+    from crawler.clean import clean_product as C
+    base = dict(site="609", brand="ml", name="諾蒂絲琴酒700ml", volume_ml=700, abv=None, list_price=999,
+                promo_price=None, currency="TWD", stock=None, image="x", url="u")
+    assert C(base)["brand"] == "諾蒂絲"
+    assert C(dict(base, name="img-product")) is None
+    assert C(dict(base, name="Nikka Frontier90週年紀念調和威士忌500", volume_ml=None))["volume_ml"] == 500
+    assert C(dict(base, site="changi", brand="+1", name="OYSTER ADRIATIC GIN 700ML"))["brand"] == "Oyster"
+    r = C(dict(base, site="changi", brand="The Glen Grant", name="GLEN GRANT 18YO", list_price=188, promo_price=18))
+    assert (r["brand"], r["list_price"], r["promo_price"]) == ("Glen Grant", 188, None)
+    assert C(dict(base, site="hk", name="- 購買葡萄酒、香檳滿HK$2,999，即送香檳杯 1套。")) is None
+    assert C(dict(base, site="my9", brand="Y", name="山崎", list_price=0.0))["list_price"] is None
+    assert C(dict(base, site="my9", brand="G", name="Graham's Port", abv=77))["abv"] is None
+    assert C(dict(base, site="my9", brand="MY9", name="買酒網品牌開瓶器", volume_ml=None)) is None
+    assert C(dict(base, site="hk", brand="WARWICK", name="Warwick 白葡萄酒"))["brand"] == "Warwick"
+
+
+if __name__ == "__main__":  # noqa
     for k, f in list(globals().items()):
         if k.startswith("test_"):
             f(); print("ok", k)

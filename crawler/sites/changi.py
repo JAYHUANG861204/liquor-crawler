@@ -48,7 +48,11 @@ def parse_card(c: dict) -> Product:
     if not brand_line and lines and len(lines[0]) <= 30 and lines[0] != name:
         brand_line = lines[0]
     full = f"{name} {slug_name.replace(' ', ' ')}"
-    lp, pp = split_prices(prices_in(text))
+    # Changi 的價格一定是「S$123.45」兩位小數；其他數字（年份、省下的金額）不算
+    ps = [float(x.replace(",", "")) for x in re.findall(r"S\$\s*([\d,]+\.\d{2})", text)]
+    ps = [v for v, m in zip(ps, re.finditer(r"S\$\s*[\d,]+\.\d{2}", text))
+          if not re.search(r"(save|off|less)\W{0,3}$", text[max(0, m.start() - 10):m.start()], re.I)]
+    lp, pp = split_prices(ps or prices_in(text))
     brand = brands.normalize(brand_line, name)
     return Product(
         site=SITE,

@@ -212,9 +212,17 @@ STOCK_WORDS = [
 ]
 
 
+SAVE_RE = re.compile(r"(save|off|less|discount|省|減|折抵|現折|回饋|贈)\W{0,3}$", re.I)
+
+
 def prices_in(text: str) -> list[float]:
+    """找卡片上的價格；「Save S$18」「現折 100」這類省下的金額不算。"""
     out = []
     for m in PRICE_RE.finditer(text):
+        if SAVE_RE.search(text[max(0, m.start() - 12):m.start()]):
+            continue
+        if re.match(r"\s*(off|折)", text[m.end():m.end() + 5], re.I):
+            continue
         v = to_num(m.group(1) or m.group(2))
         if v and v >= 1:
             out.append(v)

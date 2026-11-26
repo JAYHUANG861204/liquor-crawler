@@ -4,6 +4,10 @@ on:
   schedule:
     # GitHub 用 UTC 時間；00:00 UTC = 台灣時間早上 08:00
     - cron: "0 0 * * *"
+  # 修改 .github/run-now.txt 並推上來，也會立刻執行一次（方便改完程式馬上重抓）
+  push:
+    branches: [main]
+    paths: [".github/run-now.txt"]
   workflow_dispatch:
     inputs:
       sites:
@@ -48,7 +52,9 @@ jobs:
           [ -n "$SITES" ] && ARGS="$ARGS --sites $SITES"
           [ -n "$LIMIT" ] && ARGS="$ARGS --limit $LIMIT"
           python -m crawler.run $ARGS 2>&1 | tee crawl-output.log
-          exit ${PIPESTATUS[0]}
+          rc=${PIPESTATUS[0]}
+          python -m crawler.audit --samples 2 2>&1 | tee -a crawl-output.log || true
+          exit $rc
 
       - name: 儲存結果
         if: always()

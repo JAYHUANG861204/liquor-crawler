@@ -117,6 +117,15 @@ def main(argv=None) -> int:
         status[sid] = st
 
     products = [p for sid in SITES for p in by_site.get(sid, [])]
+    # 統一清理（舊資料也一起過，規則改了之後舊資料也會跟著修正）
+    from .clean import clean_all
+    products, dropped = clean_all(products)
+    log.info("清理完成：保留 %d 筆，剔除 %d 筆（無效品名、促銷公告、非酒類、重複）", len(products), dropped)
+    counts = {}
+    for p in products:
+        counts[p["site"]] = counts.get(p["site"], 0) + 1
+    for sid, st in status.items():
+        st["count"] = counts.get(sid, 0)
     os.makedirs(DATA_DIR, exist_ok=True)
     with open(PRODUCTS_JSON, "w", encoding="utf-8") as f:
         json.dump(products, f, ensure_ascii=False, indent=0)
@@ -129,6 +138,15 @@ def main(argv=None) -> int:
             json.dump(SAMPLES, f, ensure_ascii=False, indent=1)
     except Exception:  # noqa: BLE001
         pass
+
+    # 資料品質檢查，結果寫進紀錄
+    try:
+        from .audit import audit
+        for sid, r in audit(products, samples=2).items():
+            errs = {k[1]: v for k, v in r["issues"].items() if k[0] == "error"}
+            log.info("品質檢查 %s：%d 筆，嚴重問題 %s", sid, r["total"], errs or "無")
+    except Exception:  # noqa: BLE001
+        log.exception("品質檢查失敗")
 
     if not a.no_excel:
         try:
