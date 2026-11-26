@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-26T20:27:47+08:00",
+ "updated": "2026-11-26T20:57:44+08:00",
  "sites": [
   {
    "id": "609",
@@ -7,10 +7,10 @@
    "home": "https://www.609.com.tw/",
    "currency": "TWD",
    "how": "瀏覽器抓分類頁",
-   "last_success": "2026-11-26T20:27:47+08:00",
+   "last_success": "2026-11-26T20:57:44+08:00",
    "count": 696,
    "status": "ok",
-   "message": "696 筆，1185 秒"
+   "message": "696 筆，1128 秒"
   },
   {
    "id": "changi",
@@ -18,10 +18,10 @@
    "home": "https://www.ishopchangi.com/",
    "currency": "SGD",
    "how": "瀏覽器抓分類頁，按 LOAD MORE",
-   "last_success": "2026-11-26T20:27:47+08:00",
+   "last_success": "2026-11-26T20:57:44+08:00",
    "count": 1112,
    "status": "ok",
-   "message": "1112 筆，118 秒"
+   "message": "1112 筆，117 秒"
   },
   {
    "id": "hk",
@@ -29,10 +29,10 @@
    "home": "https://www.dutyzero.com.hk/",
    "currency": "HKD",
    "how": "瀏覽器抓分類頁（香港機場免稅店網店）",
-   "last_success": "2026-11-26T20:27:47+08:00",
+   "last_success": "2026-11-26T20:57:44+08:00",
    "count": 76,
    "status": "ok",
-   "message": "77 筆，156 秒"
+   "message": "77 筆，150 秒"
   },
   {
    "id": "9city",
@@ -51,7 +51,7 @@
    "home": "https://www.my9.com.tw/",
    "currency": "TWD",
    "how": "Shopify JSON",
-   "last_success": "2026-11-26T20:27:47+08:00",
+   "last_success": "2026-11-26T20:57:44+08:00",
    "count": 2415,
    "status": "ok",
    "message": "2444 筆，19 秒"
