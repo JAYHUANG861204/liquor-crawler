@@ -31,6 +31,7 @@ ZH_EN = {
     "酩悅": "Moët & Chandon", "凱歌": "Veuve Clicquot", "唐培里儂": "Dom Pérignon",
     "路易侯德爾": "Louis Roederer", "寶林傑": "Bollinger", "泰廷爵": "Taittinger",
     "奔富": "Penfolds", "開木斯": "Caymus", "康士嘉": "Kongsgaard", "樂華": "Domaine Lafage",
+    "野格": "Jägermeister", "絕對伏特加": "Absolut",
     "茅台": "Kweichow Moutai", "五糧液": "Wuliangye", "金門高粱": "Kinmen Kaoliang",
     "獺祭": "Dassai", "玉乃光": "Tamanohikari", "梅乃宿": "Umenoyado", "白鶴": "Hakutsuru",
     "鳳凰美田": "Hououbiden", "十四代": "Juyondai", "黑馬": "Kuroma",
