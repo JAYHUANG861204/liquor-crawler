@@ -83,6 +83,17 @@ GitHub 用 UTC 時間，台灣時間要減 8 小時，例如晚上 9 點 → `0 
 3. 跑完會自動上傳。第一次上傳會跳出 GitHub 登入視窗，登入一次之後就記住了
 4. 最後會自動打開 Excel；1～3 分鐘後網頁也會更新
 
+### 9city 每天自動跑（Windows 工作排程器）
+
+- **`run_9city.bat`**：按兩下只跑 9city，跑完自動上傳到網頁
+- **`setup_9city_schedule.bat`**：按兩下執行一次，輸入每天要跑的時間（例如 `12:00`），
+  就會在 Windows「工作排程器」建立名為 `LiquorCrawler-9city` 的工作，之後每天自動執行，不會跳視窗
+  - 那個時間電腦要開著、而且已登入
+  - **第一次請先手動按一次 `run_9city.bat`**，完成套件安裝和 GitHub 登入，之後排程才能自動上傳
+  - 自動執行的紀錄在 `local-run.log`
+  - 立刻測試排程：`schtasks /Run /TN "LiquorCrawler-9city"`
+  - 取消排程：`schtasks /Delete /TN "LiquorCrawler-9city" /F`
+
 ### 其他用法（在 `C:\liquor-crawler` 開命令提示字元）
 
 ```

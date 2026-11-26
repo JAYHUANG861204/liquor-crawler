@@ -31,7 +31,7 @@ def has_git() -> bool:
 
 
 def main() -> int:
-    argv = sys.argv[1:]
+    argv = [a for a in sys.argv[1:] if a.lower() != "--auto"]
     if not any(a.startswith("--sites") for a in argv):
         argv = ["--sites", "local"] + argv
     upload = has_git()
@@ -65,7 +65,7 @@ def main() -> int:
                 print("  可以稍後再執行一次 run_windows.bat，會一起補上傳。")
 
     xlsx = os.path.join(ROOT, "docs", "products.xlsx")
-    if os.name == "nt" and os.path.exists(xlsx):
+    if os.name == "nt" and os.path.exists(xlsx) and not os.environ.get("LIQUOR_NO_OPEN"):
         os.startfile(xlsx)  # type: ignore[attr-defined]
     return 0
 

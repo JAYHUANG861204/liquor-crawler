@@ -8,3 +8,4 @@ venv/
 crawl-output.log
 
 .browser-profile/
+local-run.log
