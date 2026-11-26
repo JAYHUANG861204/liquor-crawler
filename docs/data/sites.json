@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-26T13:38:35+08:00",
+ "updated": "2026-11-26T14:01:30+08:00",
  "sites": [
   {
    "id": "609",
@@ -7,10 +7,10 @@
    "home": "https://www.609.com.tw/",
    "currency": "TWD",
    "how": "瀏覽器抓分類頁",
-   "last_success": "2026-11-25T21:28:47+08:00",
-   "count": 61,
+   "last_success": "2026-11-26T14:01:30+08:00",
+   "count": 696,
    "status": "ok",
-   "message": "61 筆，103 秒"
+   "message": "696 筆，1191 秒"
   },
   {
    "id": "changi",
@@ -18,10 +18,10 @@
    "home": "https://www.ishopchangi.com/",
    "currency": "SGD",
    "how": "瀏覽器抓分類頁，按 LOAD MORE",
-   "last_success": "2026-11-25T21:28:47+08:00",
-   "count": 1114,
+   "last_success": "2026-11-26T14:01:30+08:00",
+   "count": 1113,
    "status": "ok",
-   "message": "1114 筆，119 秒"
+   "message": "1113 筆，116 秒"
   },
   {
    "id": "hk",
@@ -29,10 +29,10 @@
    "home": "https://www.dutyzero.com.hk/",
    "currency": "HKD",
    "how": "瀏覽器抓分類頁（香港機場免稅店網店）",
-   "last_success": "2026-11-26T13:38:35+08:00",
+   "last_success": "2026-11-26T14:01:30+08:00",
    "count": 77,
    "status": "ok",
-   "message": "77 筆，161 秒"
+   "message": "77 筆，153 秒"
   },
   {
    "id": "9city",
@@ -41,9 +41,9 @@
    "currency": "TWD",
    "how": "在自己電腦執行（網站擋 GitHub）",
    "last_success": null,
-   "count": 4,
-   "status": "error",
-   "message": "RuntimeError: 首頁與分類頁都找不到商品連結，網站結構可能改了（沿用上次資料）"
+   "count": 0,
+   "status": "local-none",
+   "message": "只在自己電腦執行（run_windows.bat），GitHub 排程不跑這站，還沒在自己電腦跑過"
   },
   {
    "id": "my9",
@@ -51,10 +51,10 @@
    "home": "https://www.my9.com.tw/",
    "currency": "TWD",
    "how": "Shopify JSON",
-   "last_success": "2026-11-25T21:28:47+08:00",
+   "last_success": "2026-11-26T14:01:30+08:00",
    "count": 2448,
    "status": "ok",
-   "message": "2448 筆，17 秒"
+   "message": "2448 筆，21 秒"
   },
   {
    "id": "cdf",
@@ -64,8 +64,8 @@
    "how": "在自己電腦執行（實驗中，App 型網站）",
    "last_success": null,
    "count": 0,
-   "status": "empty",
-   "message": "沒抓到商品"
+   "status": "local-none",
+   "message": "只在自己電腦執行（run_windows.bat），GitHub 排程不跑這站，還沒在自己電腦跑過"
   }
  ]
 }
