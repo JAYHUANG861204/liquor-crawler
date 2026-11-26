@@ -1,17 +1,17 @@
-2026-11-26 02:06:21,674 INFO ==== DUTY ZERO 香港 開始 ====
-2026-11-26 02:06:42,051 INFO hk w.dutyzero.com.hk/showactivity/威士忌-11828：0 件
-2026-11-26 02:06:50,298 INFO hk w.dutyzero.com.hk/showactivity/中國酒-18566：0 件
-2026-11-26 02:07:02,028 INFO hk w.dutyzero.com.hk/showactivity/葡萄酒-22911：42 件
-2026-11-26 02:07:10,534 INFO hk w.dutyzero.com.hk/showactivity/威士忌-18623：0 件
-2026-11-26 02:07:19,792 INFO hk ww.dutyzero.com.hk/showactivity/干邑-23089：0 件
-2026-11-26 02:07:30,485 INFO hk utyzero.com.hk/showactivity/香檳-起泡酒-43795：15 件
-2026-11-26 02:07:39,408 INFO hk tyzero.com.hk/showactivity/氈酒-其他酒類-43797：0 件
-2026-11-26 02:07:47,316 INFO hk .dutyzero.com.hk/showactivity/優惠組合-58225：0 件
-2026-11-26 02:07:56,256 INFO hk dutyzero.com.hk/showactivity/葡萄酒香檳-58233：25 件
-2026-11-26 02:08:04,935 INFO hk .dutyzero.com.hk/showactivity/烈酒狂歡-58230：0 件
-2026-11-26 02:08:13,415 INFO hk .dutyzero.com.hk/showactivity/買一送一-58808：0 件
-2026-11-26 02:08:13,456 INFO hk 開了 11 個分類頁，共 76 件
-2026-11-26 02:08:13,466 INFO ==== DUTY ZERO 香港 結束：ok 76 筆，112 秒 ====
-2026-11-26 02:08:13,508 INFO 共 3703 筆 → /home/runner/work/liquor-crawler/liquor-crawler/docs/data/products.json
-2026-11-26 02:09:21,161 INFO Excel 縮圖 1472 / 1500
-2026-11-26 02:09:23,926 INFO Excel → /home/runner/work/liquor-crawler/liquor-crawler/docs/products.xlsx
+2026-11-26 05:38:35,292 INFO ==== DUTY ZERO 香港 開始 ====
+2026-11-26 05:39:01,218 INFO hk w.dutyzero.com.hk/showactivity/威士忌-11828：0 件
+2026-11-26 05:39:15,204 INFO hk w.dutyzero.com.hk/showactivity/中國酒-18566：3 件
+2026-11-26 05:39:29,801 INFO hk w.dutyzero.com.hk/showactivity/葡萄酒-22911：82 件
+2026-11-26 05:39:44,613 INFO hk w.dutyzero.com.hk/showactivity/威士忌-18623：0 件
+2026-11-26 05:39:58,428 INFO hk ww.dutyzero.com.hk/showactivity/干邑-23089：0 件
+2026-11-26 05:40:11,744 INFO hk utyzero.com.hk/showactivity/香檳-起泡酒-43795：28 件
+2026-11-26 05:40:25,302 INFO hk tyzero.com.hk/showactivity/氈酒-其他酒類-43797：0 件
+2026-11-26 05:40:37,355 INFO hk .dutyzero.com.hk/showactivity/優惠組合-58225：0 件
+2026-11-26 05:40:50,917 INFO hk dutyzero.com.hk/showactivity/葡萄酒香檳-58233：51 件
+2026-11-26 05:41:04,387 INFO hk .dutyzero.com.hk/showactivity/烈酒狂歡-58230：0 件
+2026-11-26 05:41:16,535 INFO hk .dutyzero.com.hk/showactivity/買一送一-58808：0 件
+2026-11-26 05:41:16,584 INFO hk 開了 11 個分類頁，共 77 件
+2026-11-26 05:41:16,597 INFO ==== DUTY ZERO 香港 結束：ok 77 筆，161 秒 ====
+2026-11-26 05:41:16,653 INFO 共 3704 筆 → /home/runner/work/liquor-crawler/liquor-crawler/docs/data/products.json
+2026-11-26 05:42:34,157 INFO Excel 縮圖 1471 / 1500
+2026-11-26 05:42:38,048 INFO Excel → /home/runner/work/liquor-crawler/liquor-crawler/docs/products.xlsx
