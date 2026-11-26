@@ -41,6 +41,14 @@ main{max-width:1240px;margin:0 auto;padding:0 max(4vw,16px) 48px}
 .sheet{background:var(--sheet);border:1px solid var(--line);border-radius:12px;overflow:hidden}
 table{width:100%;border-collapse:collapse;font-size:15px}
 th{background:light-dark(#f3eced,#261d20);text-align:left;font-weight:700;font-size:13px;padding:10px 12px;border-bottom:1px solid var(--line);white-space:nowrap;cursor:pointer;user-select:none}
+th[data-k]:not([data-k=img]){cursor:pointer}
+th[data-k]:not([data-k=img]):hover{background:light-dark(#eadfe1,#30252a)}
+th[data-k]:not([data-k=img])::after{content:"⇅";margin-left:6px;opacity:.35;font-size:12px}
+th[aria-sort=ascending]::after{content:"▲"!important;opacity:1!important;color:var(--band2)}
+th[aria-sort=descending]::after{content:"▼"!important;opacity:1!important;color:var(--band2)}
+th[aria-sort]{color:var(--band2)}
+:root[data-theme=dark] th[aria-sort],:root[data-theme=dark] th[aria-sort]::after{color:#f0a3b3}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]) th[aria-sort],:root:not([data-theme=light]) th[aria-sort]::after{color:#f0a3b3}}
 th.n,td.n{text-align:right}
 td{padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
 tr:last-child td{border-bottom:0}
@@ -83,7 +91,7 @@ details li{margin:6px 0;font-size:15px}
 <main>
   <div class="sites" id="sites"></div>
   <div class="meta"><h2 id="cnt">載入中…</h2>
-    <div class="tools"><span class="note">點欄位標題可排序</span><a class="btn" href="products.xlsx">下載 Excel</a></div></div>
+    <div class="tools"><span class="note" id="sortNote">點欄位標題可排序（價格依台幣約略換算）</span><a class="btn" href="products.xlsx">下載 Excel</a></div></div>
   <div class="sheet"><table class="stack" id="tbl">
     <thead><tr><th data-k="img">商品圖片</th><th data-k="brand">品牌</th><th data-k="name">品名</th><th data-k="volume_ml" class="n">容量</th><th data-k="abv" class="n">酒精濃度</th><th data-k="list_price" class="n">訂價</th><th data-k="promo_price" class="n">促銷價</th><th data-k="stock">庫存</th></tr></thead>
     <tbody id="rows"></tbody>
@@ -97,6 +105,12 @@ details li{margin:6px 0;font-size:15px}
 {
 const CUR={TWD:'NT$',SGD:'S$',HKD:'HK$',CNY:'¥',USD:'US$'};
 const PAGE=200;
+// 只用來排序的約略匯率（換算成台幣），不顯示在表格上
+const TWD={TWD:1,SGD:24,HKD:4.1,CNY:4.4,USD:32};
+const LABEL={brand:'品牌',name:'品名',volume_ml:'容量',abv:'酒精濃度',list_price:'訂價',promo_price:'促銷價',stock:'庫存'};
+const sortVal=(r,k)=>{
+  if(k==='list_price'||k==='promo_price'){const v=r[k];return v==null||!v?null:v*(TWD[r.currency]||1)}
+  const v=r[k];return v===''||v===undefined?null:v};
 let D=[],SITES={},show=PAGE,sortK=null,sortDir=1,st={site:'',brand:''};
 try{Object.assign(st,JSON.parse(localStorage.getItem('lq')||'{}'))}catch(e){}
 const $=id=>document.getElementById(id);
@@ -128,7 +142,9 @@ const render=()=>{
   let rows=D.filter(r=>(!st.site||r.site===st.site)&&(!st.brand||r.brand===st.brand)
     &&(!q||((r.brand||'')+' '+(r.name||'')).toLowerCase().includes(q))
     &&(only!=='promo'||r.promo_price!=null)&&(only!=='instock'||r.stock!=='缺貨'));
-  if(sortK)rows.sort((a,b)=>{const x=a[sortK],y=b[sortK];if(x==null)return 1;if(y==null)return -1;return(typeof x==='number'?x-y:String(x).localeCompare(String(y),'zh-Hant'))*sortDir});
+  if(sortK)rows.sort((a,b)=>{const x=sortVal(a,sortK),y=sortVal(b,sortK);if(x==null&&y==null)return 0;if(x==null)return 1;if(y==null)return -1;return(typeof x==='number'?x-y:String(x).localeCompare(String(y),'zh-Hant'))*sortDir});
+  document.querySelectorAll('th[data-k]').forEach(th=>{if(th.dataset.k===sortK)th.setAttribute('aria-sort',sortDir>0?'ascending':'descending');else th.removeAttribute('aria-sort')});
+  $('sortNote').textContent=sortK?`依「${LABEL[sortK]}」${sortDir>0?'由小到大':'由大到小'}排序・再點一次反轉，點第三次取消`:'點欄位標題可排序（價格依台幣約略換算）';
   const site=SITES[st.site];
   $('cnt').textContent=`${rows.length} 件商品`+(site?`・${site.name}`:'')+(st.brand?`・${st.brand}`:'');
   $('rows').innerHTML=rows.length?rows.slice(0,show).map(r=>{
@@ -152,7 +168,15 @@ $('fSite').addEventListener('change',e=>{st.site=e.target.value;show=PAGE;fillBr
 $('fBrand').addEventListener('change',e=>{st.brand=e.target.value;show=PAGE;render()});
 $('fQ').addEventListener('input',()=>{show=PAGE;render()});$('fOnly').addEventListener('change',render);
 $('moreBtn').addEventListener('click',()=>{show+=PAGE;render()});
-document.querySelectorAll('th[data-k]').forEach(th=>th.addEventListener('click',()=>{const k=th.dataset.k;if(k==='img')return;sortDir=sortK===k?-sortDir:1;sortK=k;render()}));
+document.querySelectorAll('th[data-k]').forEach(th=>{
+  if(th.dataset.k==='img')return;
+  th.tabIndex=0;th.title='點一下排序';
+  const go=()=>{const k=th.dataset.k;
+    if(sortK!==k){sortK=k;sortDir=1}else if(sortDir===1){sortDir=-1}else{sortK=null;sortDir=1}
+    st.sortK=sortK;st.sortDir=sortDir;show=PAGE;render()};
+  th.addEventListener('click',go);th.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();go()}});
+});
+if(st.sortK&&LABEL[st.sortK]){sortK=st.sortK;sortDir=st.sortDir===-1?-1:1}
 Promise.all([fetch('data/products.json',{cache:'no-store'}).then(r=>r.json()),fetch('data/sites.json',{cache:'no-store'}).then(r=>r.json())])
 .then(([p,s])=>{D=p;SITES=Object.fromEntries(s.sites.map(x=>[x.id,x]));$('sub').textContent=`6 個酒類電商，共 ${p.length} 件商品。最後更新：${fmtTime(s.updated)}`;
   if(st.site&&!SITES[st.site])st.site='';fillSites();fillBrands();render()})

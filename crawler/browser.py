@@ -232,7 +232,7 @@ BADGE_RE = re.compile(
     r"^(gift ?wrap|exclusive|online exclusive|travel exclusive|changi first|changi exclusive|new|new arrival|limited|"
     r"best ?seller|hot|sale|bundle|deal|pre-?order|members? only|熱賣|新品|限定|獨家|預購|"
     r"活動價|滿贈活動|贈品活動|買一送一|機場預購|瀏覽更多|[\d.]+\s*折|售罄|sold out)$"
-    r"|^滿\s*\d+\s*(件|元|港幣|HK\$)|^\d+件\d*折"
+    r"|^滿\s*\d+\s*(件|元|港幣|HK\$)|^\d+件\d*折|^\+\s*\d+$|^[-–]\s|指定產品|額外\s*\d*\s*折"
     r"|buy \d|get \d+ ?%|\d+ ?% off|save |free gift|gwp|\bfor s?\$", re.I)
 
 

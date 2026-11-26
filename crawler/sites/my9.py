@@ -44,6 +44,8 @@ def parse_product(p: dict) -> Product:
     opt_text = " ".join(str(v.get(k) or "") for k in ("option1", "option2", "option3", "title"))
     price = float(v["price"]) if v.get("price") else None
     compare = float(v["compare_at_price"]) if v.get("compare_at_price") else None
+    price = price or None          # 0 元 = 價格洽詢，當作沒有價格
+    compare = compare or None
     if compare and price and compare > price:
         list_price, promo = compare, price
     else:

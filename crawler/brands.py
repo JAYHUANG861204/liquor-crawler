@@ -46,7 +46,7 @@ EN_FIX = {
 
 def _english_part(text: str) -> str:
     """取出中英混寫裡的英文部分，例如 'Kongsgaard 康士嘉酒莊' → 'Kongsgaard'。"""
-    parts = re.findall(r"[A-Za-z][A-Za-z0-9'’&.\- ]*[A-Za-z0-9.'’]", text or "")
+    parts = re.findall(r"[A-Za-zÀ-ÖØ-öø-ÿ][A-Za-zÀ-ÖØ-öø-ÿ0-9'’&.\- ]*[A-Za-zÀ-ÖØ-öø-ÿ0-9.'’]", text or "")
     parts = [p.strip() for p in parts if len(p.strip()) >= 2]
     return parts[0] if parts else ""
 
