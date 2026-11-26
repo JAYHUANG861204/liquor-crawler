@@ -11,6 +11,7 @@
 from __future__ import annotations
 
 import argparse
+import re
 import json
 import logging
 import os
@@ -45,6 +46,7 @@ def main(argv=None) -> int:
     ap.add_argument("--no-images", action="store_true", help="Excel 不放縮圖")
     ap.add_argument("--no-excel", action="store_true", help="不輸出 Excel")
     a = ap.parse_args(argv)
+    a.sites = (a.sites or "").strip()
     os.makedirs(DATA_DIR, exist_ok=True)
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s",
                         handlers=[logging.StreamHandler(),
@@ -57,7 +59,18 @@ def main(argv=None) -> int:
     elif a.sites == "local":
         wanted = sorted(LOCAL_DEFAULT)
     else:
-        wanted = [s.strip() for s in a.sites.split(",")]
+        alias = {k.lower(): k for k in SITES}
+        alias.update({"dutyzero": "hk", "dz": "hk", "香港": "hk", "609": "609", "changi": "changi",
+                      "樟宜": "changi", "9city": "9city", "洋酒城": "9city", "my9": "my9", "買酒網": "my9",
+                      "cdf": "cdf", "中免": "cdf"})
+        raw = [x.strip() for x in re.split(r"[,，、\s]+", a.sites) if x.strip()]
+        wanted = [alias[x.lower()] for x in raw if x.lower() in alias]
+        bad = [x for x in raw if x.lower() not in alias]
+        if bad:
+            log.error("看不懂的網站代號：%s（可用：%s）", ", ".join(bad), ", ".join(SITES))
+        if not wanted:
+            log.error("沒有任何要執行的網站，請檢查 --sites 參數")
+            return 2
     old_products = _load(PRODUCTS_JSON, [])
     old_status = {s["id"]: s for s in _load(SITES_JSON, {}).get("sites", [])}
     by_site: dict[str, list[dict]] = {}

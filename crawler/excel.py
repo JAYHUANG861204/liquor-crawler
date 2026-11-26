@@ -24,12 +24,12 @@ def _thumb(url: str):
         from PIL import Image as PILImage
         r = session().get(url, timeout=20)
         r.raise_for_status()
-        im = PILImage.open(io.BytesIO(r.content)).convert("RGB")
+        im = PILImage.open(io.BytesIO(r.content))
+        im = im.convert("RGBA").convert("RGB") if im.mode in ("P", "LA", "RGBA") else im.convert("RGB")
         im.thumbnail((THUMB, THUMB))
         buf = io.BytesIO()
         im.save(buf, "PNG")
-        buf.seek(0)
-        return buf
+        return buf.getvalue()   # 存成 bytes，每次插圖時再包新的 BytesIO（同一張圖重複用不會出錯）
     except Exception:  # noqa: BLE001
         return None
 
@@ -84,7 +84,7 @@ def write(products: list[dict], site_names: dict[str, str], path: str, images: b
             ws.cell(row=r, column=8).font = Font(bold=True, color="A86A00")
         if p.get("image") in thumbs:
             try:
-                img = XLImage(thumbs[p["image"]])
+                img = XLImage(io.BytesIO(thumbs[p["image"]]))
                 ws.add_image(img, f"A{r}")
                 ws.row_dimensions[r].height = THUMB * 0.78
             except Exception:  # noqa: BLE001

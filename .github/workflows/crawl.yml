@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
     inputs:
       sites:
-        description: "只跑哪些網站（逗號分隔，空白 = 全部）：609,changi,hk,9city,my9,cdf"
+        description: "只跑哪些網站（逗號分隔，大小寫都可，空白 = 全部）：609, changi, hk, 9city, my9, cdf"
         required: false
         default: ""
       limit:
