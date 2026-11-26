@@ -10,7 +10,8 @@ import re
 from urllib.parse import quote, unquote
 
 from ..common import Product, parse_volume, parse_abv, split_prices, to_num, log
-from ..browser import browser, open_page, scroll_and_more, extract_cards, stock_in, text_lines
+from ..browser import (browser, open_page, scroll_and_more, extract_cards, extract_cards_by_price,
+                       slow_scroll, stock_in, text_lines)
 from .. import brands
 
 SITE = "hk"
@@ -19,6 +20,7 @@ BASE = "https://www.dutyzero.com.hk/"
 SEEDS = [BASE + "showactivity/" + quote("威士忌") + "-11828"]
 CATEGORY_RE = r"dutyzero\.com\.hk/showactivity/"
 PRODUCT_RE = r"dutyzero\.com\.hk/(item|product|goods|detail)s?/"
+PRICE_JS = r"HK\$\s*[\d,]+"   # 一張商品卡有 1～2 個 HK$ 價格
 SKIP_CATEGORY = re.compile(r"food|食品|toy|玩具|cigar|雪茄|cigarette|香煙", re.I)
 MAX_PAGES = 80
 
@@ -42,10 +44,14 @@ def crawl(limit: int | None = None) -> list[Product]:
             seen.add(u)
             try:
                 page = open_page(ctx, u, wait_ms=2500)
-                scroll_and_more(page, max_rounds=15)
-                found = extract_cards(page, PRODUCT_RE)
+                slow_scroll(page)                       # 慢慢捲，讓圖片和後面的商品載入
+                scroll_and_more(page, max_rounds=5)
+                found = extract_cards(page, PRODUCT_RE) + extract_cards_by_price(page, PRICE_JS, BASE)
                 for c in found:
-                    cards.setdefault(c["url"], c)
+                    key = c["url"] or _key(c["text"])
+                    old = cards.get(key)
+                    if not old or (c.get("img") and not old.get("img")):
+                        cards[key] = c
                 # 同一分類的分頁連結（?page=2 之類）
                 for x in page.evaluate(JS_LINKS, CATEGORY_RE):
                     if x not in seen and x not in queue and x.split("?")[0] == u.split("?")[0]:
@@ -59,6 +65,12 @@ def crawl(limit: int | None = None) -> list[Product]:
     log.info("hk 開了 %d 個分類頁，共 %d 件", len(seen), len(cards))
     out = [parse_card(c) for c in cards.values()]
     return [p for p in out if p.name][: limit or None]
+
+
+def _key(text: str) -> str:
+    """沒有商品網址時，用品名當作識別。"""
+    lines = [ln for ln in text_lines(text) if not re.fullmatch(r"HK\$?|SALE|[\d,.]+", ln, re.I)]
+    return "name:" + (max(lines, key=len) if lines else text[:80])
 
 
 def prices(text: str) -> list[float]:
@@ -77,7 +89,9 @@ def parse_card(c: dict) -> Product:
     text = c.get("text", "")
     lines = [ln for ln in text_lines(text) if not re.fullmatch(r"HK\$?|SALE|[\d,.]+", ln, re.I)]
     name = max(lines, key=len) if lines else (c.get("title") or "")
-    brand_line = next((ln for ln in lines if ln != name and len(ln) <= 30), None)
+    # 品牌是品名前面那一行短的英文，例如 Masi / The Macallan
+    idx = lines.index(name) if name in lines else len(lines)
+    brand_line = next((ln for ln in reversed(lines[:idx]) if len(ln) <= 30), None)
     lp, pp = split_prices(prices(text))
     return Product(
         site=SITE,
@@ -90,5 +104,5 @@ def parse_card(c: dict) -> Product:
         currency="HKD",
         stock=stock_in(text),
         image=c.get("img") or None,
-        url=c["url"],
+        url=c["url"] or None,
     )

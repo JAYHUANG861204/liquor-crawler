@@ -38,14 +38,14 @@ JS_EXTRACT = r"""
     // 卡片上可能有多張圖（禮物盒、愛心等小圖示），挑面積最大、不是 svg 圖示的那張
     let img = null, best = -1;
     for (const im of card.querySelectorAll('img')) {
-      const s0 = im.currentSrc || im.src || im.getAttribute('data-src') || im.getAttribute('data-original') || '';
+      const s0 = im.getAttribute('data-src') || im.getAttribute('data-original') || im.currentSrc || (im.getAttribute('src') ? im.src : '') || '';
       if (/\.svg(\?|$)|icon|logo|badge|giftwrap|heart|flag/i.test(s0)) continue;
       const r = im.getBoundingClientRect();
       const area = Math.max(r.width * r.height, (im.naturalWidth || 0) * (im.naturalHeight || 0) / 4);
       if (area > best) { best = area; img = im; }
     }
     let src = '';
-    if (img) src = img.currentSrc || img.src || img.getAttribute('data-src') || img.getAttribute('data-original') || '';
+    if (img) src = img.getAttribute('data-src') || img.getAttribute('data-original') || img.currentSrc || (img.getAttribute('src') ? img.src : '') || '';
     if (img && src.startsWith('data:')) src = img.getAttribute('data-src') || img.getAttribute('data-original') || '';
     const prev = out.get(href);
     if (!prev || text.length > prev.text.length)
@@ -205,7 +205,7 @@ PRICE_RE = re.compile(
     r"(?:NT\.?\s*\$?|S\$|HK\$|US\$|\$|¥|￥|RMB|(?:售價|特價|優惠價|會員價|建議售價|原價|價格|定價)\s*[:：]?\s*\$?)\s*[:：]?\s*([\d,]+(?:\.\d+)?)"
     r"|([\d,]+(?:\.\d+)?)\s*元")
 STOCK_WORDS = [
-    (re.compile(r"out of stock|sold out|notify me|售完|缺貨|已售罄|補貨中", re.I), "缺貨"),
+    (re.compile(r"out of stock|sold out|notify me|售完|缺貨|售罄|補貨中", re.I), "缺貨"),
     (re.compile(r"only few left|few left|僅剩|少量|即將售完", re.I), "少量"),
     (re.compile(r"selling fast|熱賣|熱銷", re.I), "熱賣中"),
     (re.compile(r"in stock|現貨|有貨", re.I), "有貨"),
@@ -230,7 +230,9 @@ def stock_in(text: str) -> str | None:
 
 BADGE_RE = re.compile(
     r"^(gift ?wrap|exclusive|online exclusive|travel exclusive|changi first|changi exclusive|new|new arrival|limited|"
-    r"best ?seller|hot|sale|bundle|deal|pre-?order|members? only|熱賣|新品|限定|獨家|預購)$"
+    r"best ?seller|hot|sale|bundle|deal|pre-?order|members? only|熱賣|新品|限定|獨家|預購|"
+    r"活動價|滿贈活動|贈品活動|買一送一|機場預購|瀏覽更多|[\d.]+\s*折|售罄|sold out)$"
+    r"|^滿\s*\d+\s*(件|元|港幣|HK\$)|^\d+件\d*折"
     r"|buy \d|get \d+ ?%|\d+ ?% off|save |free gift|gwp|\bfor s?\$", re.I)
 
 
@@ -257,3 +259,78 @@ def pick_name(title: str, lines: list[str]) -> str:
     title = (title or "").strip()
     longest = max(lines, key=len) if lines else ""
     return title if len(title) >= 6 and len(title) >= len(longest) // 2 else (longest or title)
+
+
+# ---------- 沒有商品連結的網站：靠「價格」找商品卡 ----------
+
+JS_EXTRACT_BY_PRICE = r"""
+(args) => {
+  const [priceSrc, base] = args;
+  const priceRe = new RegExp(priceSrc, 'g');
+  const count = el => ((el.innerText || '').match(priceRe) || []).length;
+  const imgOf = card => {
+    let best = '', area = -1;
+    for (const im of card.querySelectorAll('img')) {
+      const s = im.getAttribute('data-src') || im.getAttribute('data-original') || im.getAttribute('lazy-src') ||
+                im.currentSrc || (im.getAttribute('src') ? im.src : '') || (im.getAttribute('srcset') || '').split(' ')[0] || '';
+      if (!s || s.startsWith('data:') || /\.svg(\?|$)|icon|logo|badge|tag|label|flag/i.test(s)) continue;
+      const r = im.getBoundingClientRect(), a = r.width * r.height || 1;
+      if (a > area) { area = a; best = s; }
+    }
+    if (!best) for (const el of [card, ...card.querySelectorAll('*')]) {
+      const bg = getComputedStyle(el).backgroundImage;
+      const m = bg && bg.match(/url\(["']?(.*?)["']?\)/);
+      if (m && !/icon|logo/i.test(m[1])) { best = m[1]; break; }
+    }
+    return best ? new URL(best, location.href).href : '';
+  };
+  const urlOf = card => {
+    const a = card.closest('a[href]') || card.querySelector('a[href]');
+    if (a && !/javascript:|#$/.test(a.getAttribute('href'))) return a.href.split('#')[0];
+    const html = card.outerHTML;
+    const m = html.match(/item\/(p?\d{5,})/) || html.match(/(?:goods|item|sku|product|spu)[_-]?(?:id|no|code)["'\s:=]+["']?(p?\d{5,})/i)
+           || html.match(/\bp(\d{7,})\b/);
+    if (m) return base + 'item/' + (m[1].startsWith('p') ? m[1] : 'p' + m[1]);
+    return '';
+  };
+  const out = [], seen = new Set();
+  for (const el of document.querySelectorAll('body *')) {
+    const n = count(el);
+    if (n < 1 || n > 2 || !el.querySelector('img')) continue;
+    const p = el.parentElement;
+    if (p && count(p) <= n && p.querySelector('img')) continue;   // 父層還是同一張卡 → 繼續往上
+    const text = (el.innerText || '').trim();
+    if (!text || text.length > 600 || seen.has(text)) continue;
+    seen.add(text);
+    out.push({url: urlOf(el), text, img: imgOf(el), title: ''});
+  }
+  return out;
+}
+"""
+
+
+def extract_cards_by_price(page, price_regex: str, base: str) -> list[dict]:
+    cards = page.evaluate(JS_EXTRACT_BY_PRICE, [price_regex, base])
+    host = re.sub(r"^https?://(www\.)?", "", page.url).split("/")[0] + " (by price)"
+    bucket = SAMPLES.setdefault(host, [])
+    for c in cards[: max(0, 5 - len(bucket))]:
+        bucket.append(c)
+    return cards
+
+
+def slow_scroll(page, step: int = 700, pause_ms: int = 250, max_steps: int = 400) -> None:
+    """慢慢往下捲，讓「捲到才載入」的圖片和商品都出來。"""
+    last_h, same = 0, 0
+    for _ in range(max_steps):
+        page.mouse.wheel(0, step)
+        page.wait_for_timeout(pause_ms)
+        y, h = page.evaluate("[window.scrollY + window.innerHeight, document.body.scrollHeight]")
+        if y >= h - 5:
+            page.wait_for_timeout(1500)       # 到底了，等一下看會不會再載入更多
+            h2 = page.evaluate("document.body.scrollHeight")
+            if h2 == h:
+                same += 1
+                if same >= 2:
+                    break
+            else:
+                same = 0
