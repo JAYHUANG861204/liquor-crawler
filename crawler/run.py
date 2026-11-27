@@ -149,6 +149,12 @@ def main(argv=None) -> int:
     except Exception:  # noqa: BLE001
         log.exception("品質檢查失敗")
 
+    try:
+        from .report import build
+        log.info("本機報表 → %s", build())
+    except Exception:  # noqa: BLE001
+        log.exception("本機報表產生失敗")
+
     if not a.no_excel:
         try:
             excel.write(products, {k: v[1] for k, v in SITES.items()}, XLSX, images=not a.no_images)

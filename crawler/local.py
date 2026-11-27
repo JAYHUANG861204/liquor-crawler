@@ -26,7 +26,7 @@ def has_git() -> bool:
 
 
 def main() -> int:
-    argv = [a for a in sys.argv[1:] if a.lower() != "--auto"]
+    argv = [a for a in sys.argv[1:] if a.lower() not in ("--auto", "--from-menu")]
     if not any(a.startswith("--sites") for a in argv):
         argv = ["--sites", "local"] + argv
     upload = has_git()
@@ -39,8 +39,8 @@ def main() -> int:
         except RuntimeError as e:
             print("  ！", e, "— 先用電腦上現有的資料繼續")
     else:
-        print("\n（這個資料夾不是用 git clone 下載的，跑完只會更新電腦上的 Excel，不會上傳到網頁。")
-        print("  想自動上傳，請看 README「在自己電腦執行」。）")
+        print("\n（這個資料夾不是用 git clone 下載的，跑完會更新電腦上的報表和 Excel，不會上傳到網頁。")
+        print("  想自動上傳，請看 README「給使用者：在 Windows 電腦上安裝與使用」。）")
 
     print("\n[2/3] 開始爬蟲…", flush=True)
     run.main(argv)
@@ -57,8 +57,11 @@ def main() -> int:
             return 1
 
     xlsx = os.path.join(ROOT, "docs", "products.xlsx")
-    if os.name == "nt" and os.path.exists(xlsx) and not os.environ.get("LIQUOR_NO_OPEN"):
-        os.startfile(xlsx)  # type: ignore[attr-defined]
+    report = os.path.join(ROOT, "docs", "report.html")
+    print(f"\n  本機報表：{report}")
+    print(f"  Excel：{xlsx}")
+    if os.name == "nt" and os.path.exists(report) and not os.environ.get("LIQUOR_NO_OPEN"):
+        os.startfile(report)  # type: ignore[attr-defined]
     return 0
 
 

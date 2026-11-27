@@ -59,50 +59,57 @@ GitHub 用 UTC 時間，台灣時間要減 8 小時，例如晚上 9 點 → `0 
 
 ---
 
-## 在自己電腦執行（Windows）
+## 給使用者：在 Windows 電腦上安裝與使用
 
-9city、中免會擋 GitHub 的主機（DUTY ZERO 香港如果也被擋，同樣在這裡補），所以要在你自己的電腦上跑。
-跑完會**自動上傳到 GitHub**，網頁就會一起更新；GitHub 每天的排程會保留這些資料。
+不需要會寫程式，全部用 bat 檔和中文選單操作。
 
-### 第一次安裝（只要做一次）
+### 一、取得程式（擇一）
 
-1. 安裝 [Python 3.12](https://www.python.org/downloads/)，安裝畫面**一定要勾 Add python.exe to PATH**
-2. 安裝 [Git for Windows](https://git-scm.com/download/win)，一路按 Next 用預設值即可
-3. 安裝 [Google Chrome](https://www.google.com/chrome/)（有的話跳過）
-4. 開「命令提示字元」，輸入下面這行，把專案下載到 `C:\liquor-crawler`：
-   ```
-   git clone https://github.com/JAYHUANG861204/liquor-crawler.git C:\liquor-crawler
-   ```
+- **要上傳到網頁**（GitHub Pages）：先安裝 [Git](https://git-scm.com/download/win)，開「命令提示字元」輸入
+  `git clone https://github.com/JAYHUANG861204/liquor-crawler.git C:\liquor-crawler`
+- **只要在自己電腦看報表／Excel**：在 GitHub 頁面按綠色 **Code → Download ZIP**，解壓縮到 `C:\liquor-crawler`
 
-### 每次執行
+> 資料夾路徑請用英文、不要太長（建議 `C:\liquor-crawler`），排程才不會出問題。
 
-1. 打開 `C:\liquor-crawler`，按兩下 **`run_windows.bat`**
-   （第一次會安裝套件，要等幾分鐘）
-2. 會跳出 Chrome 視窗自動翻頁。**如果出現「請按住滑塊，拖動到最右邊」**，
-   就用滑鼠把滑塊拖到底，程式會自己繼續（最多等 5 分鐘）
-3. 跑完會自動上傳。第一次上傳會跳出 GitHub 登入視窗，登入一次之後就記住了
-4. 最後會自動打開 Excel；1～3 分鐘後網頁也會更新
+### 二、第一次安裝：按兩下 `setup.bat`
 
-### 9city 每天自動跑（Windows 工作排程器）
+會自動完成：檢查／安裝 Python → 安裝套件 → 下載爬蟲用的瀏覽器 → 打開中文選單。第一次大約 5～10 分鐘。
 
-- **`run_9city.bat`**：按兩下只跑 9city，跑完自動上傳到網頁
-- **`setup_9city_schedule.bat`**：按兩下執行一次，輸入每天要跑的時間（例如 `12:00`），
-  就會在 Windows「工作排程器」建立名為 `LiquorCrawler-9city` 的工作，之後每天自動執行，不會跳視窗
-  - 那個時間電腦要開著、而且已登入
-  - **第一次請先手動按一次 `run_9city.bat`**，完成套件安裝和 GitHub 登入，之後排程才能自動上傳
-  - 自動執行的紀錄在 `local-run.log`
-  - 立刻測試排程：`schtasks /Run /TN "LiquorCrawler-9city"`
-  - 取消排程：`schtasks /Delete /TN "LiquorCrawler-9city" /F`
+### 三、平常使用：按兩下 `menu.bat`
 
-### 其他用法（在 `C:\liquor-crawler` 開命令提示字元）
+| 選單 | 做什麼 |
+|---|---|
+| 1. 立即執行 | 選擇要抓的網站（可多選或全部），馬上執行 |
+| 2. 開啟報表 | 用瀏覽器打開 `docs\report.html`：可篩選網站／品牌、排序、點圖放大 |
+| 3. 開啟 Excel | 打開 `docs\products.xlsx`（含商品縮圖） |
+| 4. 查看各網站資料狀態 | 每個網站幾筆、最後成功時間 |
+| 5. 新增每日排程 | 設定每天幾點、跑哪些網站（用 Windows 工作排程器，可設多組） |
+| 6～8. 排程管理 | 查看、刪除、立刻試跑排程 |
+| 9. 查看排程執行紀錄 | 背景執行的過程記錄在 `local-run.log` |
+| 10. 檢查資料品質 | 列出不合理的品牌、價格、容量 |
 
-```
-run_windows.bat --sites hk          只跑 HK 機場
-run_windows.bat --sites all         六個網站全部在自己電腦跑
-run_windows.bat --limit 20          每站最多 20 筆（測試用）
-```
+### 其他 bat 檔
 
-用 Download ZIP 下載的資料夾也能跑，但只會產生 Excel，不會上傳到網頁。
+| 檔案 | 用途 |
+|---|---|
+| `run_all.bat` | 全部網站跑一次（跑完自動打開報表） |
+| `run_9city.bat` | 只跑 9city |
+| `run_windows.bat` | 上面兩個共用的核心，可加參數：`run_windows.bat --sites 609,my9` |
+
+### 注意事項
+
+- **排程時間電腦要開著**（可以鎖定螢幕，不能關機或睡眠）。排程在背景執行，不會跳視窗。
+- **有用 git clone 而且登入過 GitHub**：跑完會自動上傳，網頁（GitHub Pages）1～3 分鐘後更新。
+  第一次上傳會跳出 GitHub 登入視窗，登入一次之後就記住了。
+- **沒有 Git**：跑完只更新自己電腦上的報表和 Excel，不會出錯。
+- 如果出現「建立排程失敗」：對 `menu.bat` 按右鍵 →「以系統管理員身分執行」。
+- 執行時 Excel 請先關閉，否則無法更新 `products.xlsx`（程式會提醒並等待）。
+
+### 交接給別人時
+
+- **只給報表功能**：把整個資料夾（不含 `.venv`、`.browser-profile`）壓縮給對方，對方按 `setup.bat` 即可。
+- **連網頁一起交接**：在 GitHub 的 **Settings → Collaborators** 加入對方帳號，或用 **Settings → Transfer** 把 repo 轉給對方。
+  GitHub 上的每日排程（Actions）會繼續跑 609、Changi、DUTY ZERO、MY9；9city 要在對方電腦用排程跑。
 
 ---
 
@@ -115,6 +122,11 @@ crawler/
   browser.py      Playwright 瀏覽器：捲動、按「載入更多」、通用商品卡擷取
   brands.py       中文品牌 → 英文品牌對照
   excel.py        Excel 輸出（含縮圖）
+  report.py       本機報表 docs/report.html（資料內嵌，雙擊即可開）
+  wizard.py       中文操作選單（menu.bat）
+  publish.py      上傳到 GitHub（以最新版為底，只替換這次跑的網站）
+  clean.py        統一資料清理
+  audit.py        資料品質檢查
   sites/          每個網站一個檔案，新增網站就加一個檔案再登記到 sites/__init__.py
 docs/
   index.html      比價網頁（GitHub Pages）

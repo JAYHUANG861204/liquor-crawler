@@ -27,7 +27,7 @@ START = [
 PRODUCT_RE = re.compile(r"(/product/P\d+|product\.php\?pid_for_show=\d+)")
 CATEGORY_RE = re.compile(r"category\.php\?[^\"'#]*arem=\d+[^\"'#]*")
 MAX_CATEGORY_PAGES = 60
-MAX_PRODUCTS = 400
+MAX_PRODUCTS = 600
 
 
 def _links(html: str, base: str) -> tuple[set[str], set[str]]:
@@ -52,19 +52,32 @@ class Fetcher:
         self._cm = None
         self.use_browser = False
 
-    def html(self, url: str) -> str:
+    def html(self, url: str, render: bool = False) -> str:
+        """render=True：一定用瀏覽器打開並往下捲（分類頁的商品是 JavaScript 載入的）。"""
+        if render:
+            return self._browser_html(url, scroll=True)
         if not self.use_browser:
             try:
                 return get(self.s, url, retries=2).text
             except Exception as e:  # noqa: BLE001
                 log.warning("9city requests 失敗，改用瀏覽器：%s", e)
                 self.use_browser = True
+        return self._browser_html(url)
+
+    def _browser_html(self, url: str, scroll: bool = False) -> str:
         if self.ctx is None:
             from ..browser import browser
             self._cm = browser()
             self.ctx = self._cm.__enter__()
-        from ..browser import fetch_html
-        return fetch_html(self.ctx, url)
+        from ..browser import open_page, slow_scroll, scroll_and_more
+        page = open_page(self.ctx, url, wait_ms=1500)
+        try:
+            if scroll:
+                slow_scroll(page, max_steps=60)
+                scroll_and_more(page, max_rounds=5)
+            return page.content()
+        finally:
+            page.close()
 
     def close(self):
         if self._cm:
@@ -80,11 +93,13 @@ def collect_links(s) -> list[str]:
             continue
         seen.add(url)
         try:
-            html = s.html(url)
+            # 首頁用一般方式；分類頁用瀏覽器（商品列表是 JavaScript 載入的）
+            html = s.html(url, render=(url != BASE))
         except Exception as e:  # noqa: BLE001
             log.warning("9city 分類頁失敗 %s: %s", url, e)
             continue
         p, c = _links(html, url)
+        log.info("9city %s：商品連結 %d、分類連結 %d", url[-45:], len(p), len(c))
         prods |= p
         queue += [x for x in sorted(c) if x not in seen]
     return sorted(prods)

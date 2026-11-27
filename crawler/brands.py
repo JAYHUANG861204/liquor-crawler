@@ -91,6 +91,11 @@ EN_MULTI = [
 ]
 _EN_MULTI_L = sorted(EN_MULTI, key=len, reverse=True)
 CJK = re.compile(r"[\u3400-\u9fff]")
+UNITS = re.compile(r"^(ml|cl|l|abv|vol|yo|years?|x)$", re.I)
+# 英文描述字，不能單獨當品牌（品名「極 CRAFT 琴酒」的 CRAFT 不是品牌）
+GENERIC_EN = re.compile(r"^(craft|gin|whisky|whiskey|vodka|rum|single|malt|reserve|select|selection|limited|edition|"
+                        r"special|original|classic|premium|blend|blended|cask|sherry|port|gift|box|set|new|old|"
+                        r"red|white|rose|rosé|brut|dry|extra|grand|cru|vintage|xo|vsop|vs|no|batch|small)$", re.I)
 _DESCRIPTOR = re.compile(r"極品|極上|特選|莊園|系列|限定|限量|珍藏|典藏|原酒|單桶|雙桶|酒莊|蒸餾所|酒廠|紅牌|白牌|黑牌|調和|單一|純麥|麥芽|年|週年|版")
 
 
@@ -193,6 +198,16 @@ def _normalize(brand: str | None, name: str = "") -> str:
         en = _english_brand(name)
         if en:
             return _fix_case(EN_FIX.get(en.upper(), en))
+    # 「天文台 The Observatory 20年」：中文名後面接英文品牌時，取英文（4 個字內、遇到數字或中文就停）
+    m = re.match(r"^[\u3400-\u9fff]+\s+((?:The\s+)?[A-Za-zÀ-ÿ][A-Za-zÀ-ÿ'’&.\-]*(?:\s+[A-Za-zÀ-ÿ'’&.\-]+){0,3}?)(?=\s+\d|\s*[\u3400-\u9fff]|\s*$|\s+\d)", name)
+    if m:
+        seg = m.group(1).strip()
+        low = seg.lower()
+        for b in _EN_MULTI_L:
+            if low.startswith(b.lower()):
+                return b
+        if not UNITS.match(seg) and not GENERIC_EN.match(seg.split()[0] if len(seg.split()) == 1 else "x"):
+            return _fix_case(seg)
     head = _chinese_head(name)
     if head:
         return head

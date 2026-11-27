@@ -31,7 +31,9 @@ def test_brands():
         (None, "國盛知多梅酒"): "Kunizakari", (None, "大山夢工房柑橘梅酒720ml"): "大山夢工房",
         ("23RD STREET DISTILLERY", ""): "23rd Street Distillery", ("WARWICK", ""): "Warwick", ("JD&S", ""): "JD&S",
         ("The Glen Grant", ""): "Glen Grant", ("Ch. Lafite Rothschild", ""): "Château Lafite Rothschild",
-        ("中野BC", "中野BC 綠茶梅酒"): "Nakano BC", ("1792", ""): "1792", (None, "野格 迷你酒 / Jägermeister Mini Size"): "Jägermeister",
+        ("中野BC", "中野BC 綠茶梅酒"): "Nakano BC", (None, "天文台 The Observatory 20年 單一穀物"): "The Observatory",
+        (None, "卡賽瑞 Marqués de Cáceres 西班牙 粉紅葡萄酒"): "Marqués de Cáceres", (None, "威斯德 Westward 單一麥芽"): "Westward",
+        (None, "極 CRAFT 蒔香琴酒"): "極", ("1792", ""): "1792", (None, "野格 迷你酒 / Jägermeister Mini Size"): "Jägermeister",
     }
     for (b, n), want in cases.items():
         assert brands.normalize(b, n) == want, (b, n, brands.normalize(b, n), want)

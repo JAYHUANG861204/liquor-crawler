@@ -229,7 +229,9 @@ document.addEventListener('keydown',e=>{if($('lb').hidden)return;
   if(e.key==='Escape')lbClose();
   else if(e.key==='ArrowLeft'&&!$('lbPrev').hidden)$('lbPrev').click();
   else if(e.key==='ArrowRight'&&!$('lbNext').hidden)$('lbNext').click()});
-Promise.all([fetch('data/products.json',{cache:'no-store'}).then(r=>r.json()),fetch('data/sites.json',{cache:'no-store'}).then(r=>r.json())])
+// 本機報表（report.html）把資料直接放在網頁裡；網站版則從 data/ 讀取
+(window.__PRODUCTS__&&window.__SITES__?Promise.resolve([window.__PRODUCTS__,window.__SITES__]):
+ Promise.all([fetch('data/products.json',{cache:'no-store'}).then(r=>r.json()),fetch('data/sites.json',{cache:'no-store'}).then(r=>r.json())]))
 .then(([p,s])=>{D=p;SITES=Object.fromEntries(s.sites.map(x=>[x.id,x]));$('sub').textContent=`6 個酒類電商，共 ${p.length} 件商品。最後更新：${fmtTime(s.updated)}`;
   if(st.site&&!SITES[st.site])st.site='';fillSites();fillBrands();render()})
 .catch(e=>{$('cnt').textContent='資料載入失敗';$('rows').innerHTML=`<tr><td colspan="8" class="empty">讀不到 data/products.json：${esc(e.message)}</td></tr>`});
