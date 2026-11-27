@@ -1,35 +1,36 @@
-2026-11-26 12:57:44,542 INFO ==== 酒條通 609 開始 ====
-2026-11-26 13:16:32,289 INFO 609 開了 150 頁，找到 696 件
-2026-11-26 13:16:32,349 INFO ==== 酒條通 609 結束：ok 696 筆，1128 秒 ====
-2026-11-26 13:16:32,349 INFO ==== iShopChangi 開始 ====
-2026-11-26 13:18:29,455 INFO ==== iShopChangi 結束：ok 1112 筆，117 秒 ====
-2026-11-26 13:18:29,456 INFO ==== DUTY ZERO 香港 開始 ====
-2026-11-26 13:18:52,053 INFO hk w.dutyzero.com.hk/showactivity/威士忌-11828：0 件
-2026-11-26 13:19:05,532 INFO hk w.dutyzero.com.hk/showactivity/中國酒-18566：3 件
-2026-11-26 13:19:18,538 INFO hk w.dutyzero.com.hk/showactivity/葡萄酒-22911：82 件
-2026-11-26 13:19:32,825 INFO hk w.dutyzero.com.hk/showactivity/威士忌-18623：0 件
-2026-11-26 13:19:46,183 INFO hk ww.dutyzero.com.hk/showactivity/干邑-23089：0 件
-2026-11-26 13:19:59,156 INFO hk utyzero.com.hk/showactivity/香檳-起泡酒-43795：28 件
-2026-11-26 13:20:12,250 INFO hk tyzero.com.hk/showactivity/氈酒-其他酒類-43797：0 件
-2026-11-26 13:20:23,658 INFO hk .dutyzero.com.hk/showactivity/優惠組合-58225：0 件
-2026-11-26 13:20:35,883 INFO hk dutyzero.com.hk/showactivity/葡萄酒香檳-58233：51 件
-2026-11-26 13:20:48,224 INFO hk .dutyzero.com.hk/showactivity/烈酒狂歡-58230：0 件
-2026-11-26 13:20:59,577 INFO hk .dutyzero.com.hk/showactivity/買一送一-58808：0 件
-2026-11-26 13:20:59,622 INFO hk 開了 11 個分類頁，共 77 件
-2026-11-26 13:20:59,631 INFO ==== DUTY ZERO 香港 結束：ok 77 筆，150 秒 ====
-2026-11-26 13:20:59,631 INFO ==== 買酒網 MY9 開始 ====
-2026-11-26 13:21:18,215 INFO ==== 買酒網 MY9 結束：ok 2444 筆，19 秒 ====
-2026-11-26 13:21:18,348 INFO 清理完成：保留 4299 筆，剔除 30 筆（無效品名、促銷公告、非酒類、重複）
-2026-11-26 13:21:18,406 INFO 共 4299 筆 → /home/runner/work/liquor-crawler/liquor-crawler/docs/data/products.json
-2026-11-26 13:21:18,459 INFO 品質檢查 609：696 筆，嚴重問題 無
-2026-11-26 13:21:18,459 INFO 品質檢查 changi：1112 筆，嚴重問題 無
-2026-11-26 13:21:18,459 INFO 品質檢查 hk：76 筆，嚴重問題 無
-2026-11-26 13:21:18,459 INFO 品質檢查 my9：2415 筆，嚴重問題 無
-2026-11-26 13:22:46,352 INFO Excel 縮圖 1482 / 1500
-2026-11-26 13:22:49,451 INFO Excel → /home/runner/work/liquor-crawler/liquor-crawler/docs/products.xlsx
+2026-11-27 05:51:43,689 INFO ==== 酒條通 609 開始 ====
+2026-11-27 06:11:48,828 INFO 609 開了 150 頁，找到 697 件
+2026-11-27 06:11:48,880 INFO ==== 酒條通 609 結束：ok 697 筆，1205 秒 ====
+2026-11-27 06:11:48,881 INFO ==== iShopChangi 開始 ====
+2026-11-27 06:13:46,186 INFO ==== iShopChangi 結束：ok 1114 筆，117 秒 ====
+2026-11-27 06:13:46,186 INFO ==== DUTY ZERO 香港 開始 ====
+2026-11-27 06:14:12,371 INFO hk w.dutyzero.com.hk/showactivity/威士忌-11828：0 件
+2026-11-27 06:14:27,617 INFO hk w.dutyzero.com.hk/showactivity/中國酒-18566：3 件
+2026-11-27 06:14:43,358 INFO hk w.dutyzero.com.hk/showactivity/葡萄酒-22911：82 件
+2026-11-27 06:14:58,608 INFO hk w.dutyzero.com.hk/showactivity/威士忌-18623：0 件
+2026-11-27 06:15:12,869 INFO hk ww.dutyzero.com.hk/showactivity/干邑-23089：0 件
+2026-11-27 06:15:26,582 INFO hk utyzero.com.hk/showactivity/香檳-起泡酒-43795：28 件
+2026-11-27 06:15:39,776 INFO hk tyzero.com.hk/showactivity/氈酒-其他酒類-43797：0 件
+2026-11-27 06:15:51,464 INFO hk .dutyzero.com.hk/showactivity/優惠組合-58225：0 件
+2026-11-27 06:16:04,614 INFO hk dutyzero.com.hk/showactivity/葡萄酒香檳-58233：51 件
+2026-11-27 06:16:17,195 INFO hk .dutyzero.com.hk/showactivity/烈酒狂歡-58230：0 件
+2026-11-27 06:16:29,059 INFO hk .dutyzero.com.hk/showactivity/買一送一-58808：0 件
+2026-11-27 06:16:29,097 INFO hk 開了 11 個分類頁，共 77 件
+2026-11-27 06:16:29,105 INFO ==== DUTY ZERO 香港 結束：ok 77 筆，163 秒 ====
+2026-11-27 06:16:29,105 INFO ==== 買酒網 MY9 開始 ====
+2026-11-27 06:16:46,866 INFO ==== 買酒網 MY9 結束：ok 2444 筆，18 秒 ====
+2026-11-27 06:16:46,983 INFO 清理完成：保留 4326 筆，剔除 30 筆（無效品名、促銷公告、非酒類、重複）
+2026-11-27 06:16:47,025 INFO 共 4326 筆 → /home/runner/work/liquor-crawler/liquor-crawler/docs/data/products.json
+2026-11-27 06:16:47,068 INFO 品質檢查 609：697 筆，嚴重問題 無
+2026-11-27 06:16:47,068 INFO 品質檢查 changi：1114 筆，嚴重問題 無
+2026-11-27 06:16:47,068 INFO 品質檢查 hk：76 筆，嚴重問題 無
+2026-11-27 06:16:47,068 INFO 品質檢查 9city：24 筆，嚴重問題 無
+2026-11-27 06:16:47,068 INFO 品質檢查 my9：2415 筆，嚴重問題 無
+2026-11-27 06:18:27,796 INFO Excel 縮圖 1494 / 1500
+2026-11-27 06:18:30,486 INFO Excel → /home/runner/work/liquor-crawler/liquor-crawler/docs/products.xlsx
 
-=== 609（696 筆）===
-  [可疑] 品牌未轉成英文: 123 筆（18%）
+=== 609（697 筆）===
+  [可疑] 品牌未轉成英文: 125 筆（18%）
          諾蒂絲 | 諾蒂絲琴酒700ml | 700.0 | None | 999.0/None
          圖卡納 | 南非圖卡納白稍南白葡萄酒750ml | 750.0 | None | 699.0/None
   [可疑] 沒有容量: 78 筆（11%）
@@ -41,21 +42,24 @@
   [可疑] 品牌長度異常: 2 筆（0%）
          信 | 信SHIN白蘭地梅酒500ml | 500.0 | None | 499.0/399.0
          信 | 信SHIN威士忌梅酒500ml | 500.0 | None | 499.0/399.0
-  [可疑] 品牌含數字: 1 筆（0%）
-         梅酒王720ml | 梅酒王720ml | 720.0 | None | 999.0/799.0
-  [可疑] 品名只有品牌: 1 筆（0%）
-         梅酒王720ml | 梅酒王720ml | 720.0 | None | 999.0/799.0
   [可疑] 品牌全大寫: 1 筆（0%）
          JD&S | JD&S大豐收Greign20年單一穀物威士忌700ml | 700.0 | None | 874.0/699.0
 
-=== changi（1112 筆）===
+=== changi（1114 筆）===
   [可疑] 沒有容量: 5 筆（0%）
          Ca Del Bosco Srl | CUVE'E PRESTIGE EXTRA BRUT EDIZIONE 44 | None | None | 50.0/None
          The Dalmore | The Dalmore Portfolio Series No.1 Bordeaux Wine Cask Fi | None | None | 839.0/None
+  [可疑] 品牌含數字: 1 筆（0%）
+         23rd Street Distillery | TWENTY THIRD STREET MULBERRY GIN 700ML | 700.0 | None | 48.0/None
 
 === hk（76 筆）===
   [可疑] 沒有容量: 1 筆（1%）
          Perrier-Jouët | Perrier Jouet 巴黎之花美麗時光香檳 - 香檳杯禮盒裝 | Perrier Jouet Belle | None | None | 1980.0/None
+
+=== 9city（24 筆）===
+  [可疑] 品牌未轉成英文: 10 筆（42%）
+         天文台 | 天文台 The Observatory 20年 單一穀物 | 700.0 | 40.0 | 880.0/647.0
+         卡賽瑞 | 卡賽瑞 Marqués de Cáceres 西班牙 粉紅葡萄酒 | 750.0 | 13.5 | 550.0/480.0
 
 === my9（2415 筆）===
   [可疑] 品牌未轉成英文: 186 筆（8%）
