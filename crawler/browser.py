@@ -64,10 +64,14 @@ PROFILE_DIR = os.path.join(ROOT, ".browser-profile")
 
 
 def headless_default() -> bool:
-    """GitHub 上沒有螢幕，一定用無頭模式；自己電腦上預設開出看得到的視窗（遇到驗證可以手動處理）。"""
+    """預設在背景執行、不跳出瀏覽器視窗。
+
+    要看到瀏覽器（例如遇到真人驗證要手動處理）：設定環境變數 SHOW_BROWSER=1，
+    或在 menu.bat 選「立即執行（顯示瀏覽器視窗）」。
+    """
     if IN_CI:
         return True
-    return os.environ.get("HEADLESS", "0") == "1"
+    return os.environ.get("SHOW_BROWSER", "0") != "1"
 
 
 @contextmanager

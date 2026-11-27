@@ -71,7 +71,8 @@ def main() -> int:
     report = os.path.join(ROOT, "docs", "report.html")
     print(f"\n  本機報表：{report}")
     print(f"  Excel：{xlsx}")
-    if os.name == "nt" and os.path.exists(report) and not os.environ.get("LIQUOR_NO_OPEN"):
+    # 想跑完自動打開報表：設定環境變數 OPEN_REPORT=1（預設不打開，從 menu.bat 選「開啟報表」）
+    if os.name == "nt" and os.path.exists(report) and os.environ.get("OPEN_REPORT") == "1":
         os.startfile(report)  # type: ignore[attr-defined]
     return 0
 

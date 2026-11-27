@@ -97,7 +97,7 @@ GitHub 用 UTC 時間，台灣時間要減 8 小時，例如晚上 9 點 → `0 
 
 | 檔案 | 用途 |
 |---|---|
-| `run_all.bat` | 全部網站跑一次（跑完自動打開報表） |
+| `run_all.bat` | 全部網站跑一次（在背景執行，跑完從選單「開啟報表」查看） |
 | `run_9city.bat` | 只跑 9city |
 | `run_windows.bat` | 上面兩個共用的核心，可加參數：`run_windows.bat --sites 609,my9` |
 

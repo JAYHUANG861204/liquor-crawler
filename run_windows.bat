@@ -11,7 +11,7 @@ set FROMMENU=
 echo %* | find /i "--auto" >nul && set AUTO=1
 echo %* | find /i "--from-menu" >nul && set FROMMENU=1
 if defined AUTO set LIQUOR_NO_OPEN=1
-if defined AUTO set HEADLESS=1
+if defined AUTO set SHOW_BROWSER=0
 if defined FROMMENU set LIQUOR_NO_OPEN=1
 
 if exist .venv\Scripts\python.exe goto ready

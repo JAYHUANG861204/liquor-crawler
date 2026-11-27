@@ -66,8 +66,9 @@ def sites_label(val: str) -> str:
 
 # ---------- 執行 ----------
 
-def run_now(sites: str):
-    print(f"\n開始執行：{sites_label(sites)}（會開出瀏覽器視窗，請不要關掉它）\n")
+def run_now(sites: str, show: bool = False):
+    os.environ["SHOW_BROWSER"] = "1" if show else "0"
+    print(f"\n開始執行：{sites_label(sites)}" + ("（會開出瀏覽器視窗，請不要關掉它）" if show else "（在背景執行，不會跳出視窗）") + "\n")
     if IS_WIN:
         subprocess.call(f'"{RUN_BAT}" --sites {sites} --from-menu', shell=True, cwd=ROOT)
     else:
@@ -258,6 +259,7 @@ MENU = [
     ("檢查資料品質", audit),
     ("設定自動上傳到網頁（貼上金鑰）", setup_upload),
     ("刪除上傳金鑰", remove_upload),
+    ("立即執行（顯示瀏覽器視窗，除錯用）", lambda: (lambda s: s and run_now(s, show=True))(choose_sites())),
 ]
 
 
