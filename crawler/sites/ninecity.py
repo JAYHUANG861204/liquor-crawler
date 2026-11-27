@@ -27,7 +27,7 @@ START = [
 PRODUCT_RE = re.compile(r"(/product/P\d+|product\.php\?pid_for_show=\d+)")
 CATEGORY_RE = re.compile(r"category\.php\?[^\"'#]*arem=\d+[^\"'#]*")
 MAX_CATEGORY_PAGES = 60
-MAX_PRODUCTS = 600
+MAX_PRODUCTS = 1500   # 商品頁上限（每頁約 1～2 秒，1500 頁約 40 分鐘）
 
 
 def _links(html: str, base: str) -> tuple[set[str], set[str]]:
@@ -113,7 +113,12 @@ def crawl(limit: int | None = None) -> list[Product]:
         if not links:
             raise RuntimeError("首頁與分類頁都找不到商品連結，網站結構可能改了")
         out, seen = [], set()
-        for url in links[: (limit or MAX_PRODUCTS)]:
+        todo = links[: (limit or MAX_PRODUCTS)]
+        if len(links) > len(todo):
+            log.info("9city 商品連結 %d 個，這次抓前 %d 個（上限 MAX_PRODUCTS）", len(links), len(todo))
+        for i, url in enumerate(todo, 1):
+            if i % 50 == 0 or i == len(todo):
+                log.info("9city 商品頁進度：%d / %d（已取得 %d 筆）", i, len(todo), len(out))
             try:
                 p = parse_product(s.html(url), url)
             except Exception as e:  # noqa: BLE001
