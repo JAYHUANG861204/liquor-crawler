@@ -112,9 +112,9 @@ def merge_and_save(ran: list[str], mine_products: list[dict], mine_status: dict,
     st["sites"] = [dict(by_id.get(sid, {"id": sid}), count=counts.get(sid, 0)) for sid in SITES]
     st["updated"] = datetime.now(run.TW).isoformat(timespec="seconds")
     os.makedirs(run.DATA_DIR, exist_ok=True)
-    with open(run.PRODUCTS_JSON, "w", encoding="utf-8") as f:
+    with open(run.PRODUCTS_JSON, "w", encoding="utf-8", newline="\n") as f:
         json.dump(merged, f, ensure_ascii=False, indent=0)
-    with open(run.SITES_JSON, "w", encoding="utf-8") as f:
+    with open(run.SITES_JSON, "w", encoding="utf-8", newline="\n") as f:
         json.dump(st, f, ensure_ascii=False, indent=1)
     print("  更新 Excel（含縮圖，需要一點時間）…", flush=True)
     try:

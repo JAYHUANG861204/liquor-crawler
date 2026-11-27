@@ -128,14 +128,14 @@ def main(argv=None) -> int:
     for sid, st in status.items():
         st["count"] = counts.get(sid, 0)
     os.makedirs(DATA_DIR, exist_ok=True)
-    with open(PRODUCTS_JSON, "w", encoding="utf-8") as f:
+    with open(PRODUCTS_JSON, "w", encoding="utf-8", newline="\n") as f:
         json.dump(products, f, ensure_ascii=False, indent=0)
-    with open(SITES_JSON, "w", encoding="utf-8") as f:
+    with open(SITES_JSON, "w", encoding="utf-8", newline="\n") as f:
         json.dump({"updated": now, "sites": list(status.values())}, f, ensure_ascii=False, indent=1)
     log.info("共 %d 筆 → %s", len(products), PRODUCTS_JSON)
     try:
         from .browser import SAMPLES
-        with open(os.path.join(DATA_DIR, "debug_samples.json"), "w", encoding="utf-8") as f:
+        with open(os.path.join(DATA_DIR, "debug_samples.json"), "w", encoding="utf-8", newline="\n") as f:
             json.dump(SAMPLES, f, ensure_ascii=False, indent=1)
     except Exception:  # noqa: BLE001
         pass
