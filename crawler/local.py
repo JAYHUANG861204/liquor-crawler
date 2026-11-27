@@ -29,9 +29,13 @@ def main() -> int:
     argv = [a for a in sys.argv[1:] if a.lower() not in ("--auto", "--from-menu")]
     if not any(a.startswith("--sites") for a in argv):
         argv = ["--sites", "local"] + argv
-    upload = has_git()
+    from .ghapi import load_config, publish_via_api
+    api_cfg = load_config()                 # 有上傳金鑰 → 用 GitHub API 上傳（不需要 Git）
+    upload = has_git() and not api_cfg      # 沒金鑰但有 Git → 用 Git 上傳
 
-    if upload:
+    if api_cfg:
+        print("\n[1/3] 已設定上傳金鑰，跑完會自動上傳到網頁。", flush=True)
+    elif upload:
         print("\n[1/3] 從 GitHub 取得最新的程式和資料…", flush=True)
         recover()
         try:
@@ -39,8 +43,8 @@ def main() -> int:
         except RuntimeError as e:
             print("  ！", e, "— 先用電腦上現有的資料繼續")
     else:
-        print("\n（這個資料夾不是用 git clone 下載的，跑完會更新電腦上的報表和 Excel，不會上傳到網頁。")
-        print("  想自動上傳，請看 README「給使用者：在 Windows 電腦上安裝與使用」。）")
+        print("\n（還沒設定上傳金鑰：跑完只會更新這台電腦上的報表和 Excel，網頁不會更新。")
+        print("  要讓網頁也更新，請在 menu.bat 選「設定自動上傳到網頁」。）")
 
     print("\n[2/3] 開始爬蟲…", flush=True)
     run.main(argv)
@@ -48,7 +52,14 @@ def main() -> int:
     for h in list(logging.getLogger().handlers):
         logging.getLogger().removeHandler(h)
 
-    if upload:
+    if api_cfg:
+        print("\n[3/3] 上傳結果到網頁…", flush=True)
+        if publish_via_api(f"自己電腦更新 {datetime.now():%Y-%m-%d %H:%M}", api_cfg):
+            print("\n  大約 1～3 分鐘後網頁會更新。")
+        else:
+            print("\n  沒有上傳成功（資料還是有存在這台電腦的報表和 Excel）。")
+            print("  如果顯示金鑰無效或過期，請在 menu.bat 選「設定自動上傳到網頁」重新貼上金鑰。")
+    elif upload:
         print("\n[3/3] 上傳結果到 GitHub…", flush=True)
         if publish(f"自己電腦更新 {datetime.now():%Y-%m-%d %H:%M}"):
             print("\n  大約 1～3 分鐘後網頁會更新：https://jayhuang861204.github.io/liquor-crawler/")

@@ -63,11 +63,9 @@ GitHub 用 UTC 時間，台灣時間要減 8 小時，例如晚上 9 點 → `0 
 
 不需要會寫程式，全部用 bat 檔和中文選單操作。
 
-### 一、取得程式（擇一）
+### 一、取得程式
 
-- **要上傳到網頁**（GitHub Pages）：先安裝 [Git](https://git-scm.com/download/win)，開「命令提示字元」輸入
-  `git clone https://github.com/JAYHUANG861204/liquor-crawler.git C:\liquor-crawler`
-- **只要在自己電腦看報表／Excel**：在 GitHub 頁面按綠色 **Code → Download ZIP**，解壓縮到 `C:\liquor-crawler`
+在 GitHub 頁面按綠色 **Code → Download ZIP**，解壓縮到 `C:\liquor-crawler`。（不需要安裝 Git）
 
 > 資料夾路徑請用英文、不要太長（建議 `C:\liquor-crawler`），排程才不會出問題。
 
@@ -75,7 +73,12 @@ GitHub 用 UTC 時間，台灣時間要減 8 小時，例如晚上 9 點 → `0 
 
 會自動完成：檢查／安裝 Python → 安裝套件 → 下載爬蟲用的瀏覽器 → 打開中文選單。第一次大約 5～10 分鐘。
 
-### 三、平常使用：按兩下 `menu.bat`
+### 三、設定自動上傳到網頁（做一次）
+
+在選單選 **「設定自動上傳到網頁（貼上金鑰）」**，貼上管理者給的金鑰（`github_pat_` 開頭）。
+設定後每次執行（包含排程）都會自動上傳，網頁 1～3 分鐘後更新。沒設定也能用，只是網頁不會更新。
+
+### 四、平常使用：按兩下 `menu.bat`
 
 | 選單 | 做什麼 |
 |---|---|
@@ -87,6 +90,8 @@ GitHub 用 UTC 時間，台灣時間要減 8 小時，例如晚上 9 點 → `0 
 | 6～8. 排程管理 | 查看、刪除、立刻試跑排程 |
 | 9. 查看排程執行紀錄 | 背景執行的過程記錄在 `local-run.log` |
 | 10. 檢查資料品質 | 列出不合理的品牌、價格、容量 |
+| 11. 設定自動上傳到網頁 | 貼上金鑰，跑完自動更新網頁 |
+| 12. 刪除上傳金鑰 | 之後只更新本機報表 |
 
 ### 其他 bat 檔
 
@@ -99,17 +104,24 @@ GitHub 用 UTC 時間，台灣時間要減 8 小時，例如晚上 9 點 → `0 
 ### 注意事項
 
 - **排程時間電腦要開著**（可以鎖定螢幕，不能關機或睡眠）。排程在背景執行，不會跳視窗。
-- **有用 git clone 而且登入過 GitHub**：跑完會自動上傳，網頁（GitHub Pages）1～3 分鐘後更新。
-  第一次上傳會跳出 GitHub 登入視窗，登入一次之後就記住了。
-- **沒有 Git**：跑完只更新自己電腦上的報表和 Excel，不會出錯。
+- **有設定上傳金鑰**：跑完自動上傳，網頁 1～3 分鐘後更新；上傳時以網站上最新資料為底，只換掉這次跑的網站，不會蓋掉別的資料。
+- **金鑰過期或失效**：資料仍會存在本機報表和 Excel，畫面會提示重新設定金鑰。
 - 如果出現「建立排程失敗」：對 `menu.bat` 按右鍵 →「以系統管理員身分執行」。
 - 執行時 Excel 請先關閉，否則無法更新 `products.xlsx`（程式會提醒並等待）。
 
-### 交接給別人時
+### 交接給別人時（管理者做）
 
-- **只給報表功能**：把整個資料夾（不含 `.venv`、`.browser-profile`）壓縮給對方，對方按 `setup.bat` 即可。
-- **連網頁一起交接**：在 GitHub 的 **Settings → Collaborators** 加入對方帳號，或用 **Settings → Transfer** 把 repo 轉給對方。
-  GitHub 上的每日排程（Actions）會繼續跑 609、Changi、DUTY ZERO、MY9；9city 要在對方電腦用排程跑。
+1. **產生上傳金鑰**（只能改這個 repo 的檔案，其他東西都碰不到）：
+   GitHub 右上角頭像 → **Settings** → 最下面 **Developer settings** → **Personal access tokens** → **Fine-grained tokens** → **Generate new token**
+   - Token name：例如 `liquor-crawler-upload`
+   - Expiration：選最長（到期前要重新產生一組給對方）
+   - Repository access：**Only select repositories** → 選 `liquor-crawler`
+   - Permissions → Repository permissions → **Contents：Read and write**（其他都不用開）
+   - 按 **Generate token**，複製 `github_pat_` 開頭的金鑰（只會顯示一次）
+2. 把**金鑰**和**ZIP 下載方式**交給對方，請對方照上面「一～四」做。
+3. 金鑰外流時：到同一頁面把那組金鑰刪掉（Revoke），再產生新的。
+
+GitHub 上的每日排程（Actions）會繼續自動跑 609、Changi、DUTY ZERO、MY9；9city 需要在對方電腦用排程跑。
 
 ---
 

@@ -1,7 +1,7 @@
 @echo off
 rem ============================================================
 rem  Liquor price crawler - one-time setup
-rem  1) find or install Python  2) create .venv and install packages
+rem  1) find or install Python  2) (no Git needed)  3) install packages
 rem  3) download the browser     4) open the Chinese menu
 rem ============================================================
 chcp 65001 >nul
@@ -32,20 +32,7 @@ exit /b 1
 echo     OK: %PY%
 
 echo.
-echo [2/4] Checking Git (only needed to upload results to the website)...
-git --version >nul 2>nul
-if not errorlevel 1 goto havegit
-choice /C YN /M "    Git not found. Install Git now"
-if errorlevel 2 goto nogit
-winget install -e --id Git.Git --accept-package-agreements --accept-source-agreements
-echo     If Git was just installed, close this window and run setup.bat again.
-goto aftergit
-:nogit
-echo     Skipped. The crawler will still work; results stay on this computer.
-goto aftergit
-:havegit
-echo     OK
-:aftergit
+echo [2/4] Git is not required (uploading uses the key set in the menu).
 
 echo.
 echo [3/4] Installing packages (first time takes a few minutes)...

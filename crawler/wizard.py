@@ -212,6 +212,39 @@ def status():
               f"上次成功 {x.get('last_success') or '—'}")
 
 
+def setup_upload():
+    from .ghapi import load_config, save_config, GitHub, DEFAULT_REPO
+    cur = load_config()
+    print("\n【設定自動上傳到網頁】")
+    if cur:
+        print(f"  目前已設定：上傳到 {cur['repo']}（金鑰 …{cur['token'][-4:]}）")
+        try:
+            print("  檢查結果：" + GitHub(cur).check())
+        except Exception as e:  # noqa: BLE001
+            print("  檢查結果：✘", e)
+    print("  金鑰請向網站管理者索取（以 github_pat_ 開頭的一長串字）。直接按 Enter = 不變更。")
+    tok = ask("請貼上金鑰（在這個視窗按滑鼠右鍵就能貼上）", "")
+    if not tok:
+        return
+    repo = ask("repo 名稱", (cur or {}).get("repo", DEFAULT_REPO))
+    cfg = {"token": tok.strip(), "repo": repo.strip(), "branch": "main"}
+    try:
+        msg = GitHub(cfg).check()
+    except Exception as e:  # noqa: BLE001
+        print("  ✘ 金鑰不能用：", e)
+        print("    沒有儲存。請確認金鑰有沒有貼完整、權限是不是 Contents: Read and write。")
+        return
+    save_config(cfg["token"], cfg["repo"])
+    print("  ✔ 已儲存，" + msg + "。之後每次執行（包含排程）都會自動上傳。")
+
+
+def remove_upload():
+    from .ghapi import CONFIG
+    if os.path.exists(CONFIG) and ask("確定要刪除上傳金鑰？(y/N)", "N").lower() == "y":
+        os.remove(CONFIG)
+        print("  已刪除，之後只會更新這台電腦上的報表。")
+
+
 MENU = [
     ("立即執行（選擇網站）", lambda: (lambda s: s and run_now(s))(choose_sites())),
     ("開啟報表（網頁）", open_report),
@@ -223,6 +256,8 @@ MENU = [
     ("立刻試跑某個排程", run_task_now),
     ("查看排程執行紀錄", show_log),
     ("檢查資料品質", audit),
+    ("設定自動上傳到網頁（貼上金鑰）", setup_upload),
+    ("刪除上傳金鑰", remove_upload),
 ]
 
 

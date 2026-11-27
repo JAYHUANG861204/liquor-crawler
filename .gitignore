@@ -10,3 +10,4 @@ crawl-output.log
 .browser-profile/
 local-run.log
 docs/report.html
+upload.json
