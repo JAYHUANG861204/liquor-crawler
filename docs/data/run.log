@@ -1,33 +1,34 @@
-2026-11-27 05:51:43,689 INFO ==== 酒條通 609 開始 ====
-2026-11-27 06:11:48,828 INFO 609 開了 150 頁，找到 697 件
-2026-11-27 06:11:48,880 INFO ==== 酒條通 609 結束：ok 697 筆，1205 秒 ====
-2026-11-27 06:11:48,881 INFO ==== iShopChangi 開始 ====
-2026-11-27 06:13:46,186 INFO ==== iShopChangi 結束：ok 1114 筆，117 秒 ====
-2026-11-27 06:13:46,186 INFO ==== DUTY ZERO 香港 開始 ====
-2026-11-27 06:14:12,371 INFO hk w.dutyzero.com.hk/showactivity/威士忌-11828：0 件
-2026-11-27 06:14:27,617 INFO hk w.dutyzero.com.hk/showactivity/中國酒-18566：3 件
-2026-11-27 06:14:43,358 INFO hk w.dutyzero.com.hk/showactivity/葡萄酒-22911：82 件
-2026-11-27 06:14:58,608 INFO hk w.dutyzero.com.hk/showactivity/威士忌-18623：0 件
-2026-11-27 06:15:12,869 INFO hk ww.dutyzero.com.hk/showactivity/干邑-23089：0 件
-2026-11-27 06:15:26,582 INFO hk utyzero.com.hk/showactivity/香檳-起泡酒-43795：28 件
-2026-11-27 06:15:39,776 INFO hk tyzero.com.hk/showactivity/氈酒-其他酒類-43797：0 件
-2026-11-27 06:15:51,464 INFO hk .dutyzero.com.hk/showactivity/優惠組合-58225：0 件
-2026-11-27 06:16:04,614 INFO hk dutyzero.com.hk/showactivity/葡萄酒香檳-58233：51 件
-2026-11-27 06:16:17,195 INFO hk .dutyzero.com.hk/showactivity/烈酒狂歡-58230：0 件
-2026-11-27 06:16:29,059 INFO hk .dutyzero.com.hk/showactivity/買一送一-58808：0 件
-2026-11-27 06:16:29,097 INFO hk 開了 11 個分類頁，共 77 件
-2026-11-27 06:16:29,105 INFO ==== DUTY ZERO 香港 結束：ok 77 筆，163 秒 ====
-2026-11-27 06:16:29,105 INFO ==== 買酒網 MY9 開始 ====
-2026-11-27 06:16:46,866 INFO ==== 買酒網 MY9 結束：ok 2444 筆，18 秒 ====
-2026-11-27 06:16:46,983 INFO 清理完成：保留 4326 筆，剔除 30 筆（無效品名、促銷公告、非酒類、重複）
-2026-11-27 06:16:47,025 INFO 共 4326 筆 → /home/runner/work/liquor-crawler/liquor-crawler/docs/data/products.json
-2026-11-27 06:16:47,068 INFO 品質檢查 609：697 筆，嚴重問題 無
-2026-11-27 06:16:47,068 INFO 品質檢查 changi：1114 筆，嚴重問題 無
-2026-11-27 06:16:47,068 INFO 品質檢查 hk：76 筆，嚴重問題 無
-2026-11-27 06:16:47,068 INFO 品質檢查 9city：24 筆，嚴重問題 無
-2026-11-27 06:16:47,068 INFO 品質檢查 my9：2415 筆，嚴重問題 無
-2026-11-27 06:18:27,796 INFO Excel 縮圖 1494 / 1500
-2026-11-27 06:18:30,486 INFO Excel → /home/runner/work/liquor-crawler/liquor-crawler/docs/products.xlsx
+2026-11-28 05:30:22,341 INFO ==== 酒條通 609 開始 ====
+2026-11-28 05:49:57,014 INFO 609 開了 150 頁，找到 697 件
+2026-11-28 05:49:57,101 INFO ==== 酒條通 609 結束：ok 697 筆，1175 秒 ====
+2026-11-28 05:49:57,101 INFO ==== iShopChangi 開始 ====
+2026-11-28 05:51:57,034 INFO ==== iShopChangi 結束：ok 1113 筆，120 秒 ====
+2026-11-28 05:51:57,034 INFO ==== DUTY ZERO 香港 開始 ====
+2026-11-28 05:52:16,415 INFO hk w.dutyzero.com.hk/showactivity/威士忌-11828：0 件
+2026-11-28 05:52:29,035 INFO hk w.dutyzero.com.hk/showactivity/中國酒-18566：3 件
+2026-11-28 05:52:41,538 INFO hk w.dutyzero.com.hk/showactivity/葡萄酒-22911：84 件
+2026-11-28 05:52:54,632 INFO hk w.dutyzero.com.hk/showactivity/威士忌-18623：0 件
+2026-11-28 05:53:07,278 INFO hk ww.dutyzero.com.hk/showactivity/干邑-23089：0 件
+2026-11-28 05:53:19,310 INFO hk utyzero.com.hk/showactivity/香檳-起泡酒-43795：28 件
+2026-11-28 05:53:31,367 INFO hk tyzero.com.hk/showactivity/氈酒-其他酒類-43797：0 件
+2026-11-28 05:53:43,091 INFO hk .dutyzero.com.hk/showactivity/優惠組合-58225：0 件
+2026-11-28 05:53:54,976 INFO hk dutyzero.com.hk/showactivity/葡萄酒香檳-58233：51 件
+2026-11-28 05:54:07,165 INFO hk .dutyzero.com.hk/showactivity/烈酒狂歡-58230：0 件
+2026-11-28 05:54:18,077 INFO hk .dutyzero.com.hk/showactivity/買一送一-58808：0 件
+2026-11-28 05:54:18,139 INFO hk 開了 11 個分類頁，共 78 件
+2026-11-28 05:54:18,152 INFO ==== DUTY ZERO 香港 結束：ok 78 筆，141 秒 ====
+2026-11-28 05:54:18,152 INFO ==== 買酒網 MY9 開始 ====
+2026-11-28 05:54:37,797 INFO ==== 買酒網 MY9 結束：ok 2473 筆，20 秒 ====
+2026-11-28 05:54:37,999 INFO 清理完成：保留 4930 筆，剔除 30 筆（無效品名、促銷公告、非酒類、重複）
+2026-11-28 05:54:38,074 INFO 共 4930 筆 → /home/runner/work/liquor-crawler/liquor-crawler/docs/data/products.json
+2026-11-28 05:54:38,152 INFO 品質檢查 609：697 筆，嚴重問題 無
+2026-11-28 05:54:38,152 INFO 品質檢查 changi：1113 筆，嚴重問題 無
+2026-11-28 05:54:38,152 INFO 品質檢查 hk：77 筆，嚴重問題 無
+2026-11-28 05:54:38,152 INFO 品質檢查 9city：599 筆，嚴重問題 無
+2026-11-28 05:54:38,152 INFO 品質檢查 my9：2444 筆，嚴重問題 無
+2026-11-28 05:54:38,221 INFO 本機報表 → /home/runner/work/liquor-crawler/liquor-crawler/docs/report.html
+2026-11-28 05:56:02,215 INFO Excel 縮圖 1489 / 1500
+2026-11-28 05:56:07,200 INFO Excel → /home/runner/work/liquor-crawler/liquor-crawler/docs/products.xlsx
 
 === 609（697 筆）===
   [可疑] 品牌未轉成英文: 125 筆（18%）
@@ -45,27 +46,35 @@
   [可疑] 品牌全大寫: 1 筆（0%）
          JD&S | JD&S大豐收Greign20年單一穀物威士忌700ml | 700.0 | None | 874.0/699.0
 
-=== changi（1114 筆）===
+=== changi（1113 筆）===
   [可疑] 沒有容量: 5 筆（0%）
          Ca Del Bosco Srl | CUVE'E PRESTIGE EXTRA BRUT EDIZIONE 44 | None | None | 50.0/None
          The Dalmore | The Dalmore Portfolio Series No.1 Bordeaux Wine Cask Fi | None | None | 839.0/None
   [可疑] 品牌含數字: 1 筆（0%）
          23rd Street Distillery | TWENTY THIRD STREET MULBERRY GIN 700ML | 700.0 | None | 48.0/None
 
-=== hk（76 筆）===
+=== hk（77 筆）===
   [可疑] 沒有容量: 1 筆（1%）
          Perrier-Jouët | Perrier Jouet 巴黎之花美麗時光香檳 - 香檳杯禮盒裝 | Perrier Jouet Belle | None | None | 1980.0/None
 
-=== 9city（24 筆）===
-  [可疑] 品牌未轉成英文: 10 筆（42%）
-         天文台 | 天文台 The Observatory 20年 單一穀物 | 700.0 | 40.0 | 880.0/647.0
-         卡賽瑞 | 卡賽瑞 Marqués de Cáceres 西班牙 粉紅葡萄酒 | 750.0 | 13.5 | 550.0/480.0
+=== 9city（599 筆）===
+  [可疑] 品牌未轉成英文: 21 筆（4%）
+         波米歐立．樂高 | 波米歐立．樂高 Bormioli Rocco Premium Decanter 1930ml | 1930.0 | None | 1500.0/1310.0
+         巴素．海頓 | 巴素．海頓 Basil Hayden's 8年 波本威士忌 1L | 1000.0 | 40.0 | 1480.0/1177.0
+  [可疑] 品牌全大寫: 13 筆（2%）
+         DITA | DITA 法國 荔枝 香甜酒 | 700.0 | 21.0 | 650.0/580.0
+         CASO | CASO 德國 雙溫控紅酒櫃 SW-38 38入 | None | None | 35380.0/25800.0
+  [可疑] 沒有容量: 11 筆（2%）
+         Bordeaux | 波爾多 Bordeaux 半導體 紅酒櫃 JC-65BNW 28入 | None | None | 14800.0/14060.0
+         CASO | CASO 德國 雙溫控紅酒櫃 SW-38 38入 | None | None | 35380.0/25800.0
+  [可疑] 品牌含數字: 1 筆（0%）
+         1792 小批次 | 1792 小批次 波本威士忌 | 700.0 | 46.85 | 1180.0/1047.0
 
-=== my9（2415 筆）===
+=== my9（2444 筆）===
   [可疑] 品牌未轉成英文: 186 筆（8%）
          天上夢幻 | 天上夢幻 小雪人濁酒 *季節限定 | 720.0 | None | 1080.0/800.0
          白真弓 | 白真弓 羊年干支 純米吟釀 | 720.0 | None | 1500.0/1280.0
-  [可疑] 沒有價格: 134 筆（6%）
+  [可疑] 沒有價格: 134 筆（5%）
          Yamazaki | 山崎 西班牙橡木 續蘊桶藏版 / The Yamazaki Single Malt Whisky Refill | 700.0 | None | None/None
          Hibiki | 響 繁花京韻 2026限定版 / Hibiki Japanese Harmony Chiso Collabor | 700.0 | None | None/None
   [可疑] 品牌長度異常: 9 筆（0%）
